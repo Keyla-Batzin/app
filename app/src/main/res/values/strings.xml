@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Bloom</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="carrito">Carrito</string>
+    <string name="prefer_ncies">Preferències</string>
+    <string name="color_principal">Color principal</string>
+    <string name="color_secundari">Color secundari</string>
+    <string name="tipografia_de_lletra">Tipografia de lletra</string>
+    <string name="guardar_canvis">Guardar canvis</string>
+    <string name="modifica">Modifica</string>
+    <string name="texto_ejemplo">Texto Ejemplo</string>
+    <string name="opcion_ejemplo">Opcion Ejemplo</string>
+    <string name="home">Home</string>
+</resources>

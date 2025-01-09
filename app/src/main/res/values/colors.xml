@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Colores de la App
+    <color name="purple_primary">#1c0033</color>
+    <color name="blue_light">#9e9ee2</color>
+    <color name="green_turquoise">#5dd9c1</color>
+    <color name="green_mint">#acfcd9</color>
+
+    <color name="purple_dark">#0f0022</color>
+    <color name="purple_light">#331c55</color>
+    <color name="blue_dark">#8888bb</color>
+    <color name="green_turquoise_dark">#44b399</color>
+    <color name="green_mint_light">#d9f2e2</color>
+
+    // Colores basicos
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="background_primary">#f5f5f5</color>
+    <color name="background_secondary">#eeeeee</color>
+
+    // Paleta neutra
+    <color name="red">#FF1A1A</color>
+    <color name="orange">#FF5733</color>
+    <color name="brown">#6C3B2A</color>
+    <color name="yellow">#FFCC00</color>
+    <color name="green">#32CD32</color>
+    <color name="blue">#007FFF</color>
+    <color name="indigo">#4B0082</color>
+    <color name="violet">#EE82EE</color>
+
+    // Paleta pastel
+    <color name="pastel_red">#F28B82</color>
+    <color name="pastel_orange">#FFD700</color>
+    <color name="pastel_yellow">#FFFFE0</color>
+    <color name="pastel_green">#98FB98</color>
+    <color name="pastel_blue">#ADD8E6</color>
+    <color name="pastel_indigo">#D8BFD8</color>
+    <color name="pastel_violet">#DA70D6</color>
+</resources>
