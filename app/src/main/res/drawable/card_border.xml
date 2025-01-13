@@ -11,6 +11,7 @@
         <shape android:shape="rectangle">
             <stroke android:width="2dp" android:color="#000000" /> <!-- Borde rojo -->
             <solid android:color="#00000000" /> <!-- Fondo transparente -->
+            <corners android:radius="10dp"/>
         </shape>
     </item>
 </layer-list>

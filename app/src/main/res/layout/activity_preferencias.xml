@@ -10,7 +10,7 @@
     <!-- Fragment 1 en la parte superior -->
     <fragment
         android:id="@+id/fragment1"
-        android:name="com.example.bloom.FragmentHeader"
+        android:name="com.example.bloom.Fragment_Header"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintTop_toTopOf="@+id/main"/>
@@ -110,11 +110,11 @@
 
     <!-- Boton Guardar -->
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/btn_guardar"
         style="@style/Button"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="@color/purple_primary"
@@ -158,7 +158,7 @@
     <!-- Fragment 2 alineado en la parte inferior -->
     <fragment
         android:id="@+id/fragment2"
-        android:name="com.example.bloom.FragmentHeader"
+        android:name="com.example.bloom.Fragment_Header"
         android:layout_width="0dp"
         android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,9 +8,18 @@
     tools:context=".MainActivity">
 
     <fragment
-        android:layout_width="match_parent"
+        android:id="@+id/fragment1"
         android:name="com.example.bloom.Fragment_Header"
+        android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         app:layout_constraintTop_toTopOf="@+id/main"/>
 
+    <fragment
+        android:id="@+id/fragment2"
+        android:name="com.example.bloom.Fragment_Header"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
