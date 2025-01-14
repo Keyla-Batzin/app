@@ -1,5 +1,6 @@
 package com.example.bloom
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,32 +24,28 @@ class FragmentBottom : Fragment() {
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
-                    // Reemplazar el fragmento con el FragmentHome
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentHome())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
+                    // Reemplazar el fragmento con la Activity
+                    val intent = Intent(activity, Home::class.java)
+                    startActivity(intent)
+                    true;
                 }
                 R.id.search -> {
-                    // Reemplazar el fragmento con el FragmentSearch
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentSearch())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
+                    // Reemplazar el fragmento con la Activity
+                    val intent = Intent(activity, Search::class.java)
+                    startActivity(intent)
+                    true;
                 }
                 R.id.fav -> {
-                    // Reemplazar el fragmento con el FragmentFavorites
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentFavorites())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
+                    // Reemplazar el fragmento con la Activity
+                    val intent = Intent(activity, Favorites::class.java)
+                    startActivity(intent)
+                    true;
                 }
                 R.id.profile -> {
-                    // Reemplazar el fragmento con el FragmentProfile
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentProfile())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
+                    // Reemplazar el fragmento con la Activity
+                    val intent = Intent(activity, Profile::class.java)
+                    startActivity(intent)
+                    true;
                 }
             }
             true

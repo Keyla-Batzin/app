@@ -4,7 +4,7 @@
     android:layout_height="?actionBarSize"
     android:background="@color/purple_light"
     android:id="@+id/myTool"
-    android:theme="@style/Custom.PopupMenuStyle"
-    >
+    android:theme="@style/Custom.PopupMenuStyle">
+
 
 </androidx.appcompat.widget.Toolbar>

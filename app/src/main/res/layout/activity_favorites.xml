@@ -7,18 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".Favorites">
 
-    <fragment
-        android:id="@+id/fragment1"
-        android:name="com.example.bloom.Fragment_Header"
+    <!-- Contenedor para Fragment_Header -->
+    <FrameLayout
+        android:id="@+id/fragment_container_header"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        app:layout_constraintTop_toTopOf="@+id/main"/>
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <fragment
-        android:id="@+id/fragment2"
-        android:name="com.example.bloom.Fragment_Header"
+    <!-- Contenedor para FragmentBottom -->
+    <FrameLayout
+        android:id="@+id/fragment_container_bottom"
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

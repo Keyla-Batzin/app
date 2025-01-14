@@ -9,12 +9,15 @@ import androidx.core.view.WindowInsetsCompat
 class Help : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_help)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        // Cargar Fragment_Header en el contenedor correspondiente
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_header, Fragment_Header())
+            .commit()
+
+        // Cargar FragmentBottom en el contenedor correspondiente
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_bottom, FragmentBottom())
+            .commit()
     }
 }

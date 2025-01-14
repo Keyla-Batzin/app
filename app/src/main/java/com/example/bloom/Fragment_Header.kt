@@ -1,5 +1,6 @@
 package com.example.bloom
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,30 +50,29 @@ class Fragment_Header : Fragment() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    // Reemplazar el fragmento con el FragmentHome
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentHome())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
+                    // Reemplazar el fragmento con la Activity
+                    val intent = Intent(activity, Home::class.java)
+                    startActivity(intent)
+                    true;
                 }
                 R.id.nav_profile -> {
-                    // Reemplazar el fragmento con el FragmentProfile
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentProfile())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
+                    // Reemplazar el fragmento con la Activity
+                    val intent = Intent(activity, Home::class.java)
+                    startActivity(intent)
+                    true;
                 }
                 R.id.nav_settings -> {
-                    // Reemplazar el fragmento con el FragmentSettings
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentSettings())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
+                    // Reemplazar el fragmento con la Activity
+                    val intent = Intent(activity, Preferencias::class.java)
+                    startActivity(intent)
+                    true;
                 }
             }
             drawerLayout.closeDrawers()  // Cerrar el drawer
             true
         }
     }
+
+
 }
 
