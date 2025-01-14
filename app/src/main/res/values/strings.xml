@@ -30,4 +30,6 @@
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
     <string name="ajustes">Ajustes</string>
+    <string name="men">Menú</string>
+    <string name="descripcion_generica">Descripcion Generica</string>
 </resources>

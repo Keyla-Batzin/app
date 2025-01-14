@@ -9,9 +9,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Cargar el Fragment_Header al iniciar la actividad
+        // Cargar Fragment_Header en el contenedor correspondiente
         supportFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment, Fragment_Header())
+            .replace(R.id.fragment_container_header, Fragment_Header())
+            .commit()
+
+        // Cargar FragmentBottom en el contenedor correspondiente
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_bottom, FragmentBottom())
             .commit()
     }
 }

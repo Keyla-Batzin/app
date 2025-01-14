@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="72dp"
     android:background="@color/blue_light"
-    xmlns:tool="http://schemas.android.com/tools"
     android:padding="8dp"
     android:orientation="vertical">
 
@@ -12,10 +11,12 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/home" />
+
+    <!-- Texto del menú -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        tool:text="Menú"/>
-    
+        android:text="@string/men" />
+
 </LinearLayout>
