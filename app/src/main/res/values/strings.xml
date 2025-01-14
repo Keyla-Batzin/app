@@ -27,4 +27,7 @@
     <string name="buscar">Buscar</string>
     <string name="favoritos">Favoritos</string>
     <string name="perfil">Perfil</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="ajustes">Ajustes</string>
 </resources>

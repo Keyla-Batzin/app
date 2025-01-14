@@ -2,43 +2,53 @@ package com.example.bloom
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.navigation.NavigationView
 
-class Fragment_Header : Fragment() { // Elimina el guion bajo del nombre para seguir las convenciones de nombres en Kotlin
+class Fragment_Header : Fragment() {
 
-    private lateinit var toolbar: Toolbar // Declarar el toolbar como lateinit porque se inicializa en onCreateView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // Indica que este fragmento tiene un menú de opciones
-        setHasOptionsMenu(true)
-    }
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var toolbar: Toolbar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Infla el diseño para este fragmento
-        val view = inflater.inflate(R.layout.fragment_header, container, false) // Cambia el nombre del recurso a "fragment_header" para seguir las convenciones de nombres
+        // Inflar el diseño del fragmento
+        val view = inflater.inflate(R.layout.fragment_header, container, false)
 
-        // Configura el Toolbar desde el diseño
+        // Inicializar vistas
+        drawerLayout = view.findViewById(R.id.main_drawerlayout)
+        navigationView = view.findViewById(R.id.navigation_view)
         toolbar = view.findViewById(R.id.main_toolbar)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+
+        setupNavigationDrawer()
 
         return view
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        // Infla el menú específico para este fragmento
-        inflater.inflate(R.menu.menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
+    private fun setupNavigationDrawer() {
+        // Configurar el botón del Drawer en la Toolbar
+        val toggle = ActionBarDrawerToggle(
+            requireActivity(),
+            drawerLayout,
+            toolbar,
+            R.string.open_drawer,
+            R.string.close_drawer
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        // Configurar la navegación con NavController
+        val navController = findNavController()
+        NavigationUI.setupWithNavController(navigationView, navController)
     }
-
-
 }
