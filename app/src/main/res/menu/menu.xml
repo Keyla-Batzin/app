@@ -5,8 +5,7 @@
     <item
         android:id="@+id/carrito"
         android:title="@string/carrito"
-        android:icon="@drawable/carrito"
-        android:iconTint="@color/white"
+        android:icon="@drawable/shop"
         app:showAsAction="ifRoom"/>
 
     <item

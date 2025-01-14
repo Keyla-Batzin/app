@@ -19,4 +19,12 @@
     <string name="privacidad">Privacidad</string>
     <string name="tel_fono">Teléfono</string>
     <string name="repetir_contrase_a">Repetir contraseña</string>
+    <string name="bienvenido">Bienvenido</string>
+    <string name="newsletter">Newsletter</string>
+    <string name="acerca_de_nosotros">Acerca de nosotros</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquet feugiat commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="suscribirse">Suscribirse</string>
+    <string name="buscar">Buscar</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="perfil">Perfil</string>
 </resources>
