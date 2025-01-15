@@ -1,6 +1,5 @@
 package com.example.bloom
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -46,33 +45,28 @@ class Fragment_Header : Fragment() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
-        // Configurar la navegación en el Drawer
+        // Configurar la navegación con FragmentTransaction en lugar de Navigation
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    // Reemplazar el fragmento con la Activity
-                    val intent = Intent(activity, Home::class.java)
-                    startActivity(intent)
-                    true;
+                R.id.menu_item_home -> {
+                    // Reemplazar el fragmento con el fragmento real (ej. FragmentHome)
+                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentHome())  // Sustituir por el fragmento adecuado
+                    fragmentTransaction.addToBackStack(null)
+                    fragmentTransaction.commit()
                 }
-                R.id.nav_profile -> {
-                    // Reemplazar el fragmento con la Activity
-                    val intent = Intent(activity, Home::class.java)
-                    startActivity(intent)
-                    true;
+                R.id.menu_item_settings -> {
+                    // Reemplazar el fragmento con el fragmento real (ej. FragmentSettings)
+                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentSettings())  // Sustituir por el fragmento adecuado
+                    fragmentTransaction.addToBackStack(null)
+                    fragmentTransaction.commit()
                 }
-                R.id.nav_settings -> {
-                    // Reemplazar el fragmento con la Activity
-                    val intent = Intent(activity, Preferencias::class.java)
-                    startActivity(intent)
-                    true;
-                }
+                // Añadir más opciones si es necesario
             }
-            drawerLayout.closeDrawers()  // Cerrar el drawer
+            drawerLayout.closeDrawers()
             true
         }
     }
 
-
 }
-
