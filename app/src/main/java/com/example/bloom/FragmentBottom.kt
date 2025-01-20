@@ -25,25 +25,25 @@ class FragmentBottom : Fragment() {
             when (menuItem.itemId) {
                 R.id.home -> {
                     // Reemplazar el fragmento con la Activity
-                    val intent = Intent(activity, Home::class.java)
+                    val intent = Intent(activity, HomeFragment::class.java)
                     startActivity(intent)
                     true;
                 }
                 R.id.search -> {
                     // Reemplazar el fragmento con la Activity
-                    val intent = Intent(activity, Search::class.java)
+                    val intent = Intent(activity, HomeFragment::class.java)
                     startActivity(intent)
                     true;
                 }
                 R.id.fav -> {
                     // Reemplazar el fragmento con la Activity
-                    val intent = Intent(activity, Favorites::class.java)
+                    val intent = Intent(activity, HomeFragment::class.java)
                     startActivity(intent)
                     true;
                 }
                 R.id.profile -> {
                     // Reemplazar el fragmento con la Activity
-                    val intent = Intent(activity, Profile::class.java)
+                    val intent = Intent(activity, HomeFragment::class.java)
                     startActivity(intent)
                     true;
                 }

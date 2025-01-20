@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
     <!-- Contenedor para Fragment_Screen -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment"

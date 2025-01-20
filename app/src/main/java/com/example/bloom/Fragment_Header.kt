@@ -48,20 +48,7 @@ class Fragment_Header : Fragment() {
         // Configurar la navegación con FragmentTransaction en lugar de Navigation
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.menu_item_home -> {
-                    // Reemplazar el fragmento con el fragmento real (ej. FragmentHome)
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentHome())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
-                }
-                R.id.menu_item_settings -> {
-                    // Reemplazar el fragmento con el fragmento real (ej. FragmentSettings)
-                    val fragmentTransaction = requireActivity().supportFragmentManager.beginTransaction()
-                    fragmentTransaction.replace(R.id.nav_host_fragment, FragmentSettings())  // Sustituir por el fragmento adecuado
-                    fragmentTransaction.addToBackStack(null)
-                    fragmentTransaction.commit()
-                }
+
                 // Añadir más opciones si es necesario
             }
             drawerLayout.closeDrawers()
