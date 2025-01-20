@@ -52,12 +52,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Subtitulo"
+                    android:gravity="center"
                     android:text="@string/acerca_de_nosotros" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/Texto"
+                    android:gravity="center"
                     android:text="@string/lorem_ipsum"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
