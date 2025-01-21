@@ -19,10 +19,23 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
+            app:contentInsetStart="0dp"
+            app:contentInsetLeft="0dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Bloom"
-            app:layout_constraintTop_toTopOf="parent"/>
+            tools:layout_editor_absoluteX="-26dp">
+
+            <!-- Imagen dentro del Toolbar -->
+            <ImageView
+                android:id="@+id/toolbar_image"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_gravity="start"
+                android:contentDescription="Logo"
+                android:src="@drawable/logo_header" />
+        </androidx.appcompat.widget.Toolbar>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

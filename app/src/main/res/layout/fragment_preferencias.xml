@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentPreferencias">
+    <!-- Box Pantalla -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!-- Titulo -->
+        <TextView
+            android:id="@+id/textViewPreferencias"
+            style="@style/tituloInicio"
+            android:text="@string/prefer_ncies"/>
+
+        <!-- Box info colores -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:orientation="vertical">
+            <!-- Color Principal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:text="@string/color_principal"
+                    style="@style/Subtitulo"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <Button
+                    style="@style/Button"
+                    android:text="Modifica" />
+            </LinearLayout>
+            <View
+                android:id="@+id/colorBox01"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/purple_primary"/>
+            <!-- Color Secunadrio -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+                <TextView
+                    android:text="@string/color_principal"
+                    style="@style/Subtitulo"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <Button
+                    style="@style/Button"
+                    android:text="Modifica" />
+            </LinearLayout>
+            <View
+                android:id="@+id/colorBox02"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/blue_light"/>
+            <!-- Color Tipografia -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+                <TextView
+                    android:text="@string/color_principal"
+                    style="@style/Subtitulo"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+                <Button
+                    style="@style/Button"
+                    android:text="Modifica" />
+            </LinearLayout>
+            <View
+                android:id="@+id/colorBox03"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="16dp"
+                android:background="#65000000"/>
+            <TextView
+                style="@style/Texto"
+                android:layout_gravity="center"
+                android:text="Texto Ejemplo"
+                android:layout_marginTop="-65dp"
+                android:layout_marginBottom="30dp"
+                android:textSize="30sp"/>
+
+            <Button
+                style="@style/BotonOscuro"
+                android:layout_width="match_parent"
+                android:text="Guardar cambios"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

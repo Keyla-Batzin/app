@@ -20,4 +20,5 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:text="@string/men" />
+
 </LinearLayout>

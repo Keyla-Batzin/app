@@ -50,14 +50,12 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     style="@style/Subtitulo"
                     android:gravity="center"
                     android:text="@string/acerca_de_nosotros" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     style="@style/Texto"
                     android:gravity="center"
                     android:text="@string/lorem_ipsum"
@@ -87,19 +85,15 @@
 
                     <TextView
                         android:id="@+id/textNews"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:text="@string/newsletter"
                         android:textSize="30sp"
                         style="@style/Titulo"
                         android:gravity="center" />
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:text="@string/suscribirse"
-                        style="@style/Button" />
+                        style="@style/BotonOscuro" />
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
