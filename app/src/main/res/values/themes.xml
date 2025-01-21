@@ -20,7 +20,7 @@
     <!-- Estilo personalizado para los botones -->
     <!-- Boton Oscuro -->
     <style name="Button" parent="Widget.Material3.Button">
-        <item name="backgroundTint">@color/purple_primary</item>
+        <item name="backgroundTint">@color/blue_light</item>
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/poppins_blod</item>
         <item name="android:radius">12dp</item>
@@ -35,6 +35,24 @@
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/poppins_blod</item>
         <item name="android:radius">12dp</item>
+    </style>
+
+    <!-- Boton Cuadrado Inicio(Login/Sing up) -->
+    <style name="BotonCuadrado" parent="Widget.AppCompat.Button">
+        <!-- Tamaño y forma -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/poppins_blod</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="BotonInicio" parent="Widget.Material3.Button">
+        <!-- Tamaño y forma -->
+        <item name="backgroundTint">@color/purple_primary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/poppins_blod</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">5dp</item>
     </style>
 
     <style name="Theme.Bloom" parent="Base.Theme.Bloom" />
