@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentCarrito2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            style="@style/tituloInicio"
+            android:text="Datos Pedido"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
+            <!-- Numero de Trajeta -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/Texto"
+                    android:layout_gravity="start"
+                    android:text="Número Tarjeta:"/>
+
+                <ImageView
+                    android:layout_width="370dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/card_border"/>
+
+                <EditText
+                    android:id="@+id/textAdress"
+                    style="@style/editedTextStyle"
+                    android:layout_width="370dp"
+                    android:inputType="number" />
+            </LinearLayout>
+            <!-- Fecha caducidad + CCV -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+                <!-- Fecha Caducidad -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="Fecha caducidad"/>
+
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_border"/>
+
+                    <EditText
+                        android:id="@+id/textCP"
+                        android:layout_width="180dp"
+                        style="@style/editedTextStyle"
+                        android:inputType="text" />
+                </LinearLayout>
+                <!-- CVV -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="CCV"/>
+
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_border"/>
+
+                    <EditText
+                        android:id="@+id/textProvincia"
+                        style="@style/editedTextStyle"
+                        android:layout_width="180dp"
+                        android:inputType="number" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <!-- Botones (Atras y Siguiente) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="20dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/BotonCuadrado"
+                android:text="Atras"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/BotonCuadrado"
+                android:text="Siguiente"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

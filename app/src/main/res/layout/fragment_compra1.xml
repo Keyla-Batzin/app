@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentCompra1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            style="@style/tituloInicio"
+            android:text="Datos Pedido"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
+            <!-- Primera Fila (Nombre + Apellido) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+                <!-- Nombre -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="Nombre"/>
+
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_border"/>
+
+                    <EditText
+                        android:id="@+id/textName"
+                        android:layout_width="180dp"
+                        style="@style/editedTextStyle"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+                <!-- Apellido -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="Apellido"/>
+
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_border"/>
+
+                    <EditText
+                        android:id="@+id/textApellido"
+                        style="@style/editedTextStyle"
+                        android:layout_width="180dp"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- Segunda (Telefono) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/Texto"
+                    android:layout_gravity="start"
+                    android:text="Telefono"/>
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/card_border"/>
+
+                <EditText
+                    android:id="@+id/textTelef"
+                    style="@style/editedTextStyle"
+                    android:layout_width="180dp"
+                    android:inputType="textPhonetic" />
+            </LinearLayout>
+            <!-- Tercera (Ubicacion) -->
+            <TextView
+                style="@style/Texto"
+                android:layout_gravity="start"
+                android:layout_marginTop="25dp"
+                android:text="Ubicación"/>
+            <Spinner
+                android:id="@+id/countrySpinner"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:prompt="@string/select_country" />
+            <!-- Cuarta (Direción) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/Texto"
+                    android:layout_gravity="start"
+                    android:text="Direción"/>
+
+                <ImageView
+                    android:layout_width="370dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/card_border"/>
+
+                <EditText
+                    android:id="@+id/textAdress"
+                    style="@style/editedTextStyle"
+                    android:layout_width="370dp"
+                    android:inputType="textPostalAddress" />
+            </LinearLayout>
+            <!-- Quinta (Adicional) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/Texto"
+                    android:layout_gravity="start"
+                    android:text="Adicional"/>
+
+                <ImageView
+                    android:layout_width="370dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/card_border"/>
+
+                <EditText
+                    android:id="@+id/textAdicional"
+                    style="@style/editedTextStyle"
+                    android:layout_width="370dp"
+                    android:inputType="textPostalAddress" />
+            </LinearLayout>
+            <!-- Sexta Fila (Codigo Postal + Provinica) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+                <!-- Codigo Postal -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="Codigo Postal"/>
+
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_border"/>
+
+                    <EditText
+                        android:id="@+id/textCP"
+                        android:layout_width="180dp"
+                        style="@style/editedTextStyle"
+                        android:inputType="text" />
+                </LinearLayout>
+                <!-- Provincia -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="Provincia"/>
+
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_border"/>
+
+                    <EditText
+                        android:id="@+id/textProvincia"
+                        style="@style/editedTextStyle"
+                        android:layout_width="180dp"
+                        android:inputType="text" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- Septima (Ciudad) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/Texto"
+                    android:layout_gravity="start"
+                    android:text="Ciudad"/>
+
+                <ImageView
+                    android:layout_width="180dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/card_border"/>
+
+                <EditText
+                    android:id="@+id/textCity"
+                    style="@style/editedTextStyle"
+                    android:layout_width="180dp"
+                    android:inputType="text" />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <!-- Botones (Atras y Siguiente) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="20dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/BotonCuadrado"
+                android:text="Atras"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                style="@style/BotonCuadrado"
+                android:text="Siguiente"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

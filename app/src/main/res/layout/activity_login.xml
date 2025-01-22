@@ -43,10 +43,7 @@
 
             <EditText
                 android:id="@+id/textEmail"
-                android:layout_marginTop="-45dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
+                style="@style/editedTextStyle"
                 android:inputType="textEmailAddress" />
 
             <!-- Password -->
@@ -63,10 +60,7 @@
 
             <EditText
                 android:id="@+id/texPass"
-                android:layout_marginTop="-45dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
+                style="@style/editedTextStyle"
                 android:inputType="textPassword" />
 
             <!-- Boton Login -->

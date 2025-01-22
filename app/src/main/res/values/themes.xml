@@ -4,7 +4,7 @@
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="colorPrimary">@color/purple_primary</item>
         <item name="colorPrimaryDark">@color/purple_dark</item>
-        <item name="colorAccent">@color/green_turquoise</item>
+        <item name="colorAccent">@color/blue_light</item>
 
         <item name="android:windowBackground">@color/background_primary</item>
         <item name="android:textColorPrimary">@color/white</item>
@@ -76,6 +76,18 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Estilo EditedText -->
+    <style name="editedTextStyle" parent="Widget.AppCompat.EditText">
+        <!-- Tamaño y forma -->
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">-45dp</item>
+        <item name="android:ems">10</item>
     </style>
 
     <style name="Theme.Bloom" parent="Base.Theme.Bloom" />
