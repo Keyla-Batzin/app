@@ -33,6 +33,7 @@
     <string name="men">Menú</string>
     <string name="descripcion_generica">Descripcion Generica</string>
     <string name="select_country">Selecciona un país</string>
+    <string name="gracias_por_tu_compra">!Gracias por tu compra¡</string>
     <string-array name="countries_array">
         <item>España</item>
         <item>Francia</item>

@@ -17,11 +17,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:orientation="vertical">
+            <TextView
+                style="@style/Texto"
+                android:textSize="20sp"
+                android:text="Tarjeta de crédito o débito:"/>
             <!-- Numero de Trajeta -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="5dp"
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -89,6 +93,19 @@
                         android:inputType="number" />
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="-5dp"
+                android:layout_marginEnd="20dp">
+                <Button
+                    android:id="@+id/btn_next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/BotonCuadrado"
+                    android:text="Continuar"/>
+            </LinearLayout>
         </LinearLayout>
         <View
             android:layout_width="0dp"
@@ -107,16 +124,6 @@
                 android:layout_height="wrap_content"
                 style="@style/BotonCuadrado"
                 android:text="Atras"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                style="@style/BotonCuadrado"
-                android:text="Siguiente"/>
         </LinearLayout>
     </LinearLayout>
 

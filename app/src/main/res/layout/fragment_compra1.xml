@@ -70,7 +70,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -92,7 +92,7 @@
             <TextView
                 style="@style/Texto"
                 android:layout_gravity="start"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:text="Ubicación"/>
             <Spinner
                 android:id="@+id/countrySpinner"
@@ -103,7 +103,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -125,7 +125,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -147,7 +147,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
                 <!-- Codigo Postal -->
                 <LinearLayout
@@ -197,7 +197,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="10dp"
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -216,6 +216,18 @@
                     android:inputType="text" />
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp">
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/BotonCuadrado"
+                android:text="Continuar"/>
+        </LinearLayout>
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -233,16 +245,6 @@
                 android:layout_height="wrap_content"
                 style="@style/BotonCuadrado"
                 android:text="Atras"/>
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                style="@style/BotonCuadrado"
-                android:text="Siguiente"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>
