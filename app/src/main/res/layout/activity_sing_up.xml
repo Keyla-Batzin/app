@@ -113,10 +113,10 @@
             android:orientation="vertical">
             <!-- Texto -->
             <TextView
-                android:id="@+id/textRegistrar"
+                android:id="@+id/textIrALogin"
                 style="@style/Texto_Blod"
                 android:clickable="true"
-                android:text="@string/registrarse"/>
+                android:text="@string/login"/>
 
             <TextView
                 android:id="@+id/textPrivacidad"
