@@ -11,7 +11,7 @@
         <item name="android:textColorSecondary">@color/purple_dark</item>
 
         <!-- Botones -->
-        <item name="materialButtonStyle">@style/Button</item>
+        <item name="materialButtonStyle">@style/BotonNormalClaro</item>
         <!-- Menu -->
         <item name="popupMenuStyle">@style/Custom.PopupMenuStyle</item>
 
@@ -19,7 +19,7 @@
 
     <!-- Estilo personalizado para los botones -->
     <!-- Boton Claro -->
-    <style name="Button" parent="Widget.Material3.Button">
+    <style name="BotonNormalClaro" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/blue_light</item>
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/poppins_blod</item>
@@ -30,7 +30,7 @@
     </style>
 
     <!-- Boton Oscuro -->
-    <style name="Button2" parent="Widget.Material3.Button">
+    <style name="BotonNormalOscuro" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/indigo</item>
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/poppins_blod</item>
@@ -40,7 +40,7 @@
     </style>
 
     <!-- Boton Cuadrado -->
-    <style name="BotonCuadrado" parent="Widget.AppCompat.Button">
+    <style name="BotonLilaClaro" parent="Widget.AppCompat.Button">
         <!-- Tamaño y forma -->
         <item name="backgroundTint">@color/blue_light</item>
         <item name="android:textColor">@android:color/white</item>
@@ -78,8 +78,8 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!-- Boton Cuadrado Negro -->
-    <style name="BotonNegro" parent="Widget.AppCompat.Button">
+    <!-- Boton Rosa Claro Negro -->
+    <style name="BotonRosaClaro" parent="Widget.AppCompat.Button">
         <!-- Tamaño y forma -->
         <item name="backgroundTint">#A87B7E</item>
         <item name="android:textColor">@android:color/white</item>
@@ -103,7 +103,6 @@
     </style>
 
     <style name="Theme.Bloom" parent="Base.Theme.Bloom" />
-
 
     <!-- Tema menu opciones -->
     <style name="Custom.PopupMenuStyle" parent="Widget.Material3.PopupMenu">

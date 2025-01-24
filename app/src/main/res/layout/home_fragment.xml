@@ -37,7 +37,7 @@
                     android:textSize="40sp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:background="#88000000"
+                    android:background="#44C79DA0"
                     android:padding="8dp"
                     style="@style/Titulo"
                     android:layout_gravity="center" />
@@ -80,14 +80,8 @@
             <!-- Sección 'Nuestros productos' -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp">
-                <ImageView
-                    android:id="@+id/img02"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/img_home_news"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="Imagen Floristeria Home Newsletter" />
+                android:layout_height="50dp">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -95,7 +89,7 @@
                     android:text="Nuestros productos"
                     android:textSize="30sp"
                     style="@style/Titulo"
-                    android:background="#74000000"
+                    android:background="#C79DA0"
                     android:textColor="@color/white"
                     android:gravity="center" />
             </FrameLayout>
@@ -224,12 +218,19 @@
                     </LinearLayout>
                 </HorizontalScrollView>
 
+                <Button
+                    android:id="@+id/btn_cat"
+                    style="@style/BotonLilaClaro"
+                    android:layout_gravity="center"
+                    android:text="Ver todas las categorias"/>
             </LinearLayout>
 
             <!-- Sección 'Newsletter' -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginBottom="20dp"
                 android:backgroundTint="#C79DA0"
                 android:layout_gravity="center">
                 <LinearLayout
@@ -263,7 +264,7 @@
                         android:inputType="textEmailAddress" />
                     <Button
                         android:id="@+id/btn_suscribirse"
-                        style="@style/BotonNegro"
+                        style="@style/BotonRosaClaro"
                         android:text="Suscribirme"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

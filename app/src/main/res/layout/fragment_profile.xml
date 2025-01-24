@@ -100,18 +100,18 @@
                 <!-- Boton (Modifica) -->
                 <Button
                     android:id="@+id/btn_modifcaNombre"
-                    style="@style/Button"
+                    style="@style/BotonNormalClaro"
                     android:text="@string/modifica">
                 </Button>
                 <Button
                     android:id="@+id/btn_modifcaEmail"
-                    style="@style/Button"
+                    style="@style/BotonNormalClaro"
                     android:layout_marginTop="20dp"
                     android:text="@string/modifica">
                 </Button>
                 <Button
                     android:id="@+id/btn_modifcaTelef"
-                    style="@style/Button"
+                    style="@style/BotonNormalClaro"
                     android:layout_marginTop="20dp"
                     android:text="@string/modifica">
                 </Button>
@@ -124,7 +124,7 @@
         <Button
             android:layout_width="match_parent"
             android:text="Cambiar contraseña"
-            style="@style/BotonCuadrado"/>
+            style="@style/BotonLilaClaro"/>
         <Button
             android:layout_width="match_parent"
             android:text="Eliminar cuenta"

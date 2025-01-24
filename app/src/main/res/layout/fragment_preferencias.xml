@@ -34,7 +34,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
                 <Button
-                    style="@style/Button"
+                    style="@style/BotonNormalClaro"
                     android:text="Modifica" />
             </LinearLayout>
             <View
@@ -56,7 +56,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
                 <Button
-                    style="@style/Button"
+                    style="@style/BotonNormalClaro"
                     android:text="Modifica" />
             </LinearLayout>
             <View
@@ -78,7 +78,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
                 <Button
-                    style="@style/Button"
+                    style="@style/BotonNormalClaro"
                     android:text="Modifica" />
             </LinearLayout>
             <View

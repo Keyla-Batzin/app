@@ -34,7 +34,7 @@
             <!-- Botón al lado del texto -->
             <Button
                 android:id="@+id/addButton"
-                style="@style/BotonCuadrado"
+                style="@style/BotonLilaClaro"
                 android:text="Añadir" />
         </LinearLayout>
 
