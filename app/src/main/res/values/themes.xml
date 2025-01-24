@@ -78,6 +78,18 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!-- Boton Cuadrado Negro -->
+    <style name="BotonNegro" parent="Widget.AppCompat.Button">
+        <!-- Tamaño y forma -->
+        <item name="backgroundTint">#A87B7E</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">@font/poppins_blod</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <!-- Estilo EditedText -->
     <style name="editedTextStyle" parent="Widget.AppCompat.EditText">
         <!-- Tamaño y forma -->
@@ -173,6 +185,16 @@
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="android:gravity">start|center</item>
+    </style>
+
+    <!-- Texto CardView Home -->
+    <style name="TextoCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <!-- Tema personalizado para el Spinner -->

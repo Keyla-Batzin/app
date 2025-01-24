@@ -77,10 +77,10 @@
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
-            <!-- Sección 'Newsletter' -->
+            <!-- Sección 'Nuestros productos' -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp">
+                android:layout_height="80dp">
                 <ImageView
                     android:id="@+id/img02"
                     android:layout_width="match_parent"
@@ -92,13 +92,181 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/textNews"
-                    android:text="@string/newsletter"
+                    android:text="Nuestros productos"
                     android:textSize="30sp"
                     style="@style/Titulo"
                     android:background="#74000000"
                     android:textColor="@color/white"
                     android:gravity="center" />
             </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <HorizontalScrollView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <!-- Contenedor para los CardView -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <!-- CardView 1 -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardRamo"
+                            android:layout_width="170dp"
+                            android:layout_height="150dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:elevation="4dp"
+                            android:focusable="true">
+                            <!-- Contenedor para superponer la imagen y el texto -->
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <!-- Imagen -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/ramo_home" />
+                                <TextView
+                                    style="@style/TextoCard"
+                                    android:background="#74000000"
+                                    android:text="Ramos de Flores"/>
+                            </FrameLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- CardView 2 -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardPlanta"
+                            android:layout_width="170dp"
+                            android:layout_height="150dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:elevation="4dp"
+                            android:focusable="true">
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <!-- Imagen -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/planta_interior_home" />
+                                <TextView
+                                    style="@style/TextoCard"
+                                    android:background="#74000000"
+                                    android:text="Plantas de Interior"/>
+                            </FrameLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- CardView 3 -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardEventos"
+                            android:layout_width="170dp"
+                            android:layout_height="150dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:elevation="4dp"
+                            android:focusable="true">
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <!-- Imagen -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/flores_evento_home" />
+                                <TextView
+                                    style="@style/TextoCard"
+                                    android:background="#74000000"
+                                    android:text="Flores para Eventos" />
+                            </FrameLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- CardView 4 -->
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cardMaceta"
+                            android:layout_width="170dp"
+                            android:layout_height="150dp"
+                            android:layout_marginEnd="8dp"
+                            android:elevation="4dp">
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <!-- Imagen -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/macetas_home" />
+                                <TextView
+                                    style="@style/TextoCard"
+                                    android:background="#74000000"
+                                    android:text="Macetas y Accesorios" />
+                            </FrameLayout>
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+            </LinearLayout>
+
+            <!-- Sección 'Newsletter' -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#C79DA0"
+                android:layout_gravity="center">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginHorizontal="30dp"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Subtitulo"
+                        android:textColor="@color/white"
+                        android:text="@string/newsletter"/>
+
+                    <TextView
+                        style="@style/Texto"
+                        android:textColor="@color/white"
+                        android:layout_gravity="start"
+                        android:text="Email:" />
+
+                    <ImageView
+                        android:layout_width="270dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_cuadrado"/>
+
+                    <EditText
+                        android:id="@+id/textEmail"
+                        style="@style/editedTextStyle"
+                        android:layout_width="270dp"
+                        android:inputType="textEmailAddress" />
+                    <Button
+                        android:id="@+id/btn_suscribirse"
+                        style="@style/BotonNegro"
+                        android:text="Suscribirme"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

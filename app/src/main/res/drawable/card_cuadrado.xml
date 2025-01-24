@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- Fondo del CardView (transparente o con color) -->
+        <shape android:shape="rectangle">
+            <solid android:color="#00FFFFFF" /> <!-- Fondo interno -->
+        </shape>
+    </item>
+    <item>
+        <!-- Borde del CardView -->
+        <shape android:shape="rectangle">
+            <stroke android:width="2dp" android:color="#5C000000" /> <!-- Borde rojo -->
+            <solid android:color="#00000000" /> <!-- Fondo transparente -->
+            <corners android:radius="5dp"/>
+        </shape>
+    </item>
+</layer-list>
