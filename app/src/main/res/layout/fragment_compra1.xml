@@ -6,10 +6,19 @@
     tools:context=".FragmentCompra1">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="650dp"
         android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/exit01"
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:layout_margin="5dp"/>
         <TextView
             style="@style/tituloInicio"
+            android:layout_marginTop="-10dp"
             android:text="Datos Pedido"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +29,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
                 <!-- Nombre -->
                 <LinearLayout
@@ -70,7 +78,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -88,22 +96,11 @@
                     android:layout_width="180dp"
                     android:inputType="textPhonetic" />
             </LinearLayout>
-            <!-- Tercera (Ubicacion) -->
-            <TextView
-                style="@style/Texto"
-                android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:text="Ubicación"/>
-            <Spinner
-                android:id="@+id/countrySpinner"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:prompt="@string/select_country" />
             <!-- Cuarta (Direción) -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -125,7 +122,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                
                 android:orientation="vertical">
                 <TextView
                     style="@style/Texto"
@@ -147,7 +144,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
                 <!-- Codigo Postal -->
                 <LinearLayout
@@ -195,56 +191,60 @@
             </LinearLayout>
             <!-- Septima (Ciudad) -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-                <TextView
-                    style="@style/Texto"
-                    android:layout_gravity="start"
-                    android:text="Ciudad"/>
+                android:orientation="horizontal">
+                <!-- Codigo Postal -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="Ciudad"/>
 
-                <ImageView
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/card_border"/>
+                    <ImageView
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/card_border"/>
 
-                <EditText
-                    android:id="@+id/textCity"
-                    style="@style/editedTextStyle"
-                    android:layout_width="180dp"
-                    android:inputType="text" />
+                    <EditText
+                        android:id="@+id/textCiudad"
+                        android:layout_width="180dp"
+                        style="@style/editedTextStyle"
+                        android:inputType="text" />
+                </LinearLayout>
+                <!-- Provincia -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                        style="@style/Texto"
+                        android:layout_gravity="start"
+                        android:text="Ubicación"/>
+                    <Spinner
+                        android:id="@+id/countrySpinner"
+                        android:layout_width="180dp"
+                        android:layout_height="35dp"
+                        style="@style/CustomSpinnerStyle"
+                        android:prompt="@string/select_country" />
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginHorizontal="20dp">
             <Button
                 android:id="@+id/btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/BotonCuadrado"
                 android:text="Continuar"/>
-        </LinearLayout>
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-        <!-- Botones (Atras y Siguiente) -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="20dp"
-            android:orientation="horizontal">
-            <Button
-                android:id="@+id/btn_back"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                style="@style/BotonCuadrado"
-                android:text="Atras"/>
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

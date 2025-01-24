@@ -19,7 +19,7 @@
             <!-- Imagen de encabezado con texto superpuesto -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="250dp">
 
                 <ImageView
                     android:id="@+id/img01"
@@ -31,13 +31,15 @@
 
                 <TextView
                     android:id="@+id/textBien"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:text="@string/bienvenido"
-                    android:textSize="30sp"
+                    android:textSize="40sp"
+                    android:gravity="center"
                     android:textColor="@color/white"
                     android:background="#88000000"
                     android:padding="8dp"
+                    style="@style/Titulo"
                     android:layout_gravity="center" />
             </FrameLayout>
 
@@ -46,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -58,43 +60,44 @@
                     android:layout_width="match_parent"
                     style="@style/Texto"
                     android:gravity="center"
-                    android:text="@string/lorem_ipsum"
+                    android:text="@string/acerca_de_pt1" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    style="@style/Texto"
+                    android:gravity="center"
+                    android:text="@string/acerca_de_pt2"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    style="@style/Texto_Blod"
+                    android:gravity="center"
+                    android:text="@string/acerca_de_pt3"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 
             <!-- Sección 'Newsletter' -->
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="20dp">
-
+                android:layout_height="100dp">
                 <ImageView
                     android:id="@+id/img02"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/home_img03"
+                    android:src="@drawable/img_home_news"
                     android:scaleType="centerCrop"
                     android:contentDescription="Imagen Floristeria Home Newsletter" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_gravity="center">
-
-                    <TextView
-                        android:id="@+id/textNews"
-                        android:text="@string/newsletter"
-                        android:textSize="30sp"
-                        style="@style/Titulo"
-                        android:gravity="center" />
-
-                    <Button
-                        android:layout_marginTop="16dp"
-                        android:text="@string/suscribirse"
-                        style="@style/BotonOscuro" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textNews"
+                    android:text="@string/newsletter"
+                    android:textSize="30sp"
+                    style="@style/Titulo"
+                    android:background="#74000000"
+                    android:textColor="@color/white"
+                    android:gravity="center" />
             </FrameLayout>
         </LinearLayout>
     </ScrollView>

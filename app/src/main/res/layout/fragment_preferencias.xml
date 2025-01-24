@@ -7,7 +7,7 @@
     <!-- Box Pantalla -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="650dp"
         android:orientation="vertical">
         <!-- Titulo -->
         <TextView
@@ -47,7 +47,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
                 <TextView
                     android:text="@string/color_principal"
                     style="@style/Subtitulo"/>
@@ -69,7 +69,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
                 <TextView
                     android:text="@string/color_principal"
                     style="@style/Subtitulo"/>
