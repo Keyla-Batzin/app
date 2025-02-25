@@ -1,6 +1,4 @@
-package com.example.bloom
-
-import android.widget.ImageView
+package com.example.bloom.categorias
 
 data class Categoria(
     val nombre: String,

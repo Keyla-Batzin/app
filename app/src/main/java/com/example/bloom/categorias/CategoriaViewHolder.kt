@@ -1,10 +1,9 @@
-package com.example.bloom.adapter
+package com.example.bloom.categorias
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bloom.Categoria
 import com.example.bloom.R
 
 class CategoriaViewHolder(view: View) : RecyclerView.ViewHolder(view) {

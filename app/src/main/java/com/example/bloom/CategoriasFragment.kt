@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bloom.adapter.CategoriaAdapter
+import com.example.bloom.categorias.CategoriaAdapter
+import com.example.bloom.categorias.CategoriaProvider
 
 class CategoriasFragment : Fragment() {
 
@@ -27,5 +27,4 @@ class CategoriasFragment : Fragment() {
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // 2 columnas
         recyclerView.adapter = CategoriaAdapter(CategoriaProvider.categoriasList)
     }
-
 }

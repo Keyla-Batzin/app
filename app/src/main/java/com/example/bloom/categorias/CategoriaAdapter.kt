@@ -1,9 +1,8 @@
-package com.example.bloom.adapter
+package com.example.bloom.categorias
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bloom.Categoria
 import com.example.bloom.R
 
 class CategoriaAdapter(private val categoriasList:List<Categoria>) : RecyclerView.Adapter<CategoriaViewHolder>() {

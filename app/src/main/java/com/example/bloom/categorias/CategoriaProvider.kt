@@ -1,4 +1,6 @@
-package com.example.bloom;
+package com.example.bloom.categorias;
+
+import com.example.bloom.R
 
 class CategoriaProvider {
     companion object {

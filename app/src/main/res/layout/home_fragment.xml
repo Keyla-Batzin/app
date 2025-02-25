@@ -220,7 +220,7 @@
 
                 <Button
                     android:id="@+id/btn_cat"
-                    style="@style/BotonLilaClaro"
+                    style="@style/BotonRosaOscuro"
                     android:layout_gravity="center"
                     android:text="Ver todas las categorias"/>
             </LinearLayout>
