@@ -23,7 +23,9 @@
         android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="573dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/fragment_container_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!-- Contenedor para Fragment_Bottom -->
     <!--

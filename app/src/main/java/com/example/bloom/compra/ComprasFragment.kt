@@ -26,10 +26,13 @@ class ComprasFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_compras, container, false)
 
         rv = view.findViewById(R.id.recyclerCompras)
-        rv.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
+        rv.layoutManager = GridLayoutManager(requireContext(), 1) // 1 columna
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = CompraAdapter(emptyList())
+        adapter = CompraAdapter(emptyList()) { compra ->
+            // Lógica para eliminar la compra
+            eliminarCompra(compra)
+        }
         rv.adapter = adapter
 
         // Cargar datos
@@ -48,7 +51,9 @@ class ComprasFragment : Fragment() {
                 if (!listaCompras.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
                         // Actualizar el adaptador con los nuevos datos
-                        adapter = CompraAdapter(listaCompras)
+                        adapter = CompraAdapter(listaCompras) { compra ->
+                            eliminarCompra(compra)
+                        }
                         rv.adapter = adapter
                     }
                 } else {
@@ -56,6 +61,27 @@ class ComprasFragment : Fragment() {
                 }
             } catch (e: Exception) {
                 Log.e("API", "Error al obtener datos", e)
+            }
+        }
+    }
+
+    private fun eliminarCompra(compra: Compra) {
+        // Hacer la llamada DELETE a la API
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = CompraAPI.API().eliminarCompra(compra.id)
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de éxito
+                    Log.d("API", "Compra eliminada: ${response.message}")
+                    // Actualizar la lista de compras después de eliminar
+                    actualizaCompras()
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    actualizaCompras()
+                    // Mostrar un mensaje de error
+                    Log.e("API", "Error al eliminar la compra: ${e.message}")
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.example.bloom.compra
 
+import com.example.bloom.ResponseMessage
 import com.example.bloom.compra.Compra
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -21,6 +22,9 @@ interface CompraService {
 
     @GET("/compras/")
     suspend fun obtenerTodasCompras(): List<Compra>
+
+    @DELETE("/compras/{id}")  // Endpoint para eliminar una compra por ID
+    suspend fun eliminarCompra(@Path("id") id: Int): ResponseMessage
 }
 
 class CompraAPI {

@@ -5,7 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 
-class CompraAdapter(val comprasList: List<Compra>) : RecyclerView.Adapter<CompraViewHolder>() {
+class CompraAdapter(
+    val comprasList: List<Compra>,
+    private val onDeleteClick: (Compra) -> Unit  // Función para manejar el clic en "Eliminar"
+) : RecyclerView.Adapter<CompraViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompraViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -14,7 +17,7 @@ class CompraAdapter(val comprasList: List<Compra>) : RecyclerView.Adapter<Compra
 
     override fun onBindViewHolder(holder: CompraViewHolder, position: Int) {
         val item = comprasList[position]
-        holder.render(item)
+        holder.render(item, onDeleteClick)  // Pasar la función onDeleteClick al ViewHolder
     }
 
     override fun getItemCount(): Int = comprasList.size

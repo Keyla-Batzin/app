@@ -13,6 +13,7 @@ import com.example.bloom.R
 import com.example.bloom.compra.Compra
 import com.example.bloom.databinding.ActivityMainBinding
 import com.example.bloom.navigation.Fragment_Header
+import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -70,10 +71,16 @@ class RamosFloresFragment : Fragment() {
     private fun añadirACompra(ramoFlor: RamoFlor) {
         // Crear un objeto Compra con los datos del RamoFlor
         val nuevaCompra = Compra(
+            id = 0,  // Añade el campo id con un valor por defecto
             nombre = ramoFlor.nombre,
-            precio = ramoFlor.precio,
+            precio = ramoFlor.precio,  // Asegúrate de que sea una cadena de texto
             url = ramoFlor.url
         )
+
+        // Imprimir el JSON que se enviará
+        val gson = Gson()
+        val json = gson.toJson(nuevaCompra)
+        Log.d("API", "JSON enviado: $json")
 
         // Hacer la llamada POST a la API
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
