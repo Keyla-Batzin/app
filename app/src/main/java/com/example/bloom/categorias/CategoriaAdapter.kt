@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 
-class CategoriaAdapter(private val categoriasList:List<Categoria>) : RecyclerView.Adapter<CategoriaViewHolder>() {
+class CategoriaAdapter(val categoriasList:List<Categoria>) : RecyclerView.Adapter<CategoriaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriaViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

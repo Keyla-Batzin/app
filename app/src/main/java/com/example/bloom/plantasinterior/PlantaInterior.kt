@@ -1,4 +1,7 @@
 package com.example.bloom.plantasinterior
 
-class PlantaInterior {
-}
+data class PlantaInterior (
+    val nombre: String,
+    val precio: String,
+    val url: String // URL
+)

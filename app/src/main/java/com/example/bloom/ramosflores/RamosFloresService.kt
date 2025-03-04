@@ -1,9 +1,9 @@
-package com.example.recyclerview.reserves
 
+import com.example.bloom.ResponseMessage
+import com.example.bloom.compra.Compra
 import com.example.bloom.ramosflores.RamoFlor
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
@@ -23,14 +23,8 @@ interface RamoFlorService {
     @GET("/ramos_flores/")
     suspend fun obtenerTodosRamoFlor(): List<RamoFlor>
 
-    @POST("/ramos_flores/")
-    suspend fun crearRamoFlores(@Body ramoFlores: RamoFlor): Response<Void>
-
-    @PUT("/ramos_flores/{id}")
-    suspend fun modificarRamoFlores(@Path("id") id: Int, @Body ramoFlores: RamoFlor): Response<Void>
-
-    @DELETE("/ramos_flores/{id}")
-    suspend fun eliminarRamoFlores(@Path("id") id: Int): Response<Void>
+    @POST("/compras/")
+    suspend fun crearCompra(@Body compra: Compra): ResponseMessage
 }
 
 class RamoFlorAPI {

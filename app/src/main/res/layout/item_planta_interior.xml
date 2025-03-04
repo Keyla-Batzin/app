@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imgPlantasInterior"
+        android:id="@+id/imgPlantaInterior"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="20dp"
@@ -16,26 +16,26 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/nombrePlantasInterior"
+        android:id="@+id/nombrePlantaInterior"
         style="@style/Texto_Blod"
         android:text="Nombre del Producto"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:gravity="start"
         android:textColor="@color/purple_primary"
-        app:layout_constraintTop_toBottomOf="@id/imgPlantasInterior"
+        app:layout_constraintTop_toBottomOf="@id/imgPlantaInterior"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/precioPlantasInterior"
+        android:id="@+id/precioPlantaInterior"
         style="@style/Texto"
         android:text="10,99€"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:gravity="start"
         android:textColor="@color/purple_primary"
-        app:layout_constraintTop_toBottomOf="@id/nombrePlantasInterior"
+        app:layout_constraintTop_toBottomOf="@id/nombrePlantaInterior"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
