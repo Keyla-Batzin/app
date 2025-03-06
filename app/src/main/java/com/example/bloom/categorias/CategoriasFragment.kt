@@ -59,4 +59,6 @@ class CategoriasFragment : Fragment() {
             }
         }
     }
+
+    // Crear un metodo que cambie a la ActivityProductos y envie un bundle de la info
 }

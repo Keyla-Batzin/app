@@ -1,12 +1,13 @@
 package com.example.bloom.compra
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 
 class CompraAdapter(
-    val comprasList: List<Compra>,
+    var comprasList: MutableList<Compra>,
     private val onDeleteClick: (Compra) -> Unit  // Función para manejar el clic en "Eliminar"
 ) : RecyclerView.Adapter<CompraViewHolder>() {
 
@@ -21,4 +22,19 @@ class CompraAdapter(
     }
 
     override fun getItemCount(): Int = comprasList.size
+
+    fun removeItem(position: Int) {
+        comprasList.removeAt(position)
+        notifyItemRemoved(position)
+        if (comprasList.isEmpty()) {
+            // Aquí puedes mostrar un mensaje o un estado vacío
+            Log.d("Adapter", "No hay más ítems en la lista")
+        }
+    }
+
+    fun updateList(newList: List<Compra>) {
+        comprasList.clear()          // Limpia la lista actual
+        comprasList.addAll(newList) // Agrega los nuevos elementos
+        notifyDataSetChanged()      // Notifica al RecyclerView que los datos han cambiado
+    }
 }

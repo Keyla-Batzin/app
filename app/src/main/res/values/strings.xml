@@ -37,6 +37,9 @@
     <string name="acerca_de_pt1">En Bloom, nos especializamos en ofrecer flores frescas y de calidad para cualquier ocasión.</string>
     <string name="acerca_de_pt2">Con un enfoque en la sostenibilidad y el trabajo con proveedores locales, creamos ramos y arreglos únicos que expresan emociones y momentos especiales.</string>
     <string name="acerca_de_pt3">¡Nos encanta ayudarte a celebrar la belleza de la naturaleza!</string>
+    <string name="total">Total:</string>
+    <string name="comprar">Comprar</string>
+    <string name="compras">Compras</string>
     <string-array name="countries_array">
         <item>España</item>
         <item>Francia</item>

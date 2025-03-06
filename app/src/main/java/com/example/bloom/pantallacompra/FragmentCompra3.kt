@@ -1,5 +1,6 @@
 package com.example.bloom.pantallacompra
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.bloom.pantallahome.HomeFragment
 import com.example.bloom.R
+import com.example.bloom.pantallahome.ActivityPrincipal
 
 class FragmentCompra3 : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +31,9 @@ class FragmentCompra3 : Fragment() {
         val btnNext = view.findViewById<Button>(R.id.btn_back)
         // Configura el listener para el botón "Volver al inicio"
         btnNext.setOnClickListener {
-            // Reemplaza el fragmento actual con el fragmento "FragmentCarrito"
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.main_fragment, HomeFragment())?.commit()
+            // Cambiar de Activity para ir a Home
+            val intent = Intent(requireContext(), ActivityPrincipal::class.java)
+            startActivity(intent)
         }
 
     }

@@ -1,60 +1,66 @@
 package com.example.bloom.pantallahome
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
+import com.example.bloom.productos.ProductoAPI
+import com.example.bloom.productos.ProductoAdapter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var rv: RecyclerView
+    private lateinit var adapter: ProductoAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
+
+        rv = view.findViewById(R.id.recyclerProductos)
+        rv.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
+
+        // 🔹 Asignar un adaptador vacío antes de la carga de datos
+        adapter = ProductoAdapter(emptyList())
+        rv.adapter = adapter
+
+        // Cargar datos
+        actualizaProductos()
+
+        // Gestionar el SearchView
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun actualizaProductos() {
+        val service = ProductoAPI.API()
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val listaProductos = service.obtenerTodosProductos()
+
+                // Verificar si la lista no es nula
+                if (!listaProductos.isNullOrEmpty()) {
+                    withContext(Dispatchers.Main) {
+                        // Actualizar el adaptador con los nuevos datos
+                        adapter = ProductoAdapter(listaProductos)
+                        rv.adapter = adapter
+                    }
+                } else {
+                    Log.e("API", "Lista de productos vacía o nula")
                 }
+            } catch (e: Exception) {
+                Log.e("API", "Error al obtener datos", e)
             }
+        }
     }
 }
