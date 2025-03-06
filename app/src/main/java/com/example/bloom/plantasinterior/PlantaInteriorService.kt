@@ -1,11 +1,15 @@
 package com.example.bloom.plantasinterior
 
+import com.example.bloom.ResponseMessage
+import com.example.bloom.compra.Compra
 import com.example.bloom.plantasinterior.PlantaInterior
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import java.security.SecureRandom
 import java.security.cert.CertificateException
@@ -22,6 +26,9 @@ interface PlantaInteriorService {
 
     @GET("/plantas_interior/")
     suspend fun obtenerTodasPlantasInterior(): List<PlantaInterior>
+
+    @POST("/compras/")
+    suspend fun crearCompra(@Body compra: Compra): ResponseMessage
 }
 
 class PlantaInteriorAPI {

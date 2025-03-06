@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class RamosFloresFragment : Fragment() {
+
     private lateinit var rv: RecyclerView
     private lateinit var adapter: RamoFlorAdapter
 

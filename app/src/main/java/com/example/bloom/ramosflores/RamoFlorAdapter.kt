@@ -12,8 +12,7 @@ class RamoFlorAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RamoFlorViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.item_ramo_flores, parent, false)
-        return RamoFlorViewHolder(view)
+        return RamoFlorViewHolder(layoutInflater.inflate(R.layout.item_ramo_flores, parent, false))
     }
 
     override fun onBindViewHolder(holder: RamoFlorViewHolder, position: Int) {
