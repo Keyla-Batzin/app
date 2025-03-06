@@ -1,60 +1,62 @@
 package com.example.bloom.macetasaccesorios
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MacetasAccesoriosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MacetasAccesoriosFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var rv: RecyclerView
+    private lateinit var adapter: MacetaAccesorioAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_macetas_accesorios, container, false)
+        val view = inflater.inflate(R.layout.fragment_macetas_accesorios, container, false)
+
+        rv = view.findViewById(R.id.recyclerMacetasAccesorios)
+        rv.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
+
+        // 🔹 Asignar un adaptador vacío antes de la carga de datos
+        adapter = MacetaAccesorioAdapter(emptyList())
+        rv.adapter = adapter
+
+        // Cargar datos
+        actualizaMacetasAccesorios()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MacetasAccesoriosFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MacetasAccesoriosFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun actualizaMacetasAccesorios() {
+        val service = MacetaAccesorioAPI.API()
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val listaMacetas = service.obtenerTodasMacetasAccesorios()
+
+                // Verificar si la lista no es nula
+                if (!listaMacetas.isNullOrEmpty()) {
+                    withContext(Dispatchers.Main) {
+                        // Actualizar el adaptador con los nuevos datos
+                        adapter = MacetaAccesorioAdapter(listaMacetas)
+                        rv.adapter = adapter
+                    }
+                } else {
+                    Log.e("API", "Lista de macetas y accesorios vacía o nula")
                 }
+            } catch (e: Exception) {
+                Log.e("API", "Error al obtener datos", e)
             }
+        }
     }
 }

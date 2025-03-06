@@ -1,11 +1,15 @@
 package com.example.bloom.floreseventos
 
+import com.example.bloom.ResponseMessage
+import com.example.bloom.compra.Compra
 import com.example.bloom.floreseventos.FloresEventos
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import java.security.SecureRandom
 import java.security.cert.CertificateException
@@ -22,6 +26,9 @@ interface FloresEventosService {
 
     @GET("/flores_eventos/")
     suspend fun obtenerTodasFloresEventos(): List<FloresEventos>
+
+    @POST("/compras/")
+    suspend fun crearCompra(@Body compra: Compra): ResponseMessage
 }
 
 class FloresEventosAPI {

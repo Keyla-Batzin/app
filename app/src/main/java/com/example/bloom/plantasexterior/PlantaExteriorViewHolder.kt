@@ -2,6 +2,7 @@ package com.example.bloom.plantasexterior
 
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +13,9 @@ class PlantaExteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val name: TextView = view.findViewById(R.id.nombrePlantaExterior)
     val photo: ImageView = view.findViewById(R.id.imgPlantaExterior)
     val precio: TextView = view.findViewById(R.id.precioPlantaExterior)
+    val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
 
-    fun render(plantaExteriorModel: PlantaExterior) {
+    fun render(plantaExteriorModel: PlantaExterior, onAddClick: (PlantaExterior) -> Unit) {
         name.text = plantaExteriorModel.nombre
         precio.text = plantaExteriorModel.precio
 
@@ -23,5 +25,10 @@ class PlantaExteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             .placeholder(R.drawable.logo_peque)
             .error(R.drawable.img_error) // Imagen si hay error
             .into(photo) // Cargamos la imagen en el ImageView
+
+        // Configurar el clic en el botón "Añadir"
+        btnAdd.setOnClickListener {
+            onAddClick(plantaExteriorModel)
+        }
     }
 }

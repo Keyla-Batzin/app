@@ -5,7 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 
-class PackAdapter(val packsList: List<Pack>) : RecyclerView.Adapter<PackViewHolder>() {
+class PackAdapter(
+    val packsList: List<Pack>,
+    private val onAddClick: (Pack) -> Unit
+) : RecyclerView.Adapter<PackViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PackViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -14,7 +17,7 @@ class PackAdapter(val packsList: List<Pack>) : RecyclerView.Adapter<PackViewHold
 
     override fun onBindViewHolder(holder: PackViewHolder, position: Int) {
         val item = packsList[position]
-        holder.render(item)
+        holder.render(item, onAddClick)
     }
 
     override fun getItemCount(): Int = packsList.size

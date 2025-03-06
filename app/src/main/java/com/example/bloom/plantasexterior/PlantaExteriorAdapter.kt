@@ -5,7 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 
-class PlantaExteriorAdapter(val plantasExteriorList: List<PlantaExterior>) : RecyclerView.Adapter<PlantaExteriorViewHolder>() {
+class PlantaExteriorAdapter(
+    val plantasExteriorList: List<PlantaExterior>,
+    private val onAddClick: (PlantaExterior) -> Unit
+) : RecyclerView.Adapter<PlantaExteriorViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantaExteriorViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -14,7 +17,7 @@ class PlantaExteriorAdapter(val plantasExteriorList: List<PlantaExterior>) : Rec
 
     override fun onBindViewHolder(holder: PlantaExteriorViewHolder, position: Int) {
         val item = plantasExteriorList[position]
-        holder.render(item)
+        holder.render(item, onAddClick)
     }
 
     override fun getItemCount(): Int = plantasExteriorList.size
