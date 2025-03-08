@@ -16,10 +16,10 @@ import javax.net.ssl.X509TrustManager
 
 interface CategoriaService {
 
-    @GET("/ramos_flores/{id}")
+    @GET("/categorias/{id}")
     suspend fun obtenerCategoria(@Path("id") id: Int): Categoria
 
-    @GET("/ramos_flores/")
+    @GET("/categorias/")
     suspend fun obtenerTodasCategorias(): List<Categoria>
 }
 

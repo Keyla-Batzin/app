@@ -83,7 +83,7 @@ class PlantasExteriorFragment : Fragment() {
         // Hacer la llamada POST a la API
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val response = RamoFlorAPI.API().crearCompra(nuevaCompra)
+                val response = PlantaExteriorAPI.API().crearCompra(nuevaCompra)
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de éxito
                     Log.d("API", "Añadido a Compra: ${response.message}")

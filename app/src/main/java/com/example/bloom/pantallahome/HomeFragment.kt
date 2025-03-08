@@ -10,11 +10,13 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import com.example.bloom.ActivityProductos
 import com.example.bloom.R
 import com.example.bloom.categorias.ActivityCategorias
 import com.example.bloom.categorias.CategoriasFragment
+import com.example.bloom.compra.ComprasFragment
 import com.example.bloom.pantallacompra.ActivityCompra
 import com.example.bloom.ramosflores.RamosFloresFragment
 import kotlinx.coroutines.cancel
@@ -35,16 +37,21 @@ class HomeFragment : Fragment() {
         // Configurar CardView para navegar a FragmentProductos01
         val cardRamo = view.findViewById<CardView>(R.id.cardRamo)
         cardRamo.setOnClickListener {
-            val intent = Intent(requireContext(), ActivityProductos::class.java)
-            startActivity(intent)
+            parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_fragment, RamosFloresFragment(), "TAG_RAMOS_FLORES_FRAGMENT")
+                .addToBackStack(null)
+                .commit()
         }
 
         // Configurar botón para navegar a CategoriasFragment
         val btnCat = view.findViewById<Button>(R.id.btn_cat)
         btnCat.setOnClickListener {
-            Log.d("HomeFragment", "Botón de categorías clickeado")
-            val intent = Intent(requireContext(), ActivityCategorias::class.java)
-            startActivity(intent)
+            parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_fragment, CategoriasFragment(), "TAG_CATEGORIAS_FRAGMENT")
+                .addToBackStack(null)
+                .commit()
         }
 
         // Configurar botón para mostrar un Toast

@@ -9,7 +9,7 @@ import com.example.bloom.navigation.FragmentBottom
 import com.example.bloom.navigation.Fragment_Header
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    /* private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Configurar SplashScreen
@@ -35,4 +35,5 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.fragment_container_bottom, FragmentBottom())
             .commit()
     }
+    */
 }

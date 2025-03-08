@@ -1,15 +1,12 @@
 package com.example.bloom.pantallacompra
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.FragmentManager
 import com.example.bloom.R
 import com.example.bloom.compra.ComprasFragment
 import com.example.bloom.navigation.FragmentBottom
 import com.example.bloom.navigation.Fragment_Header
-import com.example.bloom.pantallahome.HomeFragment
 
 class ActivityCompra : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,17 +22,12 @@ class ActivityCompra : AppCompatActivity() {
             .replace(R.id.fragment_container_bottom, FragmentBottom())
             .commit()
 
-        // Leer el fragmento a mostrar
-        val fragmentName = intent.getStringExtra("fragment_a_mostrar")
+        // Limpiar la pila de retroceso
+        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
-        // Mostrar el Fragment adecuado
-        val fragment = when (fragmentName) {
-            "ComprasFragment" -> ComprasFragment()
-            else -> HomeFragment() // Si no hay nada, cargar Home por defecto
-        }
-
+        // Reemplazar el fragmento actual con ComprasFragment
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_fragment, fragment)
+            .replace(R.id.main_fragment, ComprasFragment(), "TAG_COMPRAS_FRAGMENT")
             .commit()
     }
 }

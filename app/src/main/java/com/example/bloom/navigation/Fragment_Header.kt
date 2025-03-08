@@ -48,9 +48,12 @@ class Fragment_Header : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.carrito -> {
-                val intent = Intent(requireContext(), ActivityCompra::class.java)
-                intent.putExtra("fragment_a_mostrar", "ComprasFragment")
-                startActivity(intent)
+                // Limpiar la pila de retroceso (back stack) si es necesario
+                parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main_fragment, ComprasFragment(), "TAG_COMPRAS_FRAGMENT")
+                    .addToBackStack(null)
+                    .commit()
                 return true
             }
             R.id.op1 -> {
@@ -68,18 +71,4 @@ class Fragment_Header : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-    // Cerrar todas las actividades
-    //finishAffinity()
-
-    // Limpiar la pila de fragmentos (si estás en una actividad que maneja fragmentos)
-    // supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-
-    // Iniciar una nueva actividad (opcional)
-    // val intent = Intent(requireContext(), ActivityCompra::class.java)
-    // intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-    // startActivity(intent)
-
-    //activity?.supportFragmentManager?.beginTransaction()
-    //?.replace(R.id.main_fragment, ComprasFragment())?.commit()
 }

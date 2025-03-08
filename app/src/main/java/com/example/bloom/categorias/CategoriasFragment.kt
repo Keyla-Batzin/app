@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
+import com.example.bloom.plantasinterior.PlantasInteriorFragment
+import com.example.bloom.ramosflores.RamosFloresFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -29,7 +31,10 @@ class CategoriasFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(requireContext(), 2) // 2 columnas
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = CategoriaAdapter(emptyList())
+        adapter = CategoriaAdapter(emptyList()) { categoria ->
+            // Manejar clic en el ítem
+            cambiarFragment(categoria.id)
+        }
         rv.adapter = adapter
 
         // Cargar datos
@@ -39,16 +44,18 @@ class CategoriasFragment : Fragment() {
     }
 
     private fun actualizaCategorias() {
-        val service = CategoriaAPI.API() // Cambia a CategoriaAPI
+        val service = CategoriaAPI.API()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val listaCategorias = service.obtenerTodasCategorias() // Cambia a obtenerTodasCategorias
+                val listaCategorias = service.obtenerTodasCategorias()
 
                 // Verificar si la lista no es nula
                 if (!listaCategorias.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
                         // Actualizar el adaptador con los nuevos datos
-                        adapter = CategoriaAdapter(listaCategorias)
+                        adapter = CategoriaAdapter(listaCategorias) { categoria ->
+                            cambiarFragment(categoria.id)
+                        }
                         rv.adapter = adapter
                     }
                 } else {
@@ -60,5 +67,21 @@ class CategoriasFragment : Fragment() {
         }
     }
 
-    // Crear un metodo que cambie a la ActivityProductos y envie un bundle de la info
+    private fun cambiarFragment(categoriaId: Int) {
+        val fragment = when (categoriaId) {
+            1 -> RamosFloresFragment()
+            2 -> PlantasInteriorFragment()
+            //3 -> SuculentasFragment()
+            //4 -> HerramientasFragment()
+            //5 -> MacetasFragment()
+            //6 -> DecoracionFragment()
+            else -> throw IllegalArgumentException("Categoría no válida")
+        }
+
+        // Reemplazar el fragmento actual con el nuevo
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.main_fragment, fragment)
+            .addToBackStack(null) // Opcional: Agregar a la pila de retroceso
+            .commit()
+    }
 }

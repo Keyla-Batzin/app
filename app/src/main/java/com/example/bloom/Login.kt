@@ -29,7 +29,7 @@ class Login : AppCompatActivity() {
         val btn_login = findViewById<Button>(R.id.btn_login)
         btn_login.setOnClickListener { // Cambiar a la MainActivity
             val intent: Intent =
-                Intent(this@Login, PruebaAPi::class.java)
+                Intent(this@Login, ActivityPrincipal::class.java)
             startActivity(intent)
         }
 
