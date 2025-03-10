@@ -13,6 +13,6 @@ class PrecioTotalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val precioTotal: TextView = view.findViewById(R.id.precioTotal)
 
     fun render(compra: PrecioTotalResponse) {
-        "${compra.precioTotal} €".also { precioTotal.text = it }  // Muestra el precio como Float
+        "${compra.precio_total} €".also { precioTotal.text = it }  // Muestra el precio como Float
     }
 }

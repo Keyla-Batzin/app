@@ -87,7 +87,7 @@ class ComprasFragment : Fragment() {
                 val response = service.obtenerPrecioTotal()  // Obtener la respuesta como objeto
                 withContext(Dispatchers.Main) {
                     // Acceder al campo precioTotal del objeto
-                    precioTotalTextView.text = "Precio Total: ${response.precioTotal} €"
+                    precioTotalTextView.text = "Precio Total: ${response.precio_total} €"
                 }
             } catch (e: Exception) {
                 Log.e("API", "Error al obtener el precio total", e)
