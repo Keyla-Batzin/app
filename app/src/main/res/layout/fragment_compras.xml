@@ -31,14 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Subtitulo"
-                android:text="@string/total"
-                android:layout_marginEnd="16dp"/>
-
             <TextView
                 android:id="@+id/precioTotal"
                 android:layout_width="wrap_content"

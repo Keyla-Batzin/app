@@ -18,8 +18,8 @@ class CompraViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun render(compra: Compra, onDeleteClick: (Compra) -> Unit) {
         name.text = compra.nombre
-        precio.text = "Precio: ${compra.precio} €"  // Muestra el precio como Float
-        cantidad.text = "Cantidad: ${compra.cantidad}"  // Muestra la cantidad
+        "${compra.precio} €".also { precio.text = it }  // Muestra el precio como Float
+        cantidad.text = "${compra.cantidad}"  // Muestra la cantidad
 
         Log.d("ImageURL", "Cargando imagen desde: ${compra.url}")
         Glide.with(photo.context)

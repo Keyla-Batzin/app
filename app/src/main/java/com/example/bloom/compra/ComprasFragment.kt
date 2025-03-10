@@ -84,10 +84,10 @@ class ComprasFragment : Fragment() {
         val service = CompraAPI.API()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val precioTotal = service.obtenerPrecioTotal()
+                val response = service.obtenerPrecioTotal()  // Obtener la respuesta como objeto
                 withContext(Dispatchers.Main) {
-                    // Actualizar el TextView con el precio total
-                    precioTotalTextView.text = "Precio Total: $precioTotal €"
+                    // Acceder al campo precioTotal del objeto
+                    precioTotalTextView.text = "Precio Total: ${response.precioTotal} €"
                 }
             } catch (e: Exception) {
                 Log.e("API", "Error al obtener el precio total", e)
