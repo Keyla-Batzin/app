@@ -9,33 +9,57 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="650dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
+
         <TextView
             style="@style/Titulo"
             android:text="@string/compras"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCompras"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:padding="0dp"
             android:layout_margin="0dp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/total"/>
+                style="@style/Subtitulo"
+                android:text="@string/total"
+                android:layout_marginEnd="16dp"/>
+
+            <TextView
+                android:id="@+id/precioTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                style="@style/Texto"
+                android:text="0"/>
+
+            <!-- Espacio vacío -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
             <Button
                 android:id="@+id/btnComprar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/comprar"/>
         </LinearLayout>
+
     </LinearLayout>
 
 </FrameLayout>

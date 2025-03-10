@@ -17,7 +17,10 @@ class RamoFlorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun render(ramosFloresModel: RamoFlor, onAddClick: (RamoFlor) -> Unit) {
         name.text = ramosFloresModel.nombre
-        precio.text = ramosFloresModel.precio.toString() // Asegúrate de que el precio sea un String
+        precio.text = buildString {
+            append(ramosFloresModel.precio.toString())
+            append("€")
+        }
 
         Log.d("ImageURL", "Cargando imagen desde: ${ramosFloresModel.url}")
         Glide.with(photo.context)

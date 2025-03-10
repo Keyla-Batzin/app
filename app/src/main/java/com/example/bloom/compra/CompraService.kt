@@ -25,6 +25,9 @@ interface CompraService {
 
     @DELETE("/compras/{id}")  // Endpoint para eliminar una compra por ID
     suspend fun eliminarCompra(@Path("id") id: Int): ResponseMessage
+
+    @GET("/compras/precio-total")  // Endpoint para obtener el precio total
+    suspend fun obtenerPrecioTotal(): Float
 }
 
 class CompraAPI {

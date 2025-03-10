@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bloom.FloresEventosFragment
 import com.example.bloom.R
+import com.example.bloom.macetasaccesorios.MacetasAccesoriosFragment
+import com.example.bloom.pack.PacksFragment
+import com.example.bloom.plantasexterior.PlantasExteriorFragment
 import com.example.bloom.plantasinterior.PlantasInteriorFragment
 import com.example.bloom.ramosflores.RamosFloresFragment
 import kotlinx.coroutines.Dispatchers
@@ -71,10 +75,10 @@ class CategoriasFragment : Fragment() {
         val fragment = when (categoriaId) {
             1 -> RamosFloresFragment()
             2 -> PlantasInteriorFragment()
-            //3 -> SuculentasFragment()
-            //4 -> HerramientasFragment()
-            //5 -> MacetasFragment()
-            //6 -> DecoracionFragment()
+            3 -> PlantasExteriorFragment()
+            4 -> FloresEventosFragment()
+            5 -> MacetasAccesoriosFragment()
+            6 -> PacksFragment()
             else -> throw IllegalArgumentException("Categoría no válida")
         }
 

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 
 class RamoFlorAdapter(
-    val ramos_floresList: List<RamoFlor>,
+    val ramosFloresList: List<RamoFlor>,
     private val onAddClick: (RamoFlor) -> Unit // Función para manejar el clic en "Añadir"
 ) : RecyclerView.Adapter<RamoFlorViewHolder>() {
 
@@ -16,9 +16,9 @@ class RamoFlorAdapter(
     }
 
     override fun onBindViewHolder(holder: RamoFlorViewHolder, position: Int) {
-        val item = ramos_floresList[position]
+        val item = ramosFloresList[position]
         holder.render(item, onAddClick) // Pasar la función onAddClick al ViewHolder
     }
 
-    override fun getItemCount(): Int = ramos_floresList.size
+    override fun getItemCount(): Int = ramosFloresList.size
 }

@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PlantasInteriorFragment : Fragment() {
-
+    /*
     private lateinit var rv: RecyclerView
     private lateinit var adapter: PlantaInteriorAdapter
 
@@ -98,4 +98,5 @@ class PlantasInteriorFragment : Fragment() {
             }
         }
     }
+     */
 }

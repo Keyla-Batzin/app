@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PlantasExteriorFragment : Fragment() {
-
+    /*
     private lateinit var rv: RecyclerView
     private lateinit var adapter: PlantaExteriorAdapter
 
@@ -96,4 +96,5 @@ class PlantasExteriorFragment : Fragment() {
             }
         }
     }
+     */
 }

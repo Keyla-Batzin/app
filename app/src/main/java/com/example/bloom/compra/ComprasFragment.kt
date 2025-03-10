@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,6 +21,7 @@ class ComprasFragment : Fragment() {
 
     private lateinit var rv: RecyclerView
     private lateinit var adapter: CompraAdapter
+    private lateinit var precioTotalTextView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,8 +39,12 @@ class ComprasFragment : Fragment() {
         }
         rv.adapter = adapter
 
+        // Encuentra el TextView para el precio total
+        precioTotalTextView = view.findViewById(R.id.precioTotal)
+
         // Cargar datos
         actualizaCompras()
+        actualizaPrecioTotal()
 
         // Encuentra el botón en el layout inflado
         val button = view.findViewById<Button>(R.id.btnComprar)
@@ -70,6 +76,21 @@ class ComprasFragment : Fragment() {
                 }
             } catch (e: Exception) {
                 Log.e("API", "Error al obtener datos", e)
+            }
+        }
+    }
+
+    private fun actualizaPrecioTotal() {
+        val service = CompraAPI.API()
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val precioTotal = service.obtenerPrecioTotal()
+                withContext(Dispatchers.Main) {
+                    // Actualizar el TextView con el precio total
+                    precioTotalTextView.text = "Precio Total: $precioTotal €"
+                }
+            } catch (e: Exception) {
+                Log.e("API", "Error al obtener el precio total", e)
             }
         }
     }

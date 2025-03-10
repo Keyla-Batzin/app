@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PacksFragment : Fragment() {
-
+    /*
     private lateinit var rv: RecyclerView
     private lateinit var adapter: PackAdapter
 
@@ -99,4 +99,5 @@ class PacksFragment : Fragment() {
             }
         }
     }
+     */
 }

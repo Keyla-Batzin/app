@@ -72,8 +72,9 @@ class RamosFloresFragment : Fragment() {
         val nuevaCompra = Compra(
             id = 0,  // Añade el campo id con un valor por defecto
             nombre = ramoFlor.nombre,
-            precio = ramoFlor.precio,  // Asegúrate de que sea una cadena de texto
-            url = ramoFlor.url
+            precio = ramoFlor.precio,
+            url = ramoFlor.url,
+            cantidad = 1
         )
 
         // Imprimir el JSON que se enviará

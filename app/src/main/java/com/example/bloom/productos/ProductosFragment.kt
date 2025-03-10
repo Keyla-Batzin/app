@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class ProductosFragment : Fragment() {
-
+    /*
     private lateinit var rv: RecyclerView
     private lateinit var adapter: ProductoAdapter
 
@@ -59,4 +59,6 @@ class ProductosFragment : Fragment() {
             }
         }
     }
+
+     */
 }
