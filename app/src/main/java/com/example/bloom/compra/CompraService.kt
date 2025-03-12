@@ -28,6 +28,13 @@ interface CompraService {
 
     @GET("/compras/precio-total")
     suspend fun obtenerPrecioTotal(): PrecioTotalResponse  // Devuelve un objeto en lugar de un Float
+
+    // Operaciones para Cantidad
+    @PUT("/compras/suma-cantidad/{id}")
+    suspend fun sumaCantidad(@Path("id") id: Int): ResponseMessage
+
+    @PUT("/compras/resta-cantidad/{id}")
+    suspend fun restaCantidad(@Path("id") id: Int): ResponseMessage
 }
 
 class CompraAPI {

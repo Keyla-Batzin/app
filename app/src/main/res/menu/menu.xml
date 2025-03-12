@@ -10,16 +10,16 @@
 
     <item
         android:id="@+id/op1"
-        android:title="Opcion 1"
+        android:title="Preferencias"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/op2"
-        android:title="Opcion 2"
+        android:title="Preguntas Frecuentes"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/op3"
-        android:title="Opcion 3"
+        android:title="Ayuda"
         app:showAsAction="never"/>
 </menu>

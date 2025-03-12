@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PacksFragment : Fragment() {
-    /*
+
     private lateinit var rv: RecyclerView
     private lateinit var adapter: PackAdapter
 
@@ -30,7 +30,7 @@ class PacksFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_pack, container, false)
 
         rv = view.findViewById(R.id.recyclerPack)
-        rv.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
+        rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
         adapter = PackAdapter(emptyList()) { pack ->
@@ -75,7 +75,8 @@ class PacksFragment : Fragment() {
             id = 0,  // Añade el campo id con un valor por defecto
             nombre = pack.nombre,
             precio = pack.precio,  // Asegúrate de que sea una cadena de texto
-            url = pack.url
+            url = pack.url,
+            cantidad = 1
         )
 
         // Imprimir el JSON que se enviará
@@ -99,5 +100,4 @@ class PacksFragment : Fragment() {
             }
         }
     }
-     */
 }

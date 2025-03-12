@@ -17,7 +17,10 @@ import com.example.bloom.R
 import com.example.bloom.categorias.ActivityCategorias
 import com.example.bloom.categorias.CategoriasFragment
 import com.example.bloom.compra.ComprasFragment
+import com.example.bloom.macetasaccesorios.MacetasAccesoriosFragment
 import com.example.bloom.pantallacompra.ActivityCompra
+import com.example.bloom.plantasexterior.PlantasExteriorFragment
+import com.example.bloom.plantasinterior.PlantasInteriorFragment
 import com.example.bloom.ramosflores.RamosFloresFragment
 import kotlinx.coroutines.cancel
 
@@ -40,6 +43,33 @@ class HomeFragment : Fragment() {
             parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             parentFragmentManager.beginTransaction()
                 .replace(R.id.main_fragment, RamosFloresFragment(), "TAG_RAMOS_FLORES_FRAGMENT")
+                .addToBackStack(null)
+                .commit()
+        }
+
+        val cardPlant = view.findViewById<CardView>(R.id.cardPlanta)
+        cardPlant.setOnClickListener {
+            parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_fragment, PlantasInteriorFragment(), "TAG_PLANTAS_INTERIOR_FRAGMENT")
+                .addToBackStack(null)
+                .commit()
+        }
+
+        val cardPlantInt = view.findViewById<CardView>(R.id.cardEventos)
+        cardPlantInt.setOnClickListener {
+            parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_fragment, PlantasExteriorFragment(), "TAG_PLANTAS_EXTERIOR_FRAGMENT")
+                .addToBackStack(null)
+                .commit()
+        }
+
+        val cardMaceta = view.findViewById<CardView>(R.id.cardMaceta)
+        cardMaceta.setOnClickListener {
+            parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_fragment, MacetasAccesoriosFragment(), "TAG_MACETAS_ACCESORIOS_FRAGMENT")
                 .addToBackStack(null)
                 .commit()
         }

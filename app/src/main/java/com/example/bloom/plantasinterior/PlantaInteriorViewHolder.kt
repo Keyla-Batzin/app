@@ -17,7 +17,10 @@ class PlantaInteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun render(plantaInteriorModel: PlantaInterior, onAddClick: (PlantaInterior) -> Unit ) {
         name.text = plantaInteriorModel.nombre
-        precio.text = plantaInteriorModel.precio
+        precio.text = buildString {
+            append(plantaInteriorModel.precio.toString())
+            append("€")
+        }
 
         Log.d("ImageURL", "Cargando imagen desde: ${plantaInteriorModel.url}")
         Glide.with(photo.context)

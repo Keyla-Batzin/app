@@ -13,24 +13,32 @@ class CompraViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val name: TextView = view.findViewById(R.id.nombreCompra)
     val photo: ImageView = view.findViewById(R.id.imgCompra)
     val precio: TextView = view.findViewById(R.id.precioCompra)
-    val cantidad: TextView = view.findViewById(R.id.cantidadCompra)  // TextView para la cantidad
-    val btnDelete: ImageButton = view.findViewById(R.id.btnDelete)  // Referencia al botón de eliminar
+    val cantidad: TextView = view.findViewById(R.id.cantidadCompra)
+    val btnDelete: ImageButton = view.findViewById(R.id.btnDelete)
+    val btnSuma: ImageButton = view.findViewById(R.id.btnSuma)
+    val btnResta: ImageButton = view.findViewById(R.id.btnResta)
 
-    fun render(compra: Compra, onDeleteClick: (Compra) -> Unit) {
+    fun render(compra: Compra, onDeleteClick: (Compra) -> Unit, onSumaClick: (Compra) -> Unit, onRestaClick: (Compra) -> Unit) {
         name.text = compra.nombre
-        "${compra.precio} €".also { precio.text = it }  // Muestra el precio como Float
-        cantidad.text = "${compra.cantidad}"  // Muestra la cantidad
+        "${compra.precio} €".also { precio.text = it }
+        cantidad.text = "${compra.cantidad}"
 
-        Log.d("ImageURL", "Cargando imagen desde: ${compra.url}")
         Glide.with(photo.context)
-            .load(compra.url) // URL de la imagen
+            .load(compra.url)
             .placeholder(R.drawable.logo_peque)
-            .error(R.drawable.img_error) // Imagen si hay error
-            .into(photo) // Cargamos la imagen en el ImageView
+            .error(R.drawable.img_error)
+            .into(photo)
 
-        // Configurar el clic en el botón de eliminar
         btnDelete.setOnClickListener {
-            onDeleteClick(compra)  // Llamar a la función onDeleteClick con la compra seleccionada
+            onDeleteClick(compra)
+        }
+
+        btnSuma.setOnClickListener {
+            onSumaClick(compra)  // Llama a la función para sumar cantidad
+        }
+
+        btnResta.setOnClickListener {
+            onRestaClick(compra)  // Llama a la función para restar cantidad
         }
     }
 }

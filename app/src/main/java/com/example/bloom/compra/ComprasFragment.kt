@@ -33,10 +33,12 @@ class ComprasFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(requireContext(), 1) // 1 columna
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = CompraAdapter(mutableListOf()) { compra ->
-            // Lógica para eliminar la compra
-            eliminarCompra(compra)
-        }
+        adapter = CompraAdapter(
+            mutableListOf(),
+            onDeleteClick = { compra -> eliminarCompra(compra) },
+            onSumaClick = { compra -> sumaCantidad(compra) },  // Función para sumar cantidad
+            onRestaClick = { compra -> restaCantidad(compra) }  // Función para restar cantidad
+        )
         rv.adapter = adapter
 
         // Encuentra el TextView para el precio total
@@ -65,10 +67,8 @@ class ComprasFragment : Fragment() {
             try {
                 val listaCompras = service.obtenerTodasCompras()
 
-                // Verificar si la lista no es nula
                 if (!listaCompras.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
-                        // Actualizar el adaptador con los nuevos datos
                         adapter.updateList(listaCompras)
                     }
                 } else {
@@ -84,11 +84,11 @@ class ComprasFragment : Fragment() {
         val service = CompraAPI.API()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val response = service.obtenerPrecioTotal()  // Obtener la respuesta como objeto
+                val response = service.obtenerPrecioTotal()
                 withContext(Dispatchers.Main) {
-                    // Acceder al campo precioTotal del objeto
                     precioTotalTextView.text = "Precio Total: ${response.precio_total} €"
                 }
+                actualizaPrecioTotal()
             } catch (e: Exception) {
                 Log.e("API", "Error al obtener el precio total", e)
             }
@@ -100,17 +100,50 @@ class ComprasFragment : Fragment() {
             try {
                 val response = CompraAPI.API().eliminarCompra(compra.id)
                 withContext(Dispatchers.Main) {
-                    // Encuentra la posición del ítem eliminado
                     val position = adapter.comprasList.indexOfFirst { it.id == compra.id }
                     if (position != -1) {
-                        // Elimina el ítem del adaptador
                         adapter.removeItem(position)
                     }
                     Log.d("API", "Compra eliminada: ${response.message}")
                 }
+                actualizaPrecioTotal()
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Log.e("API", "Error al eliminar la compra: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun sumaCantidad(compra: Compra) {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = CompraAPI.API().sumaCantidad(compra.id)
+                withContext(Dispatchers.Main) {
+                    // Actualizar la lista después de sumar la cantidad
+                    actualizaCompras()
+                    Log.d("API", "Cantidad sumada: ${response.message}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Log.e("API", "Error al sumar cantidad: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun restaCantidad(compra: Compra) {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = CompraAPI.API().restaCantidad(compra.id)
+                withContext(Dispatchers.Main) {
+                    // Actualizar la lista después de restar la cantidad
+                    actualizaCompras()
+                    Log.d("API", "Cantidad restada: ${response.message}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Log.e("API", "Error al restar cantidad: ${e.message}")
                 }
             }
         }

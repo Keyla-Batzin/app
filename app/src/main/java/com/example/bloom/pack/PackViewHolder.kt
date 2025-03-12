@@ -17,7 +17,10 @@ class PackViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun render(packModel: Pack, onAddClick: (Pack) -> Unit) {
         name.text = packModel.nombre
-        precio.text = packModel.precio
+        precio.text = buildString {
+            append(packModel.precio.toString())
+            append("€")
+        }
 
         Log.d("ImageURL", "Cargando imagen desde: ${packModel.url}")
         Glide.with(photo.context)

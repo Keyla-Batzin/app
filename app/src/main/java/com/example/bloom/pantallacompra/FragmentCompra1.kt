@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.bloom.R
+import com.example.bloom.compra.ComprasFragment
 
 class FragmentCompra1 : Fragment() {
 
@@ -62,7 +63,7 @@ class FragmentCompra1 : Fragment() {
         btnBack.setOnClickListener {
             // Reemplaza el fragmento actual con el fragmento "FragmentCompra2"
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.main_fragment, FragmentCarrito())?.commit()
+                ?.replace(R.id.main_fragment, ComprasFragment())?.commit()
         }
     }
 }

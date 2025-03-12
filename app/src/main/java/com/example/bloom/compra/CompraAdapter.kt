@@ -8,7 +8,9 @@ import com.example.bloom.R
 
 class CompraAdapter(
     var comprasList: MutableList<Compra>,
-    private val onDeleteClick: (Compra) -> Unit  // Función para manejar el clic en "Eliminar"
+    private val onDeleteClick: (Compra) -> Unit, // Función para manejar el clic en "Eliminar"
+    private val onSumaClick: (Compra) -> Unit,  // Función para manejar el clic en "Sumar"
+    private val onRestaClick: (Compra) -> Unit  // Función para manejar el clic en "Restar"
 ) : RecyclerView.Adapter<CompraViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompraViewHolder {
@@ -18,7 +20,7 @@ class CompraAdapter(
 
     override fun onBindViewHolder(holder: CompraViewHolder, position: Int) {
         val item = comprasList[position]
-        holder.render(item, onDeleteClick)  // Pasar la función onDeleteClick al ViewHolder
+        holder.render(item, onDeleteClick, onSumaClick, onRestaClick)  // Pasar las funciones al ViewHolder
     }
 
     override fun getItemCount(): Int = comprasList.size
@@ -27,14 +29,13 @@ class CompraAdapter(
         comprasList.removeAt(position)
         notifyItemRemoved(position)
         if (comprasList.isEmpty()) {
-            // Aquí puedes mostrar un mensaje o un estado vacío
             Log.d("Adapter", "No hay más ítems en la lista")
         }
     }
 
     fun updateList(newList: List<Compra>) {
-        comprasList.clear()          // Limpia la lista actual
-        comprasList.addAll(newList) // Agrega los nuevos elementos
-        notifyDataSetChanged()      // Notifica al RecyclerView que los datos han cambiado
+        comprasList.clear()
+        comprasList.addAll(newList)
+        notifyDataSetChanged()
     }
 }

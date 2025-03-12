@@ -28,7 +28,7 @@ class RamosFloresFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_ramos_flores, container, false)
 
         rv = view.findViewById(R.id.recyclerRamosFlores)
-        rv.layoutManager = GridLayoutManager(requireContext(), 3)
+        rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
         adapter = RamoFlorAdapter(emptyList()) { ramoFlor ->

@@ -26,7 +26,7 @@ class ProductosFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_productos, container, false)
 
         rv = view.findViewById(R.id.recyclerProductos)
-        rv.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
+        rv.layoutManager = GridLayoutManager(requireContext(), 1)
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
         adapter = ProductoAdapter(emptyList())

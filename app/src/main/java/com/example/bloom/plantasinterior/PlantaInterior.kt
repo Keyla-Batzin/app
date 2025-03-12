@@ -2,6 +2,6 @@ package com.example.bloom.plantasinterior
 
 data class PlantaInterior (
     val nombre: String,
-    val precio: String,
+    val precio: Float,
     val url: String // URL
 )

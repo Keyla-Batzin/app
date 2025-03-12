@@ -2,20 +2,26 @@ package com.example.bloom.macetasaccesorios
 
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bloom.R
+import com.example.bloom.plantasexterior.PlantaExterior
 
 class MacetaAccesorioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val name: TextView = view.findViewById(R.id.nombreMacetaAccesorio)
     val photo: ImageView = view.findViewById(R.id.imgMacetaAccesorio)
     val precio: TextView = view.findViewById(R.id.precioMacetaAccesorio)
+    val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
 
-    fun render(macetaAccesorioModel: MacetaAccesorio) {
+    fun render(macetaAccesorioModel: MacetaAccesorio, onAddClick: (MacetaAccesorio) -> Unit) {
         name.text = macetaAccesorioModel.nombre
-        precio.text = macetaAccesorioModel.precio
+        precio.text = buildString {
+            append(macetaAccesorioModel.precio.toString())
+            append("€")
+        }
 
         Log.d("ImageURL", "Cargando imagen desde: ${macetaAccesorioModel.url}")
         Glide.with(photo.context)
@@ -23,5 +29,9 @@ class MacetaAccesorioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             .placeholder(R.drawable.logo_peque)
             .error(R.drawable.img_error) // Imagen si hay error
             .into(photo) // Cargamos la imagen en el ImageView
+
+        btnAdd.setOnClickListener {
+            onAddClick(macetaAccesorioModel)
+        }
     }
 }

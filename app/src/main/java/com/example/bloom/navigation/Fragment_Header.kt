@@ -2,6 +2,7 @@ package com.example.bloom.navigation
 
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceFragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -17,6 +18,7 @@ import com.example.bloom.R
 import com.example.bloom.compra.ComprasFragment
 import com.example.bloom.pantallacompra.ActivityCompra
 import com.example.bloom.pantallacompra.FragmentCarrito
+import com.example.bloom.pantallahome.FragmentPreferencias
 
 class Fragment_Header : Fragment() {
 
@@ -57,7 +59,11 @@ class Fragment_Header : Fragment() {
                 return true
             }
             R.id.op1 -> {
-                // Acción para opción 1 (De momento no tocarlos)
+                parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main_fragment, FragmentPreferencias(), "TAG_PREFERENCIAS_FRAGMENT")
+                    .addToBackStack(null)
+                    .commit()
                 return true
             }
             R.id.op2 -> {

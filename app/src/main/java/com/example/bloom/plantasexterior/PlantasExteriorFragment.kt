@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class PlantasExteriorFragment : Fragment() {
-    /*
+
     private lateinit var rv: RecyclerView
     private lateinit var adapter: PlantaExteriorAdapter
 
@@ -28,7 +28,7 @@ class PlantasExteriorFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_plantas_exterior, container, false)
 
         rv = view.findViewById(R.id.recyclerPlantasExterior)
-        rv.layoutManager = GridLayoutManager(requireContext(), 3) // 3 columnas
+        rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
         adapter = PlantaExteriorAdapter(emptyList()) { plantaExterior ->
@@ -72,7 +72,8 @@ class PlantasExteriorFragment : Fragment() {
             id = 0,  // Añade el campo id con un valor por defecto
             nombre = plantaExterior.nombre,
             precio = plantaExterior.precio,  // Asegúrate de que sea una cadena de texto
-            url = plantaExterior.url
+            url = plantaExterior.url,
+            cantidad = 1
         )
 
         // Imprimir el JSON que se enviará
@@ -96,5 +97,4 @@ class PlantasExteriorFragment : Fragment() {
             }
         }
     }
-     */
 }
