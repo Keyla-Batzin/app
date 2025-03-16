@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import com.example.bloom.ActivityProductos
+import com.example.bloom.FloresEventosFragment
 import com.example.bloom.R
 import com.example.bloom.categorias.ActivityCategorias
 import com.example.bloom.categorias.CategoriasFragment
@@ -60,7 +61,7 @@ class HomeFragment : Fragment() {
         cardPlantInt.setOnClickListener {
             parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             parentFragmentManager.beginTransaction()
-                .replace(R.id.main_fragment, PlantasExteriorFragment(), "TAG_PLANTAS_EXTERIOR_FRAGMENT")
+                .replace(R.id.main_fragment, FloresEventosFragment(), "TAG_FLORES_EVENTOS_FRAGMENT")
                 .addToBackStack(null)
                 .commit()
         }

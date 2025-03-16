@@ -4,8 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
+import com.example.bloom.ramosflores.RamoFlor
 
-class ProductoAdapter(val productosList: List<Producto>) : RecyclerView.Adapter<ProductoViewHolder>() {
+class ProductoAdapter(
+    val productosList: List<Producto>,
+    private val onAddClick: (Producto) -> Unit
+) : RecyclerView.Adapter<ProductoViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -14,7 +18,7 @@ class ProductoAdapter(val productosList: List<Producto>) : RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
         val item = productosList[position]
-        holder.render(item)
+        holder.render(item,onAddClick)
     }
 
     override fun getItemCount(): Int = productosList.size

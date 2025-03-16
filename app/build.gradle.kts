@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.bloom"
-        minSdk = 25
+        minSdk = 28
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -55,6 +55,7 @@ dependencies {
 
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation(libs.car.ui.lib)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
 
     // Retrofit para consumo de APIs REST

@@ -18,6 +18,7 @@ import kotlinx.coroutines.withContext
 
 
 class SearchFragment : Fragment() {
+    /*
     private lateinit var rv: RecyclerView
     private lateinit var adapter: ProductoAdapter
 
@@ -63,4 +64,6 @@ class SearchFragment : Fragment() {
             }
         }
     }
+
+     */
 }

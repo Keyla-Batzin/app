@@ -11,6 +11,7 @@ import com.example.bloom.pantallahome.HomeFragment
 import com.example.bloom.R
 import com.example.bloom.pantallahome.SearchFragment
 import com.example.bloom.databinding.FragmentBottomBinding
+import com.example.bloom.productos.ProductosFragment
 
 class FragmentBottom : Fragment() {
     private var _binding: FragmentBottomBinding? = null
@@ -28,7 +29,7 @@ class FragmentBottom : Fragment() {
         binding?.bottomNavigationView?.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> replaceFragment(HomeFragment())
-                R.id.search -> replaceFragment(SearchFragment())
+                R.id.search -> replaceFragment(ProductosFragment()) // Search
                 R.id.fav -> replaceFragment(FragmentFavoritos())
                 R.id.profile -> replaceFragment(FragmentProfile())
                 else -> false

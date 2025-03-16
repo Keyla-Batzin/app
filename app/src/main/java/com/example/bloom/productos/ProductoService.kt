@@ -1,12 +1,17 @@
 package com.example.bloom.productos
 
+import com.example.bloom.ResponseMessage
+import com.example.bloom.compra.Compra
 import com.example.bloom.productos.Producto
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 import java.security.SecureRandom
 import java.security.cert.CertificateException
 import java.security.cert.X509Certificate
@@ -22,6 +27,12 @@ interface ProductoService {
 
     @GET("/productos/")
     suspend fun obtenerTodosProductos(): List<Producto>
+
+    @POST("/compras/")
+    suspend fun crearCompra(@Body compra: Compra): ResponseMessage
+
+    @GET("/productos/")
+    suspend fun buscarProductos(@Query("nombre") nombre: String): List<Producto>
 }
 
 class ProductoAPI {
