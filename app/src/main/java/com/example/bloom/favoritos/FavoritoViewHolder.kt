@@ -32,11 +32,13 @@ class FavoritoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         // Configurar el clic en el botón "Añadir"
         btnAdd.setOnClickListener {
-            onAddClick(favoritoModel) // Llamar a la función onAddClick con el ítem seleccionado
+            onAddClick(favoritoModel)
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {
             onDeleteClick(favoritoModel)
+            btnFav.setImageResource(R.drawable.heart1_roto)
         }
     }
 }

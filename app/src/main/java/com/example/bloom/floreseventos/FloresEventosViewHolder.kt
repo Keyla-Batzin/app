@@ -32,6 +32,7 @@ class FloresEventosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         btnAdd.setOnClickListener {
             onAddClick(floresEventosModel)
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {

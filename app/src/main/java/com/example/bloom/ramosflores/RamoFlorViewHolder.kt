@@ -33,6 +33,7 @@ class RamoFlorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Configurar el clic en el botón "Añadir"
         btnAdd.setOnClickListener {
             onAddClick(ramosFloresModel) // Llamar a la función onAddClick con el ítem seleccionado
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {

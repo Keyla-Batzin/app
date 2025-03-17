@@ -33,6 +33,7 @@ class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         btnAdd.setOnClickListener {
             onAddClick(productoModel) // Llamar a la función onAddClick con el ítem seleccionado
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {

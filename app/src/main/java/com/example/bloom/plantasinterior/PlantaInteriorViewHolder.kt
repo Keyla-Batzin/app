@@ -34,6 +34,7 @@ class PlantaInteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Configurar el clic en el botón "Añadir"
         btnAdd.setOnClickListener {
             onAddClick(plantaInteriorModel) // Llamar a la función onAddClick con el ítem seleccionado
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {

@@ -34,6 +34,7 @@ class PlantaExteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Configurar el clic en el botón "Añadir"
         btnAdd.setOnClickListener {
             onAddClick(plantaExteriorModel)
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {

@@ -34,6 +34,7 @@ class MacetaAccesorioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         btnAdd.setOnClickListener {
             onAddClick(macetaAccesorioModel)
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {

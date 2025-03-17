@@ -32,6 +32,7 @@ class PackViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         btnAdd.setOnClickListener {
             onAddClick(packModel)
+            btnAdd.setImageResource(R.drawable.shop_check)
         }
 
         btnFav.setOnClickListener {
