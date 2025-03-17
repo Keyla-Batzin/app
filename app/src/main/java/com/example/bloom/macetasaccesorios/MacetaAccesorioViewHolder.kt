@@ -9,14 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bloom.R
 import com.example.bloom.plantasexterior.PlantaExterior
+import com.example.bloom.ramosflores.RamoFlor
 
 class MacetaAccesorioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val name: TextView = view.findViewById(R.id.nombreMacetaAccesorio)
     val photo: ImageView = view.findViewById(R.id.imgMacetaAccesorio)
     val precio: TextView = view.findViewById(R.id.precioMacetaAccesorio)
     val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
+    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 
-    fun render(macetaAccesorioModel: MacetaAccesorio, onAddClick: (MacetaAccesorio) -> Unit) {
+    fun render(macetaAccesorioModel: MacetaAccesorio, onAddClick: (MacetaAccesorio) -> Unit, onAddFavClick: (MacetaAccesorio) -> Unit) {
         name.text = macetaAccesorioModel.nombre
         precio.text = buildString {
             append(macetaAccesorioModel.precio.toString())
@@ -32,6 +34,11 @@ class MacetaAccesorioViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         btnAdd.setOnClickListener {
             onAddClick(macetaAccesorioModel)
+        }
+
+        btnFav.setOnClickListener {
+            onAddFavClick(macetaAccesorioModel)
+            btnFav.setImageResource(R.drawable.heart1_relleno)
         }
     }
 }

@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 import com.example.bloom.plantasexterior.PlantaExterior
+import com.example.bloom.ramosflores.RamoFlor
 
 class FloresEventosAdapter(
     val floresEventosList: List<FloresEventos>,
-    private val onAddClick: (FloresEventos) -> Unit
+    private val onAddClick: (FloresEventos) -> Unit,
+    private val onAddFavClick: (FloresEventos) -> Unit
 ) : RecyclerView.Adapter<FloresEventosViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FloresEventosViewHolder {
@@ -18,7 +20,7 @@ class FloresEventosAdapter(
 
     override fun onBindViewHolder(holder: FloresEventosViewHolder, position: Int) {
         val item = floresEventosList[position]
-        holder.render(item, onAddClick)
+        holder.render(item, onAddClick, onAddFavClick)
     }
 
     override fun getItemCount(): Int = floresEventosList.size

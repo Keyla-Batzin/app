@@ -14,8 +14,9 @@ class PackViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val photo: ImageView = view.findViewById(R.id.imgPack)
     val precio: TextView = view.findViewById(R.id.precioPack)
     val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
+    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 
-    fun render(packModel: Pack, onAddClick: (Pack) -> Unit) {
+    fun render(packModel: Pack, onAddClick: (Pack) -> Unit, onAddFavClick: (Pack) -> Unit) {
         name.text = packModel.nombre
         precio.text = buildString {
             append(packModel.precio.toString())
@@ -31,6 +32,11 @@ class PackViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         btnAdd.setOnClickListener {
             onAddClick(packModel)
+        }
+
+        btnFav.setOnClickListener {
+            onAddFavClick(packModel)
+            btnFav.setImageResource(R.drawable.heart1_relleno)
         }
     }
 }

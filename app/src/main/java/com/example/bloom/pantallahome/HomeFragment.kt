@@ -1,8 +1,6 @@
 package com.example.bloom.pantallahome
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +10,10 @@ import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
-import com.example.bloom.ActivityProductos
-import com.example.bloom.FloresEventosFragment
+import com.example.bloom.floreseventos.FloresEventosFragment
 import com.example.bloom.R
-import com.example.bloom.categorias.ActivityCategorias
 import com.example.bloom.categorias.CategoriasFragment
-import com.example.bloom.compra.ComprasFragment
 import com.example.bloom.macetasaccesorios.MacetasAccesoriosFragment
-import com.example.bloom.pantallacompra.ActivityCompra
-import com.example.bloom.plantasexterior.PlantasExteriorFragment
 import com.example.bloom.plantasinterior.PlantasInteriorFragment
 import com.example.bloom.ramosflores.RamosFloresFragment
 import kotlinx.coroutines.cancel

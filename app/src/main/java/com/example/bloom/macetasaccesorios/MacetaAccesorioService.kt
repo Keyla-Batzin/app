@@ -2,6 +2,7 @@ package com.example.bloom.macetasaccesorios
 
 import com.example.bloom.ResponseMessage
 import com.example.bloom.compra.Compra
+import com.example.bloom.favoritos.Favorito
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -28,6 +29,9 @@ interface MacetaAccesorioService {
 
     @POST("/compras/")
     suspend fun crearCompra(@Body compra: Compra): ResponseMessage
+
+    @POST("/favoritos/")
+    suspend fun crearFavorito(@Body favorito: Favorito): ResponseMessage
 }
 
 class MacetaAccesorioAPI {

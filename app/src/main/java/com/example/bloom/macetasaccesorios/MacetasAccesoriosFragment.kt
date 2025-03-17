@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 import com.example.bloom.compra.Compra
+import com.example.bloom.favoritos.Favorito
 import com.example.bloom.plantasexterior.PlantaExterior
 import com.example.bloom.plantasexterior.PlantaExteriorAPI
 import com.example.bloom.plantasexterior.PlantaExteriorAdapter
+import com.example.bloom.ramosflores.RamoFlor
+import com.example.bloom.ramosflores.RamoFlorAdapter
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,9 +37,10 @@ class MacetasAccesoriosFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(requireContext(), 2) // 2 columnas
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = MacetaAccesorioAdapter(emptyList()) { macetaAcesorio ->
-            añadirACompra(macetaAcesorio)
-        }
+        adapter = MacetaAccesorioAdapter(emptyList(),
+            onAddClick = { macetaAcesorio -> añadirACompra(macetaAcesorio) },  // Función para añadir a Compra
+            onAddFavClick = { macetaAcesorio -> añadirAFavoritos(macetaAcesorio) }  // Función para añadir a Favoritos
+        )
         rv.adapter = adapter
 
         // Cargar datos
@@ -55,9 +59,10 @@ class MacetasAccesoriosFragment : Fragment() {
                 if (!listaMacetas.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
                         // Actualizar el adaptador con los nuevos datos
-                        adapter = MacetaAccesorioAdapter(listaMacetas) { macetaAcesorio ->
-                            añadirACompra(macetaAcesorio)
-                        }
+                        adapter = MacetaAccesorioAdapter(listaMacetas,
+                            onAddClick = { macetaAcesiorio -> añadirACompra(macetaAcesiorio) },
+                            onAddFavClick = { macetaAcesiorio -> añadirAFavoritos(macetaAcesiorio) }
+                        )
                         rv.adapter = adapter
                     }
                 } else {
@@ -96,6 +101,37 @@ class MacetasAccesoriosFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de error
                     Log.e("API", "Error al añadir a Compra: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun añadirAFavoritos(macetaAcesiorio: MacetaAccesorio) {
+        // Crear un objeto Favorito con los datos del RamoFlor
+        val nuevoFavorito = Favorito(
+            id = 0,  // Añade el campo id con un valor por defecto
+            nombre = macetaAcesiorio.nombre,
+            precio = macetaAcesiorio.precio,
+            url = macetaAcesiorio.url
+        )
+
+        // Imprimir el JSON que se enviará
+        val gson = Gson()
+        val json = gson.toJson(nuevoFavorito)
+        Log.d("API", "JSON enviado: $json")
+
+        // Hacer la llamada POST a la API
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = MacetaAccesorioAPI.API().crearFavorito(nuevoFavorito)
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de éxito
+                    Log.d("API", "Añadido a Favoritos: ${response.message}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de error
+                    Log.e("API", "Error al añadir a Favoritos: ${e.message}")
                 }
             }
         }

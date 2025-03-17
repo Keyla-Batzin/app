@@ -2,6 +2,7 @@ package com.example.bloom.plantasinterior
 
 import com.example.bloom.ResponseMessage
 import com.example.bloom.compra.Compra
+import com.example.bloom.favoritos.Favorito
 import com.example.bloom.plantasinterior.PlantaInterior
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -29,6 +30,9 @@ interface PlantaInteriorService {
 
     @POST("/compras/")
     suspend fun crearCompra(@Body compra: Compra): ResponseMessage
+
+    @POST("/favoritos/")
+    suspend fun crearFavorito(@Body favorito: Favorito): ResponseMessage
 }
 
 class PlantaInteriorAPI {

@@ -2,6 +2,7 @@ package com.example.bloom.productos
 
 import com.example.bloom.ResponseMessage
 import com.example.bloom.compra.Compra
+import com.example.bloom.favoritos.Favorito
 import com.example.bloom.productos.Producto
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -33,6 +34,9 @@ interface ProductoService {
 
     @GET("/productos/")
     suspend fun buscarProductos(@Query("nombre") nombre: String): List<Producto>
+
+    @POST("/favoritos/")
+    suspend fun crearFavorito(@Body favorito: Favorito): ResponseMessage
 }
 
 class ProductoAPI {

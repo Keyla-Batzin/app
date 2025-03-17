@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityProductos"
+            android:name=".productos.ActivityProductos"
             android:exported="false" />
         <activity
             android:name=".categorias.ActivityCategorias"

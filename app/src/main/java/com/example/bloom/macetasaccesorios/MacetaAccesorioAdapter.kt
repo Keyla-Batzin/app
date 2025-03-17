@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 import com.example.bloom.plantasexterior.PlantaExterior
+import com.example.bloom.ramosflores.RamoFlor
 
 class MacetaAccesorioAdapter(
     val macetasAccesoriosList: List<MacetaAccesorio>,
-    private val onAddClick: (MacetaAccesorio) -> Unit
+    private val onAddClick: (MacetaAccesorio) -> Unit,
+    private val onAddFavClick: (MacetaAccesorio) -> Unit
 ) : RecyclerView.Adapter<MacetaAccesorioViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MacetaAccesorioViewHolder {
@@ -19,7 +21,7 @@ class MacetaAccesorioAdapter(
 
     override fun onBindViewHolder(holder: MacetaAccesorioViewHolder, position: Int) {
         val item = macetasAccesoriosList[position]
-        holder.render(item, onAddClick)
+        holder.render(item, onAddClick, onAddFavClick)
     }
 
     override fun getItemCount(): Int = macetasAccesoriosList.size

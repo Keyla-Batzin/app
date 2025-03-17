@@ -8,14 +8,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bloom.R
+import com.example.bloom.ramosflores.RamoFlor
 
 class PlantaInteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val name: TextView = view.findViewById(R.id.nombrePlantaInterior)
     val photo: ImageView = view.findViewById(R.id.imgPlantaInterior)
     val precio: TextView = view.findViewById(R.id.precioPlantaInterior)
     val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
+    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 
-    fun render(plantaInteriorModel: PlantaInterior, onAddClick: (PlantaInterior) -> Unit ) {
+    fun render(plantaInteriorModel: PlantaInterior, onAddClick: (PlantaInterior) -> Unit, onAddFavClick: (PlantaInterior) -> Unit) {
         name.text = plantaInteriorModel.nombre
         precio.text = buildString {
             append(plantaInteriorModel.precio.toString())
@@ -32,6 +34,11 @@ class PlantaInteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Configurar el clic en el botón "Añadir"
         btnAdd.setOnClickListener {
             onAddClick(plantaInteriorModel) // Llamar a la función onAddClick con el ítem seleccionado
+        }
+
+        btnFav.setOnClickListener {
+            onAddFavClick(plantaInteriorModel)
+            btnFav.setImageResource(R.drawable.heart1_relleno)
         }
     }
 }

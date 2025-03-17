@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bloom.FloresEventosFragment
+import com.example.bloom.floreseventos.FloresEventosFragment
 import com.example.bloom.R
 import com.example.bloom.macetasaccesorios.MacetasAccesoriosFragment
 import com.example.bloom.pack.PacksFragment

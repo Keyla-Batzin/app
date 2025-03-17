@@ -1,4 +1,4 @@
-package com.example.bloom
+package com.example.bloom.floreseventos
 
 import android.os.Bundle
 import android.util.Log
@@ -9,13 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bloom.R
 import com.example.bloom.compra.Compra
-import com.example.bloom.floreseventos.FloresEventos
-import com.example.bloom.floreseventos.FloresEventosAPI
-import com.example.bloom.floreseventos.FloresEventosAdapter
-import com.example.bloom.plantasexterior.PlantaExterior
-import com.example.bloom.plantasexterior.PlantaExteriorAPI
-import com.example.bloom.plantasexterior.PlantaExteriorAdapter
+import com.example.bloom.favoritos.Favorito
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,9 +32,10 @@ class FloresEventosFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(requireContext(), 2) // 3 columnas
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = FloresEventosAdapter(emptyList()) { florEvento ->
-            añadirACompra(florEvento)
-        }
+        adapter = FloresEventosAdapter(emptyList(),
+            onAddClick = { florEvento -> añadirACompra(florEvento) },  // Función para añadir a Compra
+            onAddFavClick = { florEvento -> añadirAFavoritos(florEvento) }  // Función para añadir a Favoritos
+        )
         rv.adapter = adapter
 
         // Cargar datos
@@ -57,9 +54,10 @@ class FloresEventosFragment : Fragment() {
                 if (!listaFlores.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
                         // Actualizar el adaptador con los nuevos datos
-                        adapter = FloresEventosAdapter(listaFlores) { florEvento ->
-                            añadirACompra(florEvento)
-                        }
+                        adapter = FloresEventosAdapter(listaFlores,
+                            onAddClick = { florEvento -> añadirACompra(florEvento) },
+                            onAddFavClick = { florEvento -> añadirAFavoritos(florEvento) }
+                        )
                         rv.adapter = adapter
                     }
                 } else {
@@ -98,6 +96,37 @@ class FloresEventosFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de error
                     Log.e("API", "Error al añadir a Compra: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun añadirAFavoritos(florEvento: FloresEventos) {
+        // Crear un objeto Favorito con los datos del RamoFlor
+        val nuevoFavorito = Favorito(
+            id = 0,  // Añade el campo id con un valor por defecto
+            nombre = florEvento.nombre,
+            precio = florEvento.precio,
+            url = florEvento.url
+        )
+
+        // Imprimir el JSON que se enviará
+        val gson = Gson()
+        val json = gson.toJson(nuevoFavorito)
+        Log.d("API", "JSON enviado: $json")
+
+        // Hacer la llamada POST a la API
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = FloresEventosAPI.API().crearFavorito(nuevoFavorito)
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de éxito
+                    Log.d("API", "Añadido a Favoritos: ${response.message}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de error
+                    Log.e("API", "Error al añadir a Favoritos: ${e.message}")
                 }
             }
         }

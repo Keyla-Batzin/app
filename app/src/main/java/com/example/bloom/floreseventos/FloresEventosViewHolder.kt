@@ -7,17 +7,16 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.bloom.FloresEventosFragment
 import com.example.bloom.R
-import com.example.bloom.plantasexterior.PlantaExterior
 
 class FloresEventosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val name: TextView = view.findViewById(R.id.nombreFloresEventos)
     val photo: ImageView = view.findViewById(R.id.imgFloresEventos)
     val precio: TextView = view.findViewById(R.id.precioFloresEventos)
     val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
+    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 
-    fun render(floresEventosModel: FloresEventos, onAddClick: (FloresEventos) -> Unit) {
+    fun render(floresEventosModel: FloresEventos, onAddClick: (FloresEventos) -> Unit, onAddFavClick: (FloresEventos) -> Unit) {
         name.text = floresEventosModel.nombre
         precio.text = buildString {
             append(floresEventosModel.precio.toString())
@@ -34,5 +33,11 @@ class FloresEventosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         btnAdd.setOnClickListener {
             onAddClick(floresEventosModel)
         }
+
+        btnFav.setOnClickListener {
+            onAddFavClick(floresEventosModel)
+            btnFav.setImageResource(R.drawable.heart1_relleno)
+        }
+
     }
 }

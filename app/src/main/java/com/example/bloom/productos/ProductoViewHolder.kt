@@ -15,8 +15,9 @@ class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val photo: ImageView = view.findViewById(R.id.imgProducto)
     val precio: TextView = view.findViewById(R.id.precioProducto)
     val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
+    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 
-    fun render(productoModel: Producto, onAddClick: (Producto) -> Unit) {
+    fun render(productoModel: Producto, onAddClick: (Producto) -> Unit, onAddFavClick: (Producto) -> Unit) {
         name.text = productoModel.nombre
         precio.text = buildString {
             append(productoModel.precio.toString())
@@ -32,6 +33,11 @@ class ProductoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         btnAdd.setOnClickListener {
             onAddClick(productoModel) // Llamar a la función onAddClick con el ítem seleccionado
+        }
+
+        btnFav.setOnClickListener {
+            onAddFavClick(productoModel)
+            btnFav.setImageResource(R.drawable.heart1_relleno)
         }
     }
 }

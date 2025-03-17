@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 import com.example.bloom.compra.Compra
+import com.example.bloom.favoritos.Favorito
 import com.example.bloom.ramosflores.RamoFlor
+import com.example.bloom.ramosflores.RamoFlorAdapter
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,10 +33,10 @@ class PlantasInteriorFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = PlantaInteriorAdapter(emptyList()) { plantaInterior ->
-            // Lógica para añadir el ítem a la tabla Compra
-            añadirACompra(plantaInterior)
-        }
+        adapter = PlantaInteriorAdapter(emptyList(),
+            onAddClick = { plantaInterior -> añadirACompra(plantaInterior) },  // Función para añadir a Compra
+            onAddFavClick = { plantaInterior -> añadirAFavoritos(plantaInterior) }  // Función para añadir a Favoritos
+        )
         rv.adapter = adapter
 
         // Cargar datos
@@ -53,9 +55,10 @@ class PlantasInteriorFragment : Fragment() {
                 if (!listaPlantas.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
                         // Actualizar el adaptador con los nuevos datos
-                        adapter = PlantaInteriorAdapter(listaPlantas) { plantaInterior ->
-                            añadirACompra(plantaInterior)
-                        }
+                        adapter = PlantaInteriorAdapter(listaPlantas,
+                            onAddClick = { plantaInterior -> añadirACompra(plantaInterior) },
+                            onAddFavClick = { plantaInterior -> añadirAFavoritos(plantaInterior) }
+                        )
                         rv.adapter = adapter
                     }
                 } else {
@@ -94,6 +97,37 @@ class PlantasInteriorFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de error
                     Log.e("API", "Error al añadir a Compra: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun añadirAFavoritos(plantaInterior: PlantaInterior) {
+        // Crear un objeto Favorito con los datos
+        val nuevoFavorito = Favorito(
+            id = 0,  // Añade el campo id con un valor por defecto
+            nombre = plantaInterior.nombre,
+            precio = plantaInterior.precio,
+            url = plantaInterior.url
+        )
+
+        // Imprimir el JSON que se enviará
+        val gson = Gson()
+        val json = gson.toJson(nuevoFavorito)
+        Log.d("API", "JSON enviado: $json")
+
+        // Hacer la llamada POST a la API
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = PlantaInteriorAPI.API().crearFavorito(nuevoFavorito)
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de éxito
+                    Log.d("API", "Añadido a Favoritos: ${response.message}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de error
+                    Log.e("API", "Error al añadir a Favoritos: ${e.message}")
                 }
             }
         }

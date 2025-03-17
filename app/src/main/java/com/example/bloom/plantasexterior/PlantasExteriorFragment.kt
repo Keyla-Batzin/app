@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 import com.example.bloom.compra.Compra
+import com.example.bloom.favoritos.Favorito
+import com.example.bloom.ramosflores.RamoFlor
+import com.example.bloom.ramosflores.RamoFlorAdapter
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,9 +34,10 @@ class PlantasExteriorFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = PlantaExteriorAdapter(emptyList()) { plantaExterior ->
-            añadirACompra(plantaExterior)
-        }
+        adapter = PlantaExteriorAdapter(emptyList(),
+            onAddClick = { plantaExterior -> añadirACompra(plantaExterior) },  // Función para añadir a Compra
+            onAddFavClick = { plantaExterior  -> añadirAFavoritos(plantaExterior) }  // Función para añadir a Favoritos
+        )
         rv.adapter = adapter
 
         // Cargar datos
@@ -52,9 +56,10 @@ class PlantasExteriorFragment : Fragment() {
                 if (!listaPlantas.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
                         // Actualizar el adaptador con los nuevos datos
-                        adapter = PlantaExteriorAdapter(listaPlantas) { plantaExterior ->
-                            añadirACompra(plantaExterior)
-                        }
+                        adapter = PlantaExteriorAdapter(listaPlantas,
+                            onAddClick = { plantaExterior -> añadirACompra(plantaExterior) },
+                            onAddFavClick = { plantaExterior -> añadirAFavoritos(plantaExterior) }
+                        )
                         rv.adapter = adapter
                     }
                 } else {
@@ -93,6 +98,37 @@ class PlantasExteriorFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de error
                     Log.e("API", "Error al añadir a Compra: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun añadirAFavoritos(plantaExterior: PlantaExterior) {
+        // Crear un objeto Favorito con los datos
+        val nuevoFavorito = Favorito(
+            id = 0,  // Añade el campo id con un valor por defecto
+            nombre = plantaExterior.nombre,
+            precio = plantaExterior.precio,
+            url = plantaExterior.url
+        )
+
+        // Imprimir el JSON que se enviará
+        val gson = Gson()
+        val json = gson.toJson(nuevoFavorito)
+        Log.d("API", "JSON enviado: $json")
+
+        // Hacer la llamada POST a la API
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = PlantaExteriorAPI.API().crearFavorito(nuevoFavorito)
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de éxito
+                    Log.d("API", "Añadido a Favoritos: ${response.message}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de error
+                    Log.e("API", "Error al añadir a Favoritos: ${e.message}")
                 }
             }
         }
