@@ -3,46 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pantallahome.FragmentFavoritos">
+    tools:context=".favoritos.FavoritoFragment">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="650dp"
-        android:layout_marginStart="20dp"
         android:orientation="vertical">
-
-        <!-- Contenedor horizontal para el texto y el botón -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+        <TextView
+            style="@style/Titulo"
+            android:text="Favoritos"
             android:layout_marginTop="20dp"
-            android:gravity="center_vertical">
-
-            <!-- TextView para el título -->
-            <TextView
-                android:id="@+id/searchText"
-                style="@style/Titulo"
-                android:text="Favoritos" />
-
-            <!-- Espaciado entre el texto y el botón -->
-            <View
-                android:layout_width="20dp"
-                android:layout_height="0dp" />
-
-            <!-- Botón al lado del texto -->
-            <Button
-                android:id="@+id/addButton"
-                style="@style/BotonLilaClaro"
-                android:text="Añadir" />
-        </LinearLayout>
-
-        <!-- RecyclerView de Productos -->
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"/>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+            android:id="@+id/recyclerFavorito"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:padding="0dp"
+            android:layout_margin="0dp"/>
     </LinearLayout>
 
 </FrameLayout>

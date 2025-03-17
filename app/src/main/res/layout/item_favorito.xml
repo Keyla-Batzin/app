@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imgRamosFlores"
+        android:id="@+id/imgFavorito"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="20dp"
@@ -16,26 +16,26 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/nombreRamosFlores"
+        android:id="@+id/nombreFavorito"
         style="@style/Texto_Blod"
         android:text="Nombre del Producto"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:gravity="start"
         android:textColor="@color/purple_primary"
-        app:layout_constraintTop_toBottomOf="@id/imgRamosFlores"
+        app:layout_constraintTop_toBottomOf="@id/imgFavorito"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/precioRamosFlores"
+        android:id="@+id/precioFavorito"
         style="@style/Texto"
         android:text="10,99€"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:gravity="start"
         android:textColor="@color/purple_primary"
-        app:layout_constraintTop_toBottomOf="@id/nombreRamosFlores"
+        app:layout_constraintTop_toBottomOf="@id/nombreFavorito"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -47,8 +47,8 @@
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         android:layout_margin="3dp"
-        app:layout_constraintStart_toStartOf="@id/imgRamosFlores"
-        app:layout_constraintBottom_toBottomOf="@id/imgRamosFlores" />
+        app:layout_constraintStart_toStartOf="@id/imgFavorito"
+        app:layout_constraintBottom_toBottomOf="@id/imgFavorito" />
 
     <ImageButton
         android:id="@+id/btnAdd"
@@ -58,7 +58,7 @@
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         android:layout_margin="3dp"
-        app:layout_constraintEnd_toEndOf="@id/imgRamosFlores"
-        app:layout_constraintBottom_toBottomOf="@id/imgRamosFlores" />
+        app:layout_constraintEnd_toEndOf="@id/imgFavorito"
+        app:layout_constraintBottom_toBottomOf="@id/imgFavorito" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

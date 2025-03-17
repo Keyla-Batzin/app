@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
 import com.example.bloom.compra.Compra
+import com.example.bloom.favoritos.Favorito
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,10 +32,10 @@ class RamosFloresFragment : Fragment() {
         rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = RamoFlorAdapter(emptyList()) { ramoFlor ->
-            // Lógica para añadir el ítem a la tabla Compra
-            añadirACompra(ramoFlor)
-        }
+        adapter = RamoFlorAdapter(emptyList(),
+            onAddClick = { ramoFlor -> añadirACompra(ramoFlor) },  // Función para añadir a Compra
+            onAddFavClick = { ramoFlor -> añadirAFavoritos(ramoFlor) }  // Función para añadir a Favoritos
+        )
         rv.adapter = adapter
 
         // Cargar datos
@@ -53,9 +54,10 @@ class RamosFloresFragment : Fragment() {
                 if (!llistaRamos.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
                         // Actualizar el adaptador con los nuevos datos
-                        adapter = RamoFlorAdapter(llistaRamos) { ramoFlor ->
-                            añadirACompra(ramoFlor)
-                        }
+                        adapter = RamoFlorAdapter(llistaRamos,
+                            onAddClick = { ramoFlor -> añadirACompra(ramoFlor) },
+                            onAddFavClick = { ramoFlor -> añadirAFavoritos(ramoFlor) }
+                        )
                         rv.adapter = adapter
                     }
                 } else {
@@ -94,6 +96,37 @@ class RamosFloresFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de error
                     Log.e("API", "Error al añadir a Compra: ${e.message}")
+                }
+            }
+        }
+    }
+
+    private fun añadirAFavoritos(ramoFlor: RamoFlor) {
+        // Crear un objeto Favorito con los datos del RamoFlor
+        val nuevoFavorito = Favorito(
+            id = 0,  // Añade el campo id con un valor por defecto
+            nombre = ramoFlor.nombre,
+            precio = ramoFlor.precio,
+            url = ramoFlor.url
+        )
+
+        // Imprimir el JSON que se enviará
+        val gson = Gson()
+        val json = gson.toJson(nuevoFavorito)
+        Log.d("API", "JSON enviado: $json")
+
+        // Hacer la llamada POST a la API
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val response = RamoFlorAPI.API().crearFavorito(nuevoFavorito)
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de éxito
+                    Log.d("API", "Añadido a Favoritos: ${response.message}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    // Mostrar un mensaje de error
+                    Log.e("API", "Error al añadir a Favoritos: ${e.message}")
                 }
             }
         }

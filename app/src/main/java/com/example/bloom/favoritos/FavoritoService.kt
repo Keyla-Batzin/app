@@ -16,27 +16,24 @@ import javax.net.ssl.SSLSocketFactory
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
-interface RamoFlorService {
+interface FavoritoService {
 
-    @GET("/ramos_flores/{id}")
-    suspend fun obtenerRamoFlores(@Path("id") id: Int): RamoFlor
+    @GET("/favoritos/")
+    suspend fun obtenerTodosFavoritos(): List<Favorito>
 
-    @GET("/ramos_flores/")
-    suspend fun obtenerTodosRamoFlor(): List<RamoFlor>
+    @DELETE("/favoritos/{id}")
+    suspend fun eliminarFavorito(@Path("id") id: Int): ResponseMessage
 
     @POST("/compras/")
     suspend fun crearCompra(@Body compra: Compra): ResponseMessage
-
-    @POST("/favoritos/")
-    suspend fun crearFavorito(@Body favorito: Favorito): ResponseMessage
 }
 
-class RamoFlorAPI {
+class FavoritoAPI {
     companion object {
-        private var mAPI: RamoFlorService? = null
+        private var mAPI: FavoritoService? = null
 
         @Synchronized
-        fun API(): RamoFlorService {
+        fun API(): FavoritoService {
             if (mAPI == null){
                 val client: OkHttpClient = getUnsafeOkHttpClient()
                 val gsondateformat= GsonBuilder()
@@ -47,7 +44,7 @@ class RamoFlorAPI {
                     .baseUrl("https://18.211.200.201")
                     .client(getUnsafeOkHttpClient())
                     .build()
-                    .create(RamoFlorService::class.java)
+                    .create(FavoritoService::class.java)
             }
             return mAPI!!
         }

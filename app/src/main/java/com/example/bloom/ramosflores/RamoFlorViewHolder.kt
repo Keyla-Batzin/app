@@ -14,8 +14,9 @@ class RamoFlorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val photo: ImageView = view.findViewById(R.id.imgRamosFlores)
     val precio: TextView = view.findViewById(R.id.precioRamosFlores)
     val btnAdd: ImageButton = view.findViewById(R.id.btnAdd) // Referencia al botón "Añadir"
+    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 
-    fun render(ramosFloresModel: RamoFlor, onAddClick: (RamoFlor) -> Unit) {
+    fun render(ramosFloresModel: RamoFlor, onAddClick: (RamoFlor) -> Unit, onAddFavClick: (RamoFlor) -> Unit) {
         name.text = ramosFloresModel.nombre
         precio.text = buildString {
             append(ramosFloresModel.precio.toString())
@@ -32,6 +33,11 @@ class RamoFlorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Configurar el clic en el botón "Añadir"
         btnAdd.setOnClickListener {
             onAddClick(ramosFloresModel) // Llamar a la función onAddClick con el ítem seleccionado
+        }
+
+        btnFav.setOnClickListener {
+            onAddFavClick(ramosFloresModel)
+            btnFav.setImageResource(R.drawable.heart1_relleno)
         }
     }
 }
