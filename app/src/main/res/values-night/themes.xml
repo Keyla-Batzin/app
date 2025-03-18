@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Bloom" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/purple_light</item>
-        <item name="colorPrimaryDark">@color/purple_primary</item>
+        <item name="colorPrimary">@color/morado_claro</item>
+        <item name="colorPrimaryDark">@color/primary_morado</item>
         <item name="colorAccent">@color/green_turquoise_dark</item>
 
-        <item name="android:windowBackground">@color/purple_primary</item>
+        <item name="android:windowBackground">@color/primary_morado</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">@color/green_mint_light</item>
     </style>

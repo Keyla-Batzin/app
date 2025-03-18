@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Bloom" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="fontFamily">@font/poppins_medium</item>
-        <item name="colorPrimary">@color/purple_primary</item>
-        <item name="colorPrimaryDark">@color/purple_dark</item>
-        <item name="colorAccent">@color/blue_light</item>
+        <item name="colorPrimary">@color/primary_morado</item>
+        <item name="colorPrimaryDark">@color/morado_oscuro</item>
+        <item name="colorAccent">@color/secondary_lila</item>
 
         <item name="android:windowBackground">@color/background_primary</item>
         <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/purple_dark</item>
+        <item name="android:textColorSecondary">@color/morado_oscuro</item>
 
         <!-- Botones -->
         <item name="materialButtonStyle">@style/BotonNormalClaro</item>
@@ -20,7 +20,7 @@
     <!-- Estilo personalizado para los botones -->
     <!-- Boton Claro -->
     <style name="BotonNormalClaro" parent="Widget.Material3.Button">
-        <item name="backgroundTint">@color/blue_light</item>
+        <item name="backgroundTint">@color/secondary_lila</item>
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/poppins_blod</item>
         <item name="android:radius">12dp</item>
@@ -31,7 +31,7 @@
 
     <!-- Boton Oscuro -->
     <style name="BotonNormalOscuro" parent="Widget.Material3.Button">
-        <item name="backgroundTint">@color/indigo</item>
+        <item name="backgroundTint">@color/purple</item>
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/poppins_blod</item>
         <item name="android:layout_width">wrap_content</item>
@@ -42,7 +42,7 @@
     <!-- Boton Cuadrado -->
     <style name="BotonLilaClaro" parent="Widget.AppCompat.Button">
         <!-- Tamaño y forma -->
-        <item name="backgroundTint">@color/blue_light</item>
+        <item name="backgroundTint">@color/secondary_lila</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">@font/poppins_blod</item>
         <item name="android:padding">10dp</item>
@@ -68,7 +68,7 @@
     <!-- Boton Cuadrado Oscuro -->
     <style name="BotonOscuro" parent="Widget.AppCompat.Button">
         <!-- Tamaño y forma -->
-        <item name="backgroundTint">@color/purple_primary</item>
+        <item name="backgroundTint">@color/primary_morado</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">@font/poppins_blod</item>
         <item name="android:padding">10dp</item>

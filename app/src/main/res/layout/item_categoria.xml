@@ -10,7 +10,7 @@
         android:id="@+id/imgCat"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@color/blue_dark"
+        android:background="@color/lila_azul"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
