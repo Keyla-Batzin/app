@@ -4,6 +4,9 @@
     <color name="morado_oscuro">#0f0022</color>
     <color name="primary_morado">#1c0033</color>
     <color name="morado_claro">#331c55</color>
+    <color name="morado_intermedio">#5A2B77</color>
+    <color name="morado_muy_claro"> #955FB9</color>
+    <color name="morado_muy_muy_claro">#E6DCF6</color>
 
     <color name="secondary_lila">#9e9ee2</color>
     <color name="lila_azul">#8888bb</color>

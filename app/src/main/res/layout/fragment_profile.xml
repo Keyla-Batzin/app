@@ -28,7 +28,7 @@
             <ImageView
                 android:layout_width="180dp"
                 android:layout_height="180dp"
-                android:background="@drawable/img_gato_cafe" />
+                android:background="@drawable/img_prueba_fondo05" />
             <ImageButton
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -100,18 +100,18 @@
                 <!-- Boton (Modifica) -->
                 <Button
                     android:id="@+id/btn_modifcaNombre"
-                    style="@style/BotonNormalClaro"
+                    style="@style/BotonNormalOscuro01"
                     android:text="@string/modifica">
                 </Button>
                 <Button
                     android:id="@+id/btn_modifcaEmail"
-                    style="@style/BotonNormalClaro"
+                    style="@style/BotonNormalOscuro01"
                     android:layout_marginTop="20dp"
                     android:text="@string/modifica">
                 </Button>
                 <Button
                     android:id="@+id/btn_modifcaTelef"
-                    style="@style/BotonNormalClaro"
+                    style="@style/BotonNormalOscuro01"
                     android:layout_marginTop="20dp"
                     android:text="@string/modifica">
                 </Button>
@@ -124,7 +124,7 @@
         <Button
             android:layout_width="match_parent"
             android:text="Cambiar contraseña"
-            style="@style/BotonLilaClaro"/>
+            style="@style/BotonIntermedio"/>
         <Button
             android:layout_width="match_parent"
             android:text="Eliminar cuenta"

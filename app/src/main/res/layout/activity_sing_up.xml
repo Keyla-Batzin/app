@@ -7,6 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".SingUp">
 
+    <!-- Imagen de fondo -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_fondo_al_reves"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/darkOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#3D000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,6 +44,7 @@
             android:layout_height="0dp"
             android:layout_weight="9"
             android:gravity="center"
+            android:layout_marginTop="70dp"
             android:orientation="vertical">
             <!-- Img Icon -->
             <ImageView
@@ -100,7 +123,7 @@
             <!-- Boton Login -->
             <Button
                 android:id="@+id/btn_login"
-                style="@style/BotonOscuro"
+                style="@style/BotonIntermedio"
                 android:layout_width="150dp"
                 android:text="Crear Cuenta" />
         </LinearLayout>

@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:background="#70543F75"/>
+            android:background="#AE5A2B77"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerProductos"

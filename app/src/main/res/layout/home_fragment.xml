@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/home_img"
+                    android:src="@drawable/home_fondo02"
                     android:contentDescription="Imagen Floristeria Home" />
 
                 <TextView
@@ -39,7 +39,7 @@
                     android:textSize="40sp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:background="#44C79DA0"
+                    android:background="#44AB9DC7"
                     android:padding="8dp"
                     style="@style/Titulo"
                     android:layout_gravity="center" />
@@ -92,7 +92,7 @@
                     android:text="Nuestros productos"
                     android:textSize="30sp"
                     style="@style/Titulo"
-                    android:background="#C79DA0"
+                    android:background="@color/morado_intermedio"
                     android:textColor="@color/white"
                     android:gravity="center" />
             </FrameLayout>
@@ -129,7 +129,6 @@
                             <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
-
                                 <!-- Imagen -->
                                 <ImageView
                                     android:layout_width="match_parent"
@@ -138,7 +137,8 @@
                                     android:src="@drawable/ramo_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#74000000"
+                                    android:background="#44AB9DC7"
+                                    android:paddingHorizontal="30dp"
                                     android:text="Ramos de Flores"/>
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
@@ -164,7 +164,8 @@
                                     android:src="@drawable/planta_interior_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#74000000"
+                                    android:background="#44AB9DC7"
+                                    android:paddingHorizontal="30dp"
                                     android:text="Plantas de Interior"/>
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
@@ -190,7 +191,7 @@
                                     android:src="@drawable/flores_evento_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#74000000"
+                                    android:background="#44AB9DC7"
                                     android:text="Flores para Eventos" />
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
@@ -214,7 +215,7 @@
                                     android:src="@drawable/macetas_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#74000000"
+                                    android:background="#44AB9DC7"
                                     android:text="Macetas y Accesorios" />
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
@@ -224,7 +225,7 @@
 
                 <Button
                     android:id="@+id/btn_cat"
-                    style="@style/BotonRosaOscuro"
+                    style="@style/BotonIntermedio"
                     android:layout_gravity="center"
                     android:text="Ver todas las categorias"/>
             </LinearLayout>
@@ -235,7 +236,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="#C79DA0"
+                android:backgroundTint="#D45A2B77"
                 android:layout_gravity="center">
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -265,10 +266,11 @@
                         android:id="@+id/textEmail"
                         style="@style/editedTextStyle"
                         android:layout_width="270dp"
+                        android:textColor="@color/white"
                         android:inputType="textEmailAddress" />
                     <Button
                         android:id="@+id/btn_suscribirse"
-                        style="@style/BotonRosaClaro"
+                        style="@style/BotonIntermedio"
                         android:text="Suscribirme"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
