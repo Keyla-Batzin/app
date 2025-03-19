@@ -36,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
+                android:layout_gravity="center"
                 style="@style/Texto"
                 android:text="0"/>
 
@@ -49,6 +50,7 @@
                 android:id="@+id/btnComprar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/BotonLilaClaro"
                 android:text="@string/comprar"/>
         </LinearLayout>
 
