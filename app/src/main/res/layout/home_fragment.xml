@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".pantallahome.HomeFragment">
 
     <!-- ScrollView -->
@@ -39,7 +40,7 @@
                     android:textSize="40sp"
                     android:gravity="center"
                     android:textColor="@color/white"
-                    android:background="#44AB9DC7"
+                    android:background="#4437313F"
                     android:padding="8dp"
                     style="@style/Titulo"
                     android:layout_gravity="center" />
@@ -97,6 +98,7 @@
                     android:gravity="center" />
             </FrameLayout>
 
+            <!-- Sección CardViews -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -137,7 +139,7 @@
                                     android:src="@drawable/ramo_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#44AB9DC7"
+                                    android:background="#4437313F"
                                     android:paddingHorizontal="30dp"
                                     android:text="Ramos de Flores"/>
                             </FrameLayout>
@@ -164,7 +166,7 @@
                                     android:src="@drawable/planta_interior_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#44AB9DC7"
+                                    android:background="#4437313F"
                                     android:paddingHorizontal="30dp"
                                     android:text="Plantas de Interior"/>
                             </FrameLayout>
@@ -191,7 +193,7 @@
                                     android:src="@drawable/flores_evento_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#44AB9DC7"
+                                    android:background="#4437313F"
                                     android:text="Flores para Eventos" />
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
@@ -215,7 +217,7 @@
                                     android:src="@drawable/macetas_home" />
                                 <TextView
                                     style="@style/TextoCard"
-                                    android:background="#44AB9DC7"
+                                    android:background="#4437313F"
                                     android:text="Macetas y Accesorios" />
                             </FrameLayout>
                         </androidx.cardview.widget.CardView>
@@ -230,12 +232,161 @@
                     android:text="Ver todas las categorias"/>
             </LinearLayout>
 
+            <!-- Sección Producto Aleatorio -->
+            <!-- Imagen-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_secion02"
+                    android:contentDescription="Imagen Secion Random" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="No sabes que regalar?"
+                    android:textSize="30sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:background="#4437313F"
+                    android:padding="8dp"
+                    style="@style/Titulo"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+            <!-- Texto Explicación Seción -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Texto"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:layout_margin="6dp"
+                android:text="Seleciona una categoria y dale a buscar para generar un producto aleatorio!!"/>
+            <!-- Texto + Spinner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="26dp"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/Texto"
+                    android:textSize="20sp"
+                    android:layout_gravity="start"
+                    android:layout_marginEnd="20dp"
+                    android:text="Categoria: "/>
+
+                <Spinner
+                    android:id="@+id/catSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    style="@style/CustomSpinnerStylesSecion"
+                    android:prompt="Seleciona una categoria" />
+            </LinearLayout>
+            <!-- Boton Buscar -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginHorizontal="12dp"
+               android:orientation="vertical">
+               <Button
+                   android:id="@+id/btnSearch"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   style="@style/BotonIntermedio"
+                   android:text="Buscar"/>
+           </LinearLayout>
+            <!-- Card Producto -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="25dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <!-- Contenedor que permite superponer elementos -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp">
+
+                        <!-- Imagen de reserva -->
+                        <ImageView
+                            android:id="@+id/imagenReserva"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/lila_azul"
+                            android:scaleType="centerCrop"/>
+
+                        <!-- Botón superpuesto en la esquina inferior derecha -->
+                        <ImageButton
+                            android:id="@+id/btnAdd"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/shop3"
+                            android:background="@android:color/transparent"
+                            android:scaleType="fitCenter"
+                            android:layout_gravity="bottom|end"
+                            android:layout_margin="8dp"/>
+                    </FrameLayout>
+
+                    <!-- Texto debajo de la imagen -->
+                    <TextView
+                        android:id="@+id/textDescripcion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nombre Producto"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:paddingTop="8dp"/>
+
+                    <TextView
+                        android:id="@+id/textFecha"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20,99€"
+                        android:textSize="16sp"
+                        android:paddingTop="4dp"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
             <!-- Sección 'Newsletter' -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_secion07"
+                    android:contentDescription="Imagen Secion Newsletter" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="¡Suscribete para no perderte ninguna novedad!"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:background="#4437313F"
+                    android:padding="8dp"
+                    style="@style/Titulo"
+                    android:layout_gravity="center" />
+            </FrameLayout>
+            <!-- Card Newsletter -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginVertical="20dp"
                 android:backgroundTint="#D45A2B77"
                 android:layout_gravity="center">
                 <LinearLayout

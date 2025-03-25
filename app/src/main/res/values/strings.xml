@@ -47,4 +47,13 @@
         <item>Italia</item>
         <item>Reino Unido</item>
     </string-array>
+
+    <string-array name="categorias_array">
+        <item>Ramos Flores</item>
+        <item>Plantas Interior</item>
+        <item>Plantas Exterior</item>
+        <item>Flores Eventos</item>
+        <item>Macetas y Accesorios</item>
+        <item>Packs</item>
+    </string-array>
 </resources>
