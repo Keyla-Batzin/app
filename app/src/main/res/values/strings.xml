@@ -19,7 +19,7 @@
     <string name="privacidad">Privacidad</string>
     <string name="tel_fono">Teléfono</string>
     <string name="repetir_contrase_a">Repetir contraseña</string>
-    <string name="bienvenido">Bienvenido</string>
+    <string name="bienvenido">Bienvenido a Bloom</string>
     <string name="newsletter">Newsletter</string>
     <string name="acerca_de_nosotros">Acerca de nosotros</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquet feugiat commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
@@ -33,6 +33,7 @@
     <string name="men">Menú</string>
     <string name="descripcion_generica">Descripcion Generica</string>
     <string name="select_country">Selecciona un país</string>
+    <string name="select_category">Selecciona una categoria</string>
     <string name="gracias_por_tu_compra">!Gracias por tu compra¡</string>
     <string name="acerca_de_pt1">En Bloom, nos especializamos en ofrecer flores frescas y de calidad para cualquier ocasión.</string>
     <string name="acerca_de_pt2">Con un enfoque en la sostenibilidad y el trabajo con proveedores locales, creamos ramos y arreglos únicos que expresan emociones y momentos especiales.</string>
