@@ -1,44 +1,16 @@
 package com.example.bloom.ramosflores
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.example.bloom.base.ProductoBaseViewHolder
 import com.example.bloom.R
 
-class RamoFlorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val name: TextView = view.findViewById(R.id.nombreRamosFlores)
-    val photo: ImageView = view.findViewById(R.id.imgRamosFlores)
-    val precio: TextView = view.findViewById(R.id.precioRamosFlores)
-    val btnAdd: ImageButton = view.findViewById(R.id.btnAdd) // Referencia al botón "Añadir"
-    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
-
-    fun render(ramosFloresModel: RamoFlor, onAddClick: (RamoFlor) -> Unit, onAddFavClick: (RamoFlor) -> Unit) {
-        name.text = ramosFloresModel.nombre
-        precio.text = buildString {
-            append(ramosFloresModel.precio.toString())
-            append("€")
-        }
-
-        Log.d("ImageURL", "Cargando imagen desde: ${ramosFloresModel.url}")
-        Glide.with(photo.context)
-            .load(ramosFloresModel.url)
-            .placeholder(R.drawable.logo_peque)
-            .error(R.drawable.img_error)
-            .into(photo)
-
-        // Configurar el clic en el botón "Añadir"
-        btnAdd.setOnClickListener {
-            onAddClick(ramosFloresModel) // Llamar a la función onAddClick con el ítem seleccionado
-            btnAdd.setImageResource(R.drawable.shop_check)
-        }
-
-        btnFav.setOnClickListener {
-            onAddFavClick(ramosFloresModel)
-            btnFav.setImageResource(R.drawable.heart1_relleno)
-        }
-    }
+class RamoFlorViewHolder(view: View) : ProductoBaseViewHolder<RamoFlor>(view) {
+    override val name: TextView = view.findViewById(R.id.nombreRamosFlores)
+    override val photo: ImageView = view.findViewById(R.id.imgRamosFlores)
+    override val precio: TextView = view.findViewById(R.id.precioRamosFlores)
+    override val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
+    override val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 }

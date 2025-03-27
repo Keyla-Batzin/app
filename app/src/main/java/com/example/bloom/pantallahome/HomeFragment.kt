@@ -1,6 +1,5 @@
 package com.example.bloom.pantallahome
 
-import RamoFlorService
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,8 +22,10 @@ import com.example.bloom.macetasaccesorios.MacetasAccesoriosFragment
 import com.example.bloom.plantasinterior.PlantasInteriorFragment
 import com.example.bloom.ramosflores.RamoFlorAdapter
 import com.example.bloom.ramosflores.RamosFloresFragment
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
     override fun onCreateView(
@@ -128,25 +129,33 @@ class HomeFragment : Fragment() {
             val randomId = idRange.random()
 
             // Llamar al API
-            val service = RamoFlorAPI.API()
+            /*
+            val service = RamoFlorAPI().getAPI()
             lifecycleScope.launch {
                 try {
-                    val ramo = service.obtenerRamoFlores(randomId)
+                    // Asegúrate de que obtenerRamoFlores esté definido en RamoFlorService
+                    val ramo = service.obtenerPorId(randomId)
 
                     // Actualizar UI
-                    name.text = ramo.nombre
-                    precio.text = "${ramo.precio}€"
+                    withContext(Dispatchers.Main) {
+                        name.text = ramo.nombre
+                        precio.text = "${ramo.precio}€"
 
-                    Glide.with(photo.context)
-                        .load(ramo.url)
-                        .placeholder(R.drawable.logo_peque)
-                        .error(R.drawable.img_error)
-                        .into(photo)
-
+                        Glide.with(photo.context)
+                            .load(ramo.url)
+                            .placeholder(R.drawable.logo_peque)
+                            .error(R.drawable.img_error)
+                            .into(photo)
+                    }
                 } catch (e: Exception) {
-                    Toast.makeText(requireContext(), "Error al obtener datos", Toast.LENGTH_SHORT).show()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireContext(), "Error al obtener datos", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
+
+             */
+
 
             val cardProducto = view.findViewById<CardView>(R.id.cardProducto)
             cardProducto.visibility = View.VISIBLE  // Hace que el CardView sea visible

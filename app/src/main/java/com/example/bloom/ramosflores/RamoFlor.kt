@@ -1,7 +1,10 @@
 package com.example.bloom.ramosflores
 
-data class RamoFlor (
-    val nombre: String,
-    val precio: Float,
-    val url: String // URL
-)
+import com.example.bloom.base.ProductoBase
+
+data class RamoFlor(
+    val id: Int,
+    override val nombre: String,
+    override val precio: Float,
+    override val url: String
+) : ProductoBase
