@@ -1,45 +1,17 @@
 package com.example.bloom.plantasinterior
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.bloom.R
+import com.example.bloom.base.ProductoBaseViewHolder
 import com.example.bloom.ramosflores.RamoFlor
 
-class PlantaInteriorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val name: TextView = view.findViewById(R.id.nombrePlantaInterior)
-    val photo: ImageView = view.findViewById(R.id.imgPlantaInterior)
-    val precio: TextView = view.findViewById(R.id.precioPlantaInterior)
-    val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
-    val btnFav: ImageButton = view.findViewById(R.id.btnFav)
-
-    fun render(plantaInteriorModel: PlantaInterior, onAddClick: (PlantaInterior) -> Unit, onAddFavClick: (PlantaInterior) -> Unit) {
-        name.text = plantaInteriorModel.nombre
-        precio.text = buildString {
-            append(plantaInteriorModel.precio.toString())
-            append("€")
-        }
-
-        Log.d("ImageURL", "Cargando imagen desde: ${plantaInteriorModel.url}")
-        Glide.with(photo.context)
-            .load(plantaInteriorModel.url) // URL de la imagen
-            .placeholder(R.drawable.logo_peque)
-            .error(R.drawable.img_error) // Imagen si hay error
-            .into(photo) // Cargamos la imagen en el ImageView
-
-        // Configurar el clic en el botón "Añadir"
-        btnAdd.setOnClickListener {
-            onAddClick(plantaInteriorModel) // Llamar a la función onAddClick con el ítem seleccionado
-            btnAdd.setImageResource(R.drawable.shop_check)
-        }
-
-        btnFav.setOnClickListener {
-            onAddFavClick(plantaInteriorModel)
-            btnFav.setImageResource(R.drawable.heart1_relleno)
-        }
-    }
+class PlantaInteriorViewHolder(view: View) : ProductoBaseViewHolder<RamoFlor>(view) {
+    override val name: TextView = view.findViewById(R.id.nombrePlantaInterior)
+    override val photo: ImageView = view.findViewById(R.id.imgPlantaInterior)
+    override val precio: TextView = view.findViewById(R.id.precioPlantaInterior)
+    override val btnAdd: ImageButton = view.findViewById(R.id.btnAdd)
+    override val btnFav: ImageButton = view.findViewById(R.id.btnFav)
 }

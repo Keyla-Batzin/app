@@ -1,7 +1,10 @@
 package com.example.bloom.plantasinterior
 
+import com.example.bloom.base.ProductoBase
+
 data class PlantaInterior (
-    val nombre: String,
-    val precio: Float,
-    val url: String // URL
-)
+    val id: Int,
+    override val nombre: String,
+    override val precio: Float,
+    override val url: String
+) : ProductoBase
