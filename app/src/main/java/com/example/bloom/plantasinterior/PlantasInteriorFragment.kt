@@ -1,11 +1,17 @@
 package com.example.bloom.plantasinterior
 
 import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.bloom.Mensaje
 import com.example.bloom.R
 import com.example.bloom.base.ProductoBaseFragment
 import com.example.bloom.compra.Compra
 import com.example.bloom.favoritos.Favorito
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -42,6 +48,7 @@ class PlantasInteriorFragment : ProductoBaseFragment<PlantaInterior, PlantaInter
                 val response = PlantaInteriorAPI().getAPI().crearCompra(nuevaCompra)
                 withContext(Dispatchers.Main) {
                     Log.d("API", "Añadido a Compra: ${response.message}")
+                    Mensaje.mostrarCesta(view)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -67,6 +74,7 @@ class PlantasInteriorFragment : ProductoBaseFragment<PlantaInterior, PlantaInter
                 val response = PlantaInteriorAPI().getAPI().crearFavorito(nuevoFavorito)
                 withContext(Dispatchers.Main) {
                     Log.d("API", "Añadido a Favoritos: ${response.message}")
+                    Mensaje.mostrarFavoritos(view)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {

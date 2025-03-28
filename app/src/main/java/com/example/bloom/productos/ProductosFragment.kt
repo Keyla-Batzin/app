@@ -2,19 +2,24 @@ package com.example.bloom.productos
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bloom.Mensaje
 import com.example.bloom.R
 import com.example.bloom.compra.Compra
 import com.example.bloom.favoritos.Favorito
 import com.example.bloom.ramosflores.RamoFlor
 import com.example.bloom.ramosflores.RamoFlorAdapter
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -136,7 +141,7 @@ class ProductosFragment : Fragment() {
                 val response = ProductoAPI.API().crearCompra(nuevaCompra)
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de éxito
-                    Log.d("API", "Añadido a Compra: ${response.message}")
+                    Mensaje.mostrarCesta(view)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -168,6 +173,7 @@ class ProductosFragment : Fragment() {
                 withContext(Dispatchers.Main) {
                     // Mostrar un mensaje de éxito
                     Log.d("API", "Añadido a Favoritos: ${response.message}")
+                    Mensaje.mostrarFavoritos(view)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {

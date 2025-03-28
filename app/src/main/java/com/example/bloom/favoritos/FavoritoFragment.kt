@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bloom.Mensaje
 import com.example.bloom.R
 import com.example.bloom.compra.Compra
 import com.google.gson.Gson
@@ -82,6 +83,7 @@ class FavoritoFragment : Fragment() {
                 val response = FavoritoAPI.API().crearCompra(nuevaCompra)
                 withContext(Dispatchers.Main) {
                     Log.d("API", "Añadido a Compra: ${response.message}")
+                    Mensaje.mostrarCesta(view)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -102,6 +104,12 @@ class FavoritoFragment : Fragment() {
                         adapter.notifyItemRemoved(position)
                     }
                     Log.d("API", "Favorito eliminado: ${response.message}")
+
+                    Mensaje.mostrarPersonalizado(
+                        view,
+                        mensaje = "❌ Producto eliminado de favoritos!",
+                        colorRes = R.color.morado_claro
+                    )
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {

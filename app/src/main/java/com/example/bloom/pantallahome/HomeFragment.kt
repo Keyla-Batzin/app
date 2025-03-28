@@ -1,6 +1,7 @@
 package com.example.bloom.pantallahome
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
@@ -33,6 +35,7 @@ import com.example.bloom.plantasinterior.PlantasInteriorFragment
 import com.example.bloom.ramosflores.RamoFlor
 import com.example.bloom.ramosflores.RamoFlorAPI
 import com.example.bloom.ramosflores.RamosFloresFragment
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -102,7 +105,26 @@ class HomeFragment : Fragment() {
         // Configurar botón para mostrar un Toast
         val btnSuscribirse = view.findViewById<Button>(R.id.btn_suscribirse)
         btnSuscribirse.setOnClickListener {
-            Toast.makeText(requireContext(), "Suscripción realizada con éxito.", Toast.LENGTH_SHORT).show()
+            view?.let { rootView ->
+                val snackbar = Snackbar.make(
+                    rootView,
+                    "✅ Subscripción realizada con éxito",
+                    Snackbar.LENGTH_LONG
+                ).apply {
+                    setAnimationMode(Snackbar.ANIMATION_MODE_SLIDE)
+                    context?.let { ctx ->
+                        setBackgroundTint(ContextCompat.getColor(ctx, R.color.lila_azul))
+                    }
+                }
+
+                // Personalización: Centrar texto
+                snackbar.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text).apply {
+                    gravity = Gravity.CENTER_HORIZONTAL
+                    textAlignment = View.TEXT_ALIGNMENT_CENTER
+                }
+
+                snackbar.show()
+            }
         }
 
         // ------------------- Spinner -----------------------------//

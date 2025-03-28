@@ -2,6 +2,7 @@ package com.example.bloom.macetasaccesorios
 
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
+import com.example.bloom.Mensaje
 import com.example.bloom.R
 import com.example.bloom.base.ProductoBaseFragment
 import com.example.bloom.compra.Compra
@@ -41,6 +42,7 @@ class MacetasAccesoriosFragment : ProductoBaseFragment<MacetaAccesorio, MacetaAc
                 val response = MacetaAccesorioAPI().getAPI().crearCompra(nuevaCompra)
                 withContext(Dispatchers.Main) {
                     Log.d("API", "Añadido a Compra: ${response.message}")
+                    Mensaje.mostrarCesta(view)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -66,6 +68,7 @@ class MacetasAccesoriosFragment : ProductoBaseFragment<MacetaAccesorio, MacetaAc
                 val response = MacetaAccesorioAPI().getAPI().crearFavorito(nuevoFavorito)
                 withContext(Dispatchers.Main) {
                     Log.d("API", "Añadido a Favoritos: ${response.message}")
+                    Mensaje.mostrarFavoritos(view)
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {

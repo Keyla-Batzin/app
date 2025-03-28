@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bloom.Mensaje
 import com.example.bloom.R
 import com.example.bloom.pantallacompra.FragmentCompra1
 import kotlinx.coroutines.Dispatchers
@@ -105,6 +106,11 @@ class ComprasFragment : Fragment() {
                         adapter.removeItem(position)
                     }
                     Log.d("API", "Compra eliminada: ${response.message}")
+                    Mensaje.mostrarPersonalizado(
+                        view,
+                        mensaje = "❌ Producto eliminado",
+                        colorRes = R.color.morado_claro
+                    )
                 }
                 actualizaPrecioTotal()
             } catch (e: Exception) {
