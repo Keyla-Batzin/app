@@ -14,8 +14,8 @@ import kotlinx.coroutines.withContext
 
 class PlantasInteriorFragment : ProductoBaseFragment<PlantaInterior, PlantaInteriorAdapter>() {
 
-    override fun getLayoutResource(): Int = R.layout.fragment_ramos_flores
-    override fun getRecyclerViewId(): Int = R.id.recyclerRamosFlores
+    override fun getLayoutResource(): Int = R.layout.fragment_plantas_interior
+    override fun getRecyclerViewId(): Int = R.id.recyclerPlantasInterior
     override fun createAdapter(items: List<PlantaInterior>): PlantaInteriorAdapter {
         return PlantaInteriorAdapter(items, { ramoFlor -> addToCart(ramoFlor) }, { ramoFlor -> addToFavorites(ramoFlor) })
     }

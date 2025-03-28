@@ -1,6 +1,8 @@
 package com.example.bloom.ramosflores
 
+import android.graphics.Color
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.bloom.R
 import com.example.bloom.base.ProductoBaseFragment
@@ -10,6 +12,7 @@ import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.google.android.material.snackbar.Snackbar
 
 class RamosFloresFragment : ProductoBaseFragment<RamoFlor, RamoFlorAdapter>() {
 
@@ -41,6 +44,13 @@ class RamosFloresFragment : ProductoBaseFragment<RamoFlor, RamoFlorAdapter>() {
                 val response = RamoFlorAPI().getAPI().crearCompra(nuevaCompra)
                 withContext(Dispatchers.Main) {
                     Log.d("API", "Añadido a Compra: ${response.message}")
+                    // Mostrar Snackbar
+                    view?.let {
+                        val snackbar = Snackbar.make(it, "Añadido al carrito", Snackbar.LENGTH_LONG)
+                            .setTextColor(Color.WHITE) // Color del texto del Snackbar
+
+                        snackbar.show()
+                    }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -66,10 +76,18 @@ class RamosFloresFragment : ProductoBaseFragment<RamoFlor, RamoFlorAdapter>() {
                 val response = RamoFlorAPI().getAPI().crearFavorito(nuevoFavorito)
                 withContext(Dispatchers.Main) {
                     Log.d("API", "Añadido a Favoritos: ${response.message}")
+                    // Mostrar Snackbar
+                    view?.let {
+                        Snackbar.make(it, "Añadido a favoritos", Snackbar.LENGTH_SHORT).show()
+                    }
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Log.e("API", "Error al añadir a Favoritos: ${e.message}")
+                    // Mostrar Snackbar de error
+                    view?.let {
+                        Snackbar.make(it, "Error al añadir a favoritos", Snackbar.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

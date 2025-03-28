@@ -1,7 +1,10 @@
 package com.example.bloom.pack
 
+import com.example.bloom.base.ProductoBase
+
 data class Pack(
-    val nombre: String,
-    val precio: Float,
-    val url: String // URL de la imagen
-)
+    val id: Int,
+    override val nombre: String,
+    override val precio: Float,
+    override val url: String
+) : ProductoBase

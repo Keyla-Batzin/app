@@ -1,28 +1,18 @@
 package com.example.bloom.macetasaccesorios
 
-
+import com.example.bloom.R
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.example.bloom.R
-import com.example.bloom.plantasexterior.PlantaExterior
-import com.example.bloom.ramosflores.RamoFlor
+import com.example.bloom.base.ProductoBaseAdapter
 
 class MacetaAccesorioAdapter(
-    val macetasAccesoriosList: List<MacetaAccesorio>,
-    private val onAddClick: (MacetaAccesorio) -> Unit,
-    private val onAddFavClick: (MacetaAccesorio) -> Unit
-) : RecyclerView.Adapter<MacetaAccesorioViewHolder>() {
+    items: List<MacetaAccesorio>,
+    onAddClick: (MacetaAccesorio) -> Unit,
+    onAddFavClick: (MacetaAccesorio) -> Unit
+) : ProductoBaseAdapter<MacetaAccesorio, MacetaAccesorioViewHolder>(items, onAddClick, onAddFavClick) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MacetaAccesorioViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return MacetaAccesorioViewHolder(layoutInflater.inflate(R.layout.item_maceta_accesorio, parent, false))
     }
-
-    override fun onBindViewHolder(holder: MacetaAccesorioViewHolder, position: Int) {
-        val item = macetasAccesoriosList[position]
-        holder.render(item, onAddClick, onAddFavClick)
-    }
-
-    override fun getItemCount(): Int = macetasAccesoriosList.size
 }

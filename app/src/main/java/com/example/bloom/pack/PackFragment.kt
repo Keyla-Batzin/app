@@ -1,133 +1,74 @@
 package com.example.bloom.pack
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
+import com.example.bloom.base.ProductoBaseFragment
 import com.example.bloom.compra.Compra
 import com.example.bloom.favoritos.Favorito
-import com.example.bloom.ramosflores.RamoFlor
-import com.example.bloom.ramosflores.RamoFlorAdapter
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PacksFragment : Fragment() {
+class PackFragment : ProductoBaseFragment<Pack, PackAdapter>() {
 
-    private lateinit var rv: RecyclerView
-    private lateinit var adapter: PackAdapter
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_pack, container, false)
-
-        rv = view.findViewById(R.id.recyclerPack)
-        rv.layoutManager = GridLayoutManager(requireContext(), 2)
-
-        // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = PackAdapter(emptyList(),
-            onAddClick = { pack -> añadirACompra(pack) },  // Función para añadir a Compra
-            onAddFavClick = { pack -> añadirAFavoritos(pack) }  // Función para añadir a Favoritos
-        )
-        rv.adapter = adapter
-
-        // Cargar datos
-        actualizaPacks()
-
-        return view
+    override fun getLayoutResource(): Int = R.layout.fragment_pack
+    override fun getRecyclerViewId(): Int = R.id.recyclerPack
+    override fun createAdapter(items: List<Pack>): PackAdapter {
+        return PackAdapter(items, { pack -> addToCart(pack) }, { pack -> addToFavorites(pack) })
     }
 
-    private fun actualizaPacks() {
-        val service = PackAPI.API()
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                val listaPacks = service.obtenerTodosPacks()
-
-                // Verificar si la lista no es nula
-                if (!listaPacks.isNullOrEmpty()) {
-                    withContext(Dispatchers.Main) {
-                        // Actualizar el adaptador con los nuevos datos
-                        adapter = PackAdapter(listaPacks,
-                            onAddClick = { pack -> añadirACompra(pack) },
-                            onAddFavClick = { pack -> añadirAFavoritos(pack) }
-                        )
-                        rv.adapter = adapter
-                    }
-                } else {
-                    Log.e("API", "Lista de packs vacía o nula")
-                }
-            } catch (e: Exception) {
-                Log.e("API", "Error al obtener datos", e)
-            }
-        }
+    override suspend fun fetchData(): List<Pack> {
+        val service = PackAPI().getAPI()
+        return service.obtenerTodosPacks()
     }
 
-    private fun añadirACompra(pack: Pack) {
-        // Crear un objeto Compra con los datos del RamoFlor
+    override fun addToCart(item: Pack) {
         val nuevaCompra = Compra(
-            id = 0,  // Añade el campo id con un valor por defecto
-            nombre = pack.nombre,
-            precio = pack.precio,  // Asegúrate de que sea una cadena de texto
-            url = pack.url,
+            id = 0,
+            nombre = item.nombre,
+            precio = item.precio,
+            url = item.url,
             cantidad = 1
         )
-
-        // Imprimir el JSON que se enviará
         val gson = Gson()
         val json = gson.toJson(nuevaCompra)
         Log.d("API", "JSON enviado: $json")
 
-        // Hacer la llamada POST a la API
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val response = PackAPI.API().crearCompra(nuevaCompra)
+                val response = PackAPI().getAPI().crearCompra(nuevaCompra)
                 withContext(Dispatchers.Main) {
-                    // Mostrar un mensaje de éxito
                     Log.d("API", "Añadido a Compra: ${response.message}")
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    // Mostrar un mensaje de error
                     Log.e("API", "Error al añadir a Compra: ${e.message}")
                 }
             }
         }
     }
 
-    private fun añadirAFavoritos(pack: Pack) {
-        // Crear un objeto Favorito con los datos del RamoFlor
+    override fun addToFavorites(item: Pack) {
         val nuevoFavorito = Favorito(
-            id = 0,  // Añade el campo id con un valor por defecto
-            nombre = pack.nombre,
-            precio = pack.precio,
-            url = pack.url
+            id = 0,
+            nombre = item.nombre,
+            precio = item.precio,
+            url = item.url
         )
-
-        // Imprimir el JSON que se enviará
         val gson = Gson()
         val json = gson.toJson(nuevoFavorito)
         Log.d("API", "JSON enviado: $json")
 
-        // Hacer la llamada POST a la API
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
-                val response = PackAPI.API().crearFavorito(nuevoFavorito)
+                val response = PackAPI().getAPI().crearFavorito(nuevoFavorito)
                 withContext(Dispatchers.Main) {
-                    // Mostrar un mensaje de éxito
                     Log.d("API", "Añadido a Favoritos: ${response.message}")
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    // Mostrar un mensaje de error
                     Log.e("API", "Error al añadir a Favoritos: ${e.message}")
                 }
             }

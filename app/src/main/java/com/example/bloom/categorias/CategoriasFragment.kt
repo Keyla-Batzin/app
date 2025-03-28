@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.floreseventos.FloresEventosFragment
 import com.example.bloom.R
 import com.example.bloom.macetasaccesorios.MacetasAccesoriosFragment
-import com.example.bloom.pack.PacksFragment
+import com.example.bloom.pack.PackFragment
 import com.example.bloom.plantasexterior.PlantasExteriorFragment
 import com.example.bloom.plantasinterior.PlantasInteriorFragment
 import com.example.bloom.ramosflores.RamosFloresFragment
@@ -78,7 +78,7 @@ class CategoriasFragment : Fragment() {
             3 -> PlantasExteriorFragment()
             4 -> FloresEventosFragment()
             5 -> MacetasAccesoriosFragment()
-            6 -> PacksFragment()
+            6 -> PackFragment()
             else -> throw IllegalArgumentException("Categoría no válida")
         }
 
