@@ -19,6 +19,7 @@ import com.example.bloom.compra.ComprasFragment
 import com.example.bloom.pantallacompra.ActivityCompra
 import com.example.bloom.pantallacompra.FragmentCarrito
 import com.example.bloom.pantallahome.FragmentPreferencias
+import com.example.bloom.pantallahome.StatsFragment
 
 class Fragment_Header : Fragment() {
 
@@ -67,7 +68,11 @@ class Fragment_Header : Fragment() {
                 return true
             }
             R.id.op2 -> {
-                // Acción para opción 2 (De momento no tocarlos)
+                parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main_fragment, StatsFragment(), "TAG_STATS")
+                    .addToBackStack(null)
+                    .commit()
                 return true
             }
             R.id.op3 -> {

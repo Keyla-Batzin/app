@@ -16,6 +16,7 @@
 
     // Colores basicos
     <color name="black">#000000</color>
+    <color name="grey">#AAAAAA</color>
     <color name="white">#FFFFFF</color>
 
     <color name="transparente">#00FFFFFF</color>
@@ -33,5 +34,13 @@
     <color name="blue">#007FFF</color>
     <color name="purple">#4B0082</color>
     <color name="pink">#EE82EE</color>
+
+    // Colores Graficos
+    <color name="ramos">#FF5050</color>
+    <color name="plantaInt">#009688</color>
+    <color name="plantExt">#8BC34A</color>
+    <color name="floresEv">#E83BFF</color>
+    <color name="macetas">#673AB7</color>
+    <color name="pack">#3F51B5</color>
 
 </resources>

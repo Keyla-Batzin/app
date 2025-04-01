@@ -96,7 +96,7 @@ class HomeFragment : Fragment() {
         btnCat.setOnClickListener {
             parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             parentFragmentManager.beginTransaction()
-                .replace(R.id.main_fragment, CategoriasFragment(), "TAG_CATEGORIAS_FRAGMENT")
+                .replace(R.id.main_fragment, CategoriasFragment(), "CategoriasFragment")
                 .addToBackStack(null)
                 .commit()
         }

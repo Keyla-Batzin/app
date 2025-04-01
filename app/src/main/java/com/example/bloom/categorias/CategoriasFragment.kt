@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.floreseventos.FloresEventosFragment
 import com.example.bloom.R
+import com.example.bloom.SharedViewModel
+import com.example.bloom.compra.CompraStats
 import com.example.bloom.macetasaccesorios.MacetasAccesoriosFragment
 import com.example.bloom.pack.PackFragment
 import com.example.bloom.plantasexterior.PlantasExteriorFragment
@@ -20,10 +25,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class CategoriasFragment : Fragment() {
 
     private lateinit var rv: RecyclerView
     private lateinit var adapter: CategoriaAdapter
+    private lateinit var viewModel: SharedViewModel
+    private val categoriaStatsList = mutableListOf<CategoriaStats>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,14 +40,15 @@ class CategoriasFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_categorias, container, false)
 
         rv = view.findViewById(R.id.recyclerCategorias)
-        rv.layoutManager = GridLayoutManager(requireContext(), 2) // 2 columnas
+        rv.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        // 🔹 Asignar un adaptador vacío antes de la carga de datos
-        adapter = CategoriaAdapter(emptyList()) { categoria ->
-            // Manejar clic en el ítem
+        adapter = CategoriaAdapter(emptyList(), categoriaStatsList) { categoria ->
             cambiarFragment(categoria.id)
         }
         rv.adapter = adapter
+
+        // Inicializa el ViewModel
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         // Cargar datos
         actualizaCategorias()
@@ -52,15 +61,19 @@ class CategoriasFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
                 val listaCategorias = service.obtenerTodasCategorias()
-
-                // Verificar si la lista no es nula
                 if (!listaCategorias.isNullOrEmpty()) {
                     withContext(Dispatchers.Main) {
-                        // Actualizar el adaptador con los nuevos datos
-                        adapter = CategoriaAdapter(listaCategorias) { categoria ->
+                        if (categoriaStatsList.isEmpty()) {
+                            listaCategorias.forEach { categoria ->
+                                categoriaStatsList.add(CategoriaStats(categoria.id, categoriaName = categoria.nombre))
+                            }
+                        }
+                        adapter = CategoriaAdapter(listaCategorias, categoriaStatsList) { categoria ->
                             cambiarFragment(categoria.id)
                         }
                         rv.adapter = adapter
+                        // Actualiza el ViewModel con las estadísticas
+                        viewModel.categoriaStats.value = categoriaStatsList
                     }
                 } else {
                     Log.e("API", "Lista de categorías vacía o nula")
@@ -70,6 +83,7 @@ class CategoriasFragment : Fragment() {
             }
         }
     }
+
 
     private fun cambiarFragment(categoriaId: Int) {
         val fragment = when (categoriaId) {
@@ -82,10 +96,9 @@ class CategoriasFragment : Fragment() {
             else -> throw IllegalArgumentException("Categoría no válida")
         }
 
-        // Reemplazar el fragmento actual con el nuevo
         parentFragmentManager.beginTransaction()
             .replace(R.id.main_fragment, fragment)
-            .addToBackStack(null) // Opcional: Agregar a la pila de retroceso
+            .addToBackStack(null)
             .commit()
     }
 }

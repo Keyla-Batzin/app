@@ -2,12 +2,22 @@ package com.example.bloom.categorias
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
+import com.example.bloom.SharedViewModel
+
+data class CategoriaStats(
+    val categoriaId: Int,
+    var clickCount: Int = 0,
+    val categoriaName: String
+)
 
 class CategoriaAdapter(
-    val categoriasList: List<Categoria>,
-    val onItemClick: (Categoria) -> Unit // Listener de clics
+    private val categoriasList: List<Categoria>,
+    private val categoriaStatsList: MutableList<CategoriaStats>,
+    private val onItemClick: (Categoria) -> Unit
 ) : RecyclerView.Adapter<CategoriaViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriaViewHolder {
@@ -19,9 +29,14 @@ class CategoriaAdapter(
         val item = categoriasList[position]
         holder.render(item)
 
-        // Manejar clic en el ítem
         holder.itemView.setOnClickListener {
-            onItemClick(item) // Notificar al Fragment que se hizo clic
+            onItemClick(item)
+            // Incrementa el contador de clics
+            categoriaStatsList[position].clickCount++
+            // Notifica al ViewModel sobre el cambio
+            (holder.itemView.context as? AppCompatActivity)?.let { activity ->
+                ViewModelProvider(activity).get(SharedViewModel::class.java).categoriaStats.value = categoriaStatsList
+            }
         }
     }
 

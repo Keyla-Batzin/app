@@ -56,6 +56,7 @@ dependencies {
     // Glide
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.car.ui.lib)
+    implementation(libs.androidx.lifecycle.viewmodel.android)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
 
     // Retrofit para consumo de APIs REST
@@ -76,6 +77,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     // Add the dependency for the Analytics library
     // When using the BoM, you don't specify versions in Firebase library dependencies

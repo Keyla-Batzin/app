@@ -18,6 +18,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+data class CompraStats(
+    val compraId: Int,
+    var precio: Float = 0f
+)
+
 class ComprasFragment : Fragment() {
 
     private lateinit var rv: RecyclerView
