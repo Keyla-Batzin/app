@@ -6,13 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bloom.R
-import com.example.bloom.SharedViewModel
+import com.example.bloom.stats.SharedViewModel
+import com.example.bloom.stats.CategoriaStats
 
-data class CategoriaStats(
-    val categoriaId: Int,
-    var clickCount: Int = 0,
-    val categoriaName: String
-)
 
 class CategoriaAdapter(
     private val categoriasList: List<Categoria>,

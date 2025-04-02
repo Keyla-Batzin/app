@@ -1,8 +1,6 @@
 package com.example.bloom.navigation
 
-import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceFragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -11,15 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.bloom.R
 import com.example.bloom.compra.ComprasFragment
-import com.example.bloom.pantallacompra.ActivityCompra
-import com.example.bloom.pantallacompra.FragmentCarrito
 import com.example.bloom.pantallahome.FragmentPreferencias
-import com.example.bloom.pantallahome.StatsFragment
+import com.example.bloom.stats.StatsFragment
 
 class Fragment_Header : Fragment() {
 

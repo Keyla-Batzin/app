@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@android:color/white"
     android:padding="8dp"
-    tools:context=".pantallahome.StatsFragment">
+    tools:context=".stats.StatsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
