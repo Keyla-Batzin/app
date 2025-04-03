@@ -52,6 +52,9 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.firestore.ktx)
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
+    implementation ("com.google.firebase:firebase-firestore-ktx:24.7.1")
+
 
     // Coroutines
     implementation(libs.coroutines.core)

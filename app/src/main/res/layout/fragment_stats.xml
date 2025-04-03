@@ -83,14 +83,6 @@
                     android:layout_height="250dp"
                     android:padding="8dp" />
             </androidx.cardview.widget.CardView>
-
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/BotonIntermedio"
-                android:text="Guardar Estadistica"/>
-
             <Button
                 android:id="@+id/btnReset"
                 android:layout_width="match_parent"

@@ -35,7 +35,7 @@
     <color name="purple">#4B0082</color>
     <color name="pink">#EE82EE</color>
 
-    // Colores Graficos
+    // Colores Grafico Circular
     <color name="ramos">#FF5050</color>
     <color name="plantaInt">#009688</color>
     <color name="plantExt">#8BC34A</color>
@@ -43,4 +43,11 @@
     <color name="macetas">#673AB7</color>
     <color name="pack">#3F51B5</color>
 
+    // Colores Grafico Barras
+    <color name="color1">#673AB7</color>
+    <color name="color2">#3F51B5</color>
+    <color name="color3">#009688</color>
+    <color name="color4">#8BC34A</color>
+    <color name="color5">#FFEB3B</color>
+    <color name="color6">#FFC107</color>
 </resources>

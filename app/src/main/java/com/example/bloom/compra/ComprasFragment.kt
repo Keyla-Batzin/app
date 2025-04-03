@@ -29,16 +29,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.cancellation.CancellationException
 
-
 class ComprasFragment : Fragment() {
 
     private lateinit var rv: RecyclerView
     private lateinit var adapter: CompraAdapter
     private lateinit var precioTotalTextView: TextView
-    private lateinit var viewModel: SharedViewModel
-    private val compraStatsList = mutableListOf<CompraStats>()
-    private var precioCompra : Double = 0.0
-    private var idCompra : Int = 0
+    private lateinit var precioTotalCompra: PrecioTotalResponse
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     override fun onCreateView(
@@ -60,44 +56,27 @@ class ComprasFragment : Fragment() {
 
         precioTotalTextView = view.findViewById(R.id.precioTotal)
 
-        // 🔹 Inicializa el ViewModel antes de acceder a compraStats
-        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-
         actualizaCompras()
         actualizaPrecioTotal()
 
         val button = view.findViewById<Button>(R.id.btnComprar)
         button.setOnClickListener {
-            viewLifecycleOwner.lifecycleScope.launch {
-                repeatOnLifecycle(Lifecycle.State.STARTED) { // Se cancela solo si el Fragment deja de estar STARTED
-                    try {
-                        val nuevaCompra = CompraStats(idCompra + 1, precioCompra)
+            // Pasar el precio total al siguiente fragmento
+            val bundle = Bundle()
+            bundle.putSerializable("precioTotalCompra", precioTotalCompra)
 
-                        if (compraStatsList.isEmpty()) {
-                            compraStatsList.add(nuevaCompra)
-                        }
+            val fragment = FragmentCompra1()
+            fragment.arguments = bundle
 
-                        viewModel.compraStats.value = compraStatsList
-                    } catch (e: CancellationException) {
-                        Log.e("API", "La coroutine fue cancelada antes de completar la tarea")
-                    } catch (e: Exception) {
-                        Log.e("API", "Error al pasar Compra a Stats", e)
-                    }
-                }
-            }
-
-
-        activity?.supportFragmentManager?.beginTransaction()
-            ?.addToBackStack(null)
-            ?.replace(R.id.main_fragment, FragmentCompra1())?.commit()
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.addToBackStack(null)
+                ?.replace(R.id.main_fragment, fragment)?.commit()
         }
 
         return view
     }
 
-
     private fun actualizaCompras() {
-        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
         val service = CompraAPI.API()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             try {
@@ -119,12 +98,12 @@ class ComprasFragment : Fragment() {
     private fun actualizaPrecioTotal() {
         val service = CompraAPI.API()
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            while (isActive) { // Evita ejecutar si la coroutine es cancelada
+            while (isActive) {
                 try {
                     val response = service.obtenerPrecioTotal()
                     withContext(Dispatchers.Main) {
                         precioTotalTextView.text = "Precio Total: ${response.precio_total} €"
-                        precioCompra = response.precio_total.toDouble()
+                        precioTotalCompra = response
                     }
                 } catch (e: CancellationException) {
                     Log.e("API", "La coroutine Precio Total fue cancelada antes de completar la tarea")
@@ -132,12 +111,10 @@ class ComprasFragment : Fragment() {
                 } catch (e: Exception) {
                     Log.e("API", "Error al obtener el precio total", e)
                 }
-                delay(5000) // Espera 5 segundos antes de volver a ejecutar
+                delay(5000)
             }
         }
     }
-
-
 
     private fun eliminarCompra(compra: Compra) {
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
@@ -169,7 +146,6 @@ class ComprasFragment : Fragment() {
             try {
                 val response = CompraAPI.API().sumaCantidad(compra.id)
                 withContext(Dispatchers.Main) {
-                    // Actualizar la lista después de sumar la cantidad
                     actualizaCompras()
                     Log.d("API", "Cantidad sumada: ${response.message}")
                 }
@@ -186,7 +162,6 @@ class ComprasFragment : Fragment() {
             try {
                 val response = CompraAPI.API().restaCantidad(compra.id)
                 withContext(Dispatchers.Main) {
-                    // Actualizar la lista después de restar la cantidad
                     actualizaCompras()
                     Log.d("API", "Cantidad restada: ${response.message}")
                 }
@@ -200,7 +175,6 @@ class ComprasFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        scope.cancel() // Cancela todas las coroutines activas
+        scope.cancel()
     }
-
 }

@@ -19,10 +19,10 @@ import com.example.bloom.stats.CategoriaStats
 import com.example.bloom.plantasexterior.PlantasExteriorFragment
 import com.example.bloom.plantasinterior.PlantasInteriorFragment
 import com.example.bloom.ramosflores.RamosFloresFragment
+import com.example.bloom.stats.Stats
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 
 class CategoriasFragment : Fragment() {
 
@@ -72,6 +72,9 @@ class CategoriasFragment : Fragment() {
                         rv.adapter = adapter
                         // Actualiza el ViewModel con las estadísticas
                         viewModel.categoriaStats.value = categoriaStatsList
+
+                        // Guardar datos en Firestore
+                        guardarCategoriaStatsEnFirestore(categoriaStatsList)
                     }
                 } else {
                     Log.e("API", "Lista de categorías vacía o nula")
@@ -82,6 +85,10 @@ class CategoriasFragment : Fragment() {
         }
     }
 
+    private fun guardarCategoriaStatsEnFirestore(categoriaStatsList: List<CategoriaStats>) {
+        val stats = requireActivity().application as Stats
+        stats.saveCategoriaStats(categoriaStatsList)
+    }
 
     private fun cambiarFragment(categoriaId: Int) {
         val fragment = when (categoriaId) {
