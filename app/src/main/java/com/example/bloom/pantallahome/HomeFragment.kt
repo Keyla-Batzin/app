@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
@@ -139,6 +140,7 @@ class HomeFragment : Fragment() {
 
         // Botón de búsqueda
         val btnSearch = view.findViewById<Button>(R.id.btnSearch)
+        val btnAdd = view.findViewById<ImageButton>(R.id.btnAdd) // Añadir al carrito
 
         // Textos e imagen
         val name: TextView = view.findViewById(R.id.nombre)

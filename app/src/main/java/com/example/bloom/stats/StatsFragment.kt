@@ -83,13 +83,15 @@ class StatsFragment : Fragment() {
     private fun resetearEstadisticas() {
         val db = FirebaseFirestore.getInstance()
 
-        // Referencia a los tres documentos
+        // Referencias a los documentos en Firestore
         val categoriaStatsRef = db.collection("stats").document("categoriaStats")
         val compraStatsRef = db.collection("stats").document("compraStats")
         val loginCountRef = db.collection("stats").document("loginCount")
 
-        // Borrar los campos correspondientes en cada documento
-        categoriaStatsRef.update("categoriaId", FieldValue.delete(), "categoriaName", FieldValue.delete(), "clickCount", FieldValue.delete())
+        // Borrar el contenido de los documentos sin eliminarlos
+        val emptyData = mapOf<String, Any>() // Se define explícitamente como un mapa vacío de String a Any
+
+        categoriaStatsRef.set(emptyData)
             .addOnSuccessListener {
                 Log.d("StatsFragment", "Estadísticas de categorías reseteadas correctamente.")
             }
@@ -97,7 +99,7 @@ class StatsFragment : Fragment() {
                 Log.w("StatsFragment", "Error reseteando estadísticas de categorías", e)
             }
 
-        compraStatsRef.update("id", FieldValue.delete(), "precioTotal", FieldValue.delete())
+        compraStatsRef.set(emptyData)
             .addOnSuccessListener {
                 Log.d("StatsFragment", "Estadísticas de compras reseteadas correctamente.")
             }
@@ -105,9 +107,11 @@ class StatsFragment : Fragment() {
                 Log.w("StatsFragment", "Error reseteando estadísticas de compras", e)
             }
 
-        loginCountRef.update("numLogin", FieldValue.delete())
+        // Reiniciar numLogin a 0 en lugar de eliminarlo
+        loginCountRef.update("numLogin", 0)
             .addOnSuccessListener {
                 Log.d("StatsFragment", "Estadísticas de login reseteadas correctamente.")
+
                 // Mostrar mensaje de éxito
                 Mensaje.mostrarPersonalizado(
                     view,
@@ -118,6 +122,9 @@ class StatsFragment : Fragment() {
                 // Limpiar gráficos y UI
                 binding.grafCompra.clear()
                 binding.grafCategorias.clear()
+
+                // Actualizar la UI del contador de inicios de sesión
+                binding.txtInicioSesion.text = "0"
             }
             .addOnFailureListener { e ->
                 Log.w("StatsFragment", "Error reseteando estadísticas de login", e)

@@ -10,10 +10,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.bloom.pantallahome.ActivityPrincipal
 import com.example.bloom.stats.Stats
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FieldValue
 
 class Login : AppCompatActivity() {
-    private val PREFS_FILENAME = "com.example.bloom.prefs"
-    private val LOGIN_COUNT = "login_count"
     private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,7 @@ class Login : AppCompatActivity() {
 
         // Botón de login
         findViewById<Button>(R.id.btn_login).setOnClickListener {
-            // Incrementar el contador de inicios de sesión
+            // Incrementar el contador de inicios de sesión en Firestore
             incrementLoginCount()
             startActivity(Intent(this, ActivityPrincipal::class.java))
         }
@@ -40,25 +39,36 @@ class Login : AppCompatActivity() {
     }
 
     private fun incrementLoginCount() {
-        val prefs = getSharedPreferences(PREFS_FILENAME, MODE_PRIVATE)
-        val currentCount = prefs.getInt(LOGIN_COUNT, 0)
-        val newCount = currentCount + 1
+        val loginCountRef = db.collection("stats").document("loginCount")
 
-        // Guardar el nuevo contador localmente
-        val editor = prefs.edit()
-        editor.putInt(LOGIN_COUNT, newCount)
-        editor.apply()
+        // Obtener el contador actual de inicios de sesión desde Firestore
+        loginCountRef.get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val currentCount = document.getLong("numLogin")?.toInt() ?: 0
+                    val newCount = currentCount + 1
 
-        // Actualizar el contador en Firestore
-        val loginCountData = hashMapOf("numLogin" to newCount)
-        db.collection("stats").document("loginCount")
-            .set(loginCountData)
-            .addOnSuccessListener {
-                Log.d("Firestore", "Login count updated successfully")
+                    // Actualizar el contador de inicios de sesión en Firestore
+                    loginCountRef.update("numLogin", newCount)
+                        .addOnSuccessListener {
+                            Log.d("Firestore", "Login count updated successfully")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w("Firestore", "Error updating login count", e)
+                        }
+                } else {
+                    // Si el documento no existe, crearlo con el valor inicial
+                    loginCountRef.set(mapOf("numLogin" to 1))
+                        .addOnSuccessListener {
+                            Log.d("Firestore", "Login count created with value 1")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w("Firestore", "Error creating login count", e)
+                        }
+                }
             }
             .addOnFailureListener { e ->
-                Log.w("Firestore", "Error updating login count", e)
+                Log.w("Firestore", "Error getting login count", e)
             }
     }
-
 }
