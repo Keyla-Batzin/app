@@ -132,8 +132,6 @@ class StatsFragment : Fragment() {
             }
     }
 
-
-
     // Gráfico circular de categorías
     private fun updatePieChart(categoriaStats: List<CategoriaStats>) {
         val entries = categoriaStats
