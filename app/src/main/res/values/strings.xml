@@ -41,6 +41,7 @@
     <string name="total">Total:</string>
     <string name="comprar">Comprar</string>
     <string name="compras">Compras</string>
+    <string name="nom_usuari">Nom Usuari</string>
     <string-array name="countries_array">
         <item>España</item>
         <item>Francia</item>

@@ -69,12 +69,12 @@
                 style="@style/editedTextStyle"
                 android:inputType="textEmailAddress" />
 
-            <!-- Teléfono-->
+            <!-- Nom Usuari-->
             <TextView
                 style="@style/Texto"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="start"
-                android:text="@string/tel_fono"/>
+                android:text="@string/nom_usuari"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -82,9 +82,9 @@
                 android:src="@drawable/card_border"/>
 
             <EditText
-                android:id="@+id/texTelef"
+                android:id="@+id/textUserName"
                 style="@style/editedTextStyle"
-                android:inputType="textPhonetic" />
+                android:inputType="text" />
 
             <!-- Password -->
             <TextView
@@ -99,7 +99,7 @@
                 android:src="@drawable/card_border"/>
 
             <EditText
-                android:id="@+id/texPass"
+                android:id="@+id/textPass"
                 style="@style/editedTextStyle"
                 android:inputType="textPassword" />
 
@@ -116,7 +116,7 @@
                 android:src="@drawable/card_border"/>
 
             <EditText
-                android:id="@+id/texRepPass"
+                android:id="@+id/textRepPass"
                 style="@style/editedTextStyle"
                 android:inputType="textPassword" />
 

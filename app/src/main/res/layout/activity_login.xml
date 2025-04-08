@@ -81,7 +81,7 @@
                 android:src="@drawable/card_border"/>
 
             <EditText
-                android:id="@+id/texPass"
+                android:id="@+id/textPass"
                 style="@style/editedTextStyle"
                 android:inputType="textPassword" />
 

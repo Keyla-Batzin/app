@@ -20,7 +20,6 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 class StatsFragment : Fragment() {
@@ -44,29 +43,38 @@ class StatsFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         stats = requireActivity().application as Stats
+        db = FirebaseFirestore.getInstance()
+
+        // Añadir logs para depuración
+        Log.d("StatsFragment", "Fragment iniciado correctamente")
 
         // Obtener y mostrar el contador de inicios de sesión
         stats.getLoginCount { loginCount ->
             binding.txtInicioSesion.text = loginCount.toString()
-        }
-
-        // Obtener estadísticas de categorías
-        stats.getCategoriaStats { categoriaStats ->
-            viewModel.categoriaStats.postValue(categoriaStats)
+            Log.d("StatsFragment", "Login count obtenido: $loginCount")
         }
 
         // Obtener estadísticas de compras
         stats.getCompraStats { compraStats ->
+            Log.d("StatsFragment", "Compra stats recibidos: ${compraStats.size}")
             viewModel.compraStats.postValue(compraStats)
+        }
+
+        // Obtener estadísticas de categorias
+        stats.getCategoriaStats{ categoriaStats ->
+            Log.d("StatsFragment", "Categoria stats recibidos: ${categoriaStats.size}")
+            viewModel.categoriaStats.postValue(categoriaStats)
         }
 
         // Observar cambios en las estadísticas de categorías y actualizar el gráfico
         viewModel.categoriaStats.observe(viewLifecycleOwner) { categoriaStats ->
+            Log.d("StatsFragment", "Actualizando gráfico de categorías con ${categoriaStats.size} ítems")
             updatePieChart(categoriaStats)
         }
 
         // Observar cambios en las estadísticas de compras y actualizar el gráfico
         viewModel.compraStats.observe(viewLifecycleOwner) { compraStats ->
+            Log.d("StatsFragment", "Actualizando gráfico de compras con ${compraStats.size} ítems")
             updateBarChart(compraStats)
         }
 
@@ -89,7 +97,7 @@ class StatsFragment : Fragment() {
         val loginCountRef = db.collection("stats").document("loginCount")
 
         // Borrar el contenido de los documentos sin eliminarlos
-        val emptyData = mapOf<String, Any>() // Se define explícitamente como un mapa vacío de String a Any
+        val emptyData = mapOf<String, Any>("categorias" to listOf<Any>()) // Inicializar con lista vacía en lugar de mapa vacío
 
         categoriaStatsRef.set(emptyData)
             .addOnSuccessListener {
@@ -99,7 +107,7 @@ class StatsFragment : Fragment() {
                 Log.w("StatsFragment", "Error reseteando estadísticas de categorías", e)
             }
 
-        compraStatsRef.set(emptyData)
+        compraStatsRef.set(mapOf<String, Any>("compras" to listOf<Any>()))
             .addOnSuccessListener {
                 Log.d("StatsFragment", "Estadísticas de compras reseteadas correctamente.")
             }
@@ -125,6 +133,10 @@ class StatsFragment : Fragment() {
 
                 // Actualizar la UI del contador de inicios de sesión
                 binding.txtInicioSesion.text = "0"
+
+                // Limpiar los LiveData
+                viewModel.categoriaStats.postValue(emptyList())
+                viewModel.compraStats.postValue(emptyList())
             }
             .addOnFailureListener { e ->
                 Log.w("StatsFragment", "Error reseteando estadísticas de login", e)
@@ -139,9 +151,13 @@ class StatsFragment : Fragment() {
             .map { PieEntry(it.clickCount.toFloat(), it.categoriaName) }
 
         if (entries.isEmpty()) {
-            binding.grafCategorias.clear()
+            Log.d("StatsFragment", "No hay entradas para el gráfico de categorías")
+            binding.grafCategorias.setNoDataText("No hay datos disponibles")
+            binding.grafCategorias.invalidate()
             return
         }
+
+        Log.d("StatsFragment", "Creando gráfico con ${entries.size} entradas")
 
         val pieDataSet = PieDataSet(entries, "Clicks por Categoría")
         pieDataSet.colors = listOf(
@@ -156,8 +172,17 @@ class StatsFragment : Fragment() {
         pieDataSet.valueTextColor = ContextCompat.getColor(requireContext(), R.color.black)
         pieDataSet.valueTextSize = 16f
 
+        val pieData = PieData(pieDataSet)
+
+        // Opcional: Personalizar formato de valores
+        pieData.setValueFormatter(object : ValueFormatter() {
+            override fun getFormattedValue(value: Float): String {
+                return value.toInt().toString() // Mostrar valores sin decimales
+            }
+        })
+
         binding.grafCategorias.apply {
-            data = PieData(pieDataSet)
+            data = pieData
             description.isEnabled = false
             isDrawHoleEnabled = true
             setHoleColor(ContextCompat.getColor(requireContext(), R.color.white))
@@ -165,6 +190,9 @@ class StatsFragment : Fragment() {
             transparentCircleRadius = 45f
             setTransparentCircleColor(ContextCompat.getColor(requireContext(), R.color.grey))
             setTransparentCircleAlpha(110)
+            legend.isEnabled = true // Mostrar leyenda
+            setEntryLabelColor(ContextCompat.getColor(requireContext(), R.color.black))
+            setEntryLabelTextSize(12f)
             animateY(1000)
             invalidate()
         }
@@ -173,17 +201,21 @@ class StatsFragment : Fragment() {
     // Gráfico de barras para compras
     private fun updateBarChart(compraStats: List<CompraStats>) {
         val entries = compraStats.mapIndexed { index, stat ->
-            BarEntry(index.toFloat(), stat.precioTotal) // Se usa el nuevo atributo precioTotal
+            BarEntry(index.toFloat(), stat.precioTotal)
         }
 
         if (entries.isEmpty()) {
-            binding.grafCompra.clear()
+            Log.d("StatsFragment", "No hay entradas para el gráfico de compras")
+            binding.grafCompra.setNoDataText("No hay datos disponibles")
+            binding.grafCompra.invalidate()
             return
         }
 
+        Log.d("StatsFragment", "Creando gráfico de barras con ${entries.size} entradas")
+
         val barDataSet = BarDataSet(entries, "Precios Totales de Compras")
 
-        // Definir los colores de las barras. Puedes usar cualquier color aquí.
+        // Definir los colores de las barras
         val colors = listOf(
             ContextCompat.getColor(requireContext(), R.color.color1),
             ContextCompat.getColor(requireContext(), R.color.color2),
@@ -199,20 +231,29 @@ class StatsFragment : Fragment() {
         barDataSet.valueTextSize = 16f
 
         // Personalizar los valores que se muestran en las barras
-        barDataSet.valueFormatter = object : ValueFormatter() {
+        val barData = BarData(barDataSet)
+        barData.setValueFormatter(object : ValueFormatter() {
             override fun getFormattedValue(value: Float): String {
-                val index = entries.indexOfFirst { it.y == value }
-                return "Compra ${index + 1}" // Mostrar "Compra 1", "Compra 2", etc.
+                return "€${value.toInt()}" // Añadir símbolo de moneda
             }
-        }
+        })
 
         binding.grafCompra.apply {
-            data = BarData(barDataSet)
+            data = barData
             description.isEnabled = false
+            xAxis.granularity = 1f
+            xAxis.valueFormatter = object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    val index = value.toInt()
+                    return if (index < compraStats.size) {
+                        "Compra ${index + 1}"
+                    } else {
+                        ""
+                    }
+                }
+            }
             animateY(1000)
             invalidate()
         }
     }
-
-
 }
