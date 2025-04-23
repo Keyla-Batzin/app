@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.bloom.pantallahome.ActivityPrincipal
-import com.example.bloom.stats.Stats
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FieldValue
 
 class Login : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore

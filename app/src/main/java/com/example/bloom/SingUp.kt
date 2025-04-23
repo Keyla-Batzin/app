@@ -6,15 +6,26 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
+import com.example.bloom.viewmodel.SignUpViewModel
+import com.example.bloom.databinding.ActivitySingUpBinding
 
 class SingUp : AppCompatActivity() {
+
+    lateinit var binding: ActivitySingUpBinding
+    private val model: SignUpViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_sing_up)
+
+        binding.textUserName.addTextChangedListener {
+            model.actualitzaNomUsuari(it.toString())
+        }
+
 
         val btn_login = findViewById<Button>(R.id.btn_login)
 
@@ -28,7 +39,6 @@ class SingUp : AppCompatActivity() {
         }
 
         val textLogin = findViewById<TextView>(R.id.textIrALogin)
-
         textLogin.setOnClickListener {
             // Cambiar a la actividad Login
             val intent = Intent(this@SingUp, Login::class.java)
