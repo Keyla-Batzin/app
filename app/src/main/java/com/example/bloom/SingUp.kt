@@ -26,7 +26,6 @@ class SingUp : AppCompatActivity() {
             model.actualitzaNomUsuari(it.toString())
         }
 
-
         val btn_login = findViewById<Button>(R.id.btn_login)
 
         btn_login.setOnClickListener {

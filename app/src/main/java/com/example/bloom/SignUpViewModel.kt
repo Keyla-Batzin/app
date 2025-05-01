@@ -9,6 +9,7 @@ class SignUpViewModel : ViewModel() {
     private var _nomUsuari: String = ""
     private var _email: String = ""
     private var _contrasenya: String = ""
+    private var _repetirContrasenya: String = ""
 
     private val _formulariValid = MutableLiveData(false)
     val formulariValid: LiveData<Boolean> = _formulariValid
@@ -22,6 +23,9 @@ class SignUpViewModel : ViewModel() {
     private val _errorContrasenya = MutableLiveData<String>("")
     val errorContrasenya: LiveData<String> = _errorContrasenya
 
+    private val _errorRepetirContrasenya = MutableLiveData<String>("")
+    val errorRepetirContrasenya: LiveData<String> = _errorRepetirContrasenya
+
     fun actualitzaNomUsuari(nom: String) {
         _nomUsuari = nom
     }
@@ -32,6 +36,10 @@ class SignUpViewModel : ViewModel() {
 
     fun actualitzaContrasenya(pwd: String) {
         _contrasenya = pwd
+    }
+
+    fun actualitzaRepetirContrasenya(pwd: String) {
+        _repetirContrasenya = pwd
     }
 
     fun comprovaNomUsuari() {
@@ -47,7 +55,7 @@ class SignUpViewModel : ViewModel() {
     fun comprovaEmail() {
         if (_email.isBlank()) {
             _errorEmail.value = "L'email és obligatori"
-        } else if (!_email.contains("@")) {
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(_email).matches()) {
             _errorEmail.value = "L'email no és vàlid"
         } else {
             _errorEmail.value = ""
@@ -62,15 +70,32 @@ class SignUpViewModel : ViewModel() {
         }
     }
 
+    fun comprovaRepetirContrasenya() {
+        if (_repetirContrasenya != _contrasenya) {
+            _errorRepetirContrasenya.value = "Les contrasenyes no coincideixen"
+        } else {
+            _errorRepetirContrasenya.value = ""
+        }
+    }
+
     fun validarFormulari() {
         comprovaNomUsuari()
         comprovaEmail()
         comprovaContrasenya()
+        comprovaRepetirContrasenya()
 
         _formulariValid.value =
             _errorNomUsuari.value.isNullOrBlank() &&
                     _errorEmail.value.isNullOrBlank() &&
-                    _errorContrasenya.value.isNullOrBlank()
+                    _errorContrasenya.value.isNullOrBlank() &&
+                    _errorRepetirContrasenya.value.isNullOrBlank()
     }
 
+    fun registrarUsuari() {
+        validarFormulari()
+        if (_formulariValid.value == true) {
+            // TODO: Cridar api retrofit per registrar usuari
+            // Potser voldràs un LiveData per indicar l'èxit o el fracàs del registre
+        }
+    }
 }
