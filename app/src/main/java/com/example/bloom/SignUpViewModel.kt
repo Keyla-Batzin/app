@@ -90,12 +90,4 @@ class SignUpViewModel : ViewModel() {
                     _errorContrasenya.value.isNullOrBlank() &&
                     _errorRepetirContrasenya.value.isNullOrBlank()
     }
-
-    fun registrarUsuari() {
-        validarFormulari()
-        if (_formulariValid.value == true) {
-            // TODO: Cridar api retrofit per registrar usuari
-            // Potser voldràs un LiveData per indicar l'èxit o el fracàs del registre
-        }
-    }
 }

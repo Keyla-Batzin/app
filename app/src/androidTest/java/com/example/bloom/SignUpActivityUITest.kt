@@ -74,9 +74,6 @@ class SignUpActivityUITest {
         onView(withId(R.id.textRepPass)).perform(clearText(), typeText("password123"))
         onView(withId(R.id.btn_login)).perform(click())
 
-        // Aquí podrías añadir una comprobación adicional si la navegación a la siguiente pantalla es instantánea
-        // o si hay algún feedback visual en la misma pantalla (ej. un Toast no se puede verificar fácilmente con Espresso).
-        // Por ahora, solo verificamos que no hay errores visibles.
         onView(withId(R.id.textUserName)).check(matches(not(hasErrorText("El nom d'usuari és obligatori"))))
         onView(withId(R.id.textEmail)).check(matches(not(hasErrorText("L'email és obligatori"))))
         onView(withId(R.id.textEmail)).check(matches(not(hasErrorText("L'email no és vàlid"))))
