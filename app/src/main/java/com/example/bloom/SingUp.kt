@@ -2,8 +2,6 @@ package com.example.bloom
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -14,35 +12,65 @@ import com.example.bloom.databinding.ActivitySingUpBinding
 
 class SingUp : AppCompatActivity() {
 
-    lateinit var binding: ActivitySingUpBinding
+    private lateinit var binding: ActivitySingUpBinding
     private val model: SignUpViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_sing_up)
 
+        // Inicializar el binding correctamente
+        binding = ActivitySingUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Configurar listeners para actualizar el ViewModel
         binding.textUserName.addTextChangedListener {
             model.actualitzaNomUsuari(it.toString())
         }
 
-        val btn_login = findViewById<Button>(R.id.btn_login)
+        binding.textEmail.addTextChangedListener {
+            model.actualitzaEmail(it.toString())
+        }
 
-        btn_login.setOnClickListener {
-            // Mostrar un Toast antes de cambiar de actividad
-            Toast.makeText(this, "Cuenta creada con éxito", Toast.LENGTH_SHORT).show()
+        binding.textPass.addTextChangedListener {
+            model.actualitzaContrasenya(it.toString())
+        }
 
-            // Cambiar a la Login al crear la cuenta
+        binding.textRepPass.addTextChangedListener {
+            model.actualitzaRepetirContrasenya(it.toString())
+        }
+
+        binding.btnLogin.setOnClickListener {
+            // Validar formulario
+            model.validarFormulari()
+
+            if (model.formulariValid.value == true) {
+                Toast.makeText(this, "Cuenta creada con éxito", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this@SingUp, Login::class.java)
+                startActivity(intent)
+            }
+        }
+
+        binding.textIrALogin.setOnClickListener {
             val intent = Intent(this@SingUp, Login::class.java)
             startActivity(intent)
         }
 
-        val textLogin = findViewById<TextView>(R.id.textIrALogin)
-        textLogin.setOnClickListener {
-            // Cambiar a la actividad Login
-            val intent = Intent(this@SingUp, Login::class.java)
-            startActivity(intent)
+        // Configurar observadores para mostrar errores
+        model.errorNomUsuari.observe(this) { error ->
+            binding.textUserName.error = if (error.isNotEmpty()) error else null
         }
 
+        model.errorEmail.observe(this) { error ->
+            binding.textEmail.error = if (error.isNotEmpty()) error else null
+        }
+
+        model.errorContrasenya.observe(this) { error ->
+            binding.textPass.error = if (error.isNotEmpty()) error else null
+        }
+
+        model.errorRepetirContrasenya.observe(this) { error ->
+            binding.textRepPass.error = if (error.isNotEmpty()) error else null
+        }
     }
 }

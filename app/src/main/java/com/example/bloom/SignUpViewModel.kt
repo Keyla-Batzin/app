@@ -11,6 +11,8 @@ class SignUpViewModel : ViewModel() {
     private var _contrasenya: String = ""
     private var _repetirContrasenya: String = ""
 
+    private val EMAIL_PATTERN = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
     private val _formulariValid = MutableLiveData(false)
     val formulariValid: LiveData<Boolean> = _formulariValid
 
@@ -53,9 +55,9 @@ class SignUpViewModel : ViewModel() {
     }
 
     fun comprovaEmail() {
-        if (_email.isBlank()) {
+        if (_email.isEmpty()) {
             _errorEmail.value = "L'email és obligatori"
-        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(_email).matches()) {
+        } else if (!_email.matches(EMAIL_PATTERN.toRegex())) {
             _errorEmail.value = "L'email no és vàlid"
         } else {
             _errorEmail.value = ""
